@@ -18,23 +18,27 @@
         <img class="icon" src="src/img/sslive-rectangle-white.png" />
         <div class="title">省实第xx届体育节入场式直播</div>
     </header>
-    <div class="videoframe">
-        <script src="src/lib/flv.min.js" type="application/javascript"></script>
-        <video id="liveplayer" controls isLive width="90%"></video>
-        <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-        <script src="src/utils/loader.js" type="application/javascript"></script>
-         <!-- <div class="controls">
+    <div class="content">
+        <div class="videoframe">
+            <script src="src/lib/flv.min.js" type="application/javascript"></script>
+            <video id="liveplayer" controls isLive></video>
+            <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+            <script src="src/utils/loader.js" type="application/javascript"></script>
+            <!-- <div class="controls">
             <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
             <div class="vol">
                 音量：<input id="vol" type="range" min="1" max="100" />
             </div>
         </div> -->
+        </div>
+        <div class="title-section">
+            <p class="title-section-text">广东实验中学第xx届体育节</p>
+            <p class="title-section-text">入场式</p>
+            <div class="livelabel"><span class="mode"></span>现场直播</div>
+            <script>$(".mode").html(playmode);</script>
+        </div>
     </div>
-    <div class="title-section">
-        <p class="title-section-text">广东实验中学第xx届体育节</p>
-        <p class="title-section-text">入场式</p>
-        <div class="livelabel">现场直播</div>
-    </div>
+    <img class="bg-img" src="src/img/SUIT+.png" />
 </body>
 
 </html>

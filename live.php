@@ -13,7 +13,7 @@
     </head>
     <body>
         <div>
-            <?php include 'player.php';?>
+            <?php include 'player.html';?>
         </div>
     </body>
 </html>

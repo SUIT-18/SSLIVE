@@ -1,27 +1,51 @@
-﻿body{
+﻿@font-face{
+    font-family: PingFang;
+    src: url(../font/PingFangSC-Regular.woff2);
+}
+
+@font-face{
+    font-family: SF;
+    src: url(../font/sf-pro-text_regular.ttf);
+}
+
+body{
     background-color: #4d4d4d;
     text-align: center;
     height: 100%;
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    font-family: PingFang, SF;
+}
+
+.bg-img{
+    right:0;
+    bottom:0;
+    position: fixed;
+    transform: translate(20%,30%);
+    opacity: 0.3;
+    width:30%;
+    z-index: -1;
+}
+
+.content{
+    position: fixed;
+    top:50%;
+    transform: translate(-50%,-50%);
+    left:50%;
+    width:100%;
+    margin:10px 0;
 }
 
 .videoframe{
-    
-    /* margin-left:5%; */
-    /* margin-right:5%; */
-    top:50%;
-    transform: translate(-50%,-50%);
-    position: absolute;
-    left:50%;
+    position: relative;
     width: 100%;
     height: auto;
 }
 
 video{
     /*width: 100%;*/
-    border:5px white solid;
-    border-radius: 5px;
+    border:3px white solid;
+    border-radius: 4px;
     top:0;
     left:0;
     margin: 0;
@@ -30,17 +54,16 @@ video{
 
 header{
     width:100%;
-    padding: 1.5%;
+    padding: 10px;
     position: fixed;
     top:0;
+    min-height: 22px;
     left:0;
     font-size: 24px;
     text-align: left;
     background-color: #2e2e2e;
     vertical-align: middle;
 }
-
-
 
 .icon{
     width:32px;
@@ -58,6 +81,8 @@ header{
 
 .title{
     position: absolute;
+    white-space: nowrap;
+    text-overflow:ellipsis;
     top: 50%;
     left: 50%;
     color:white;
@@ -116,9 +141,8 @@ button:hover{
 
 .title-section {
     width: 100%;
-    top: 90%;
-    margin:0 auto;
-    position: absolute;
+    margin:10px 0;
+    position: relative;
 }
 
 .livelabel {
