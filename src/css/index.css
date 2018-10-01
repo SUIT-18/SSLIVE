@@ -12,8 +12,10 @@
     /* margin-right:5%; */
     top:50%;
     transform: translate(-50%,-50%);
-    position: fixed;
+    position: absolute;
     left:50%;
+    width: 100%;
+    height: auto;
 }
 
 video{
@@ -38,19 +40,32 @@ header{
     vertical-align: middle;
 }
 
+
+
 .icon{
     width:32px;
     height:32px;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     display: inline-block;
     color:white;
 }
 
 .title{
-    width: auto;
-    top:0;
-    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     color:white;
-
+    display: inline-block;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .controls{
@@ -96,11 +111,13 @@ button:hover{
     font-size: 25px;
     font-weight: 400;
     color: white;
+    margin-top: auto;
 }
 
 .title-section {
     width: 100%;
-    top: 60%;
+    top: 90%;
+    margin:0 auto;
     position: absolute;
 }
 
@@ -111,7 +128,6 @@ button:hover{
     text-align: center;
     width: 80px;
     color: RGB(104, 199, 255);
-
-    margin: 0 auto;
+    margin:0 auto;
     margin-top: 10px;
 }

@@ -10,7 +10,6 @@
     <meta name="description" content="SSLIVE">
     <link rel="stylesheet" href="src/css/index.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
-    <script src="src/js/OSCheck.js"></script>
     <script src="src/js/index.js"></script>
 </head>
 
@@ -20,11 +19,11 @@
         <div class="title">省实第xx届体育节入场式直播</div>
     </header>
     <div class="videoframe">
-        <video id="video" src="http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8" autobuffer webkit-playsinline controls>
-            <p> 请使用支持HTML5的浏览器或者
-                <a href="src/media/index.mp4">下载本视频到本地</a></p>
-        </video>
-        <!-- <div class="controls">
+        <script src="src/lib/flv.min.js" type="application/javascript"></script>
+        <video id="liveplayer" controls isLive width="90%"></video>
+        <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+        <script src="src/utils/loader.js" type="application/javascript"></script>
+         <!-- <div class="controls">
             <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
             <div class="vol">
                 音量：<input id="vol" type="range" min="1" max="100" />
