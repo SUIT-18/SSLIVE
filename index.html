@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>SSLIVE</title>
+    <link rel="shortcut icon" href="src/img/icon.svg" type="image/svg">
+    <meta name="description" content="SSLIVE">
+    <link rel="stylesheet" href="src/css/index.css">
+    <script src="src/js/jquery-3.3.1.min.js"></script>
+    <script src="src/js/OSCheck.js"></script>
+    <script src="src/js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="icon" src="src/img/sslive-rectangle-white.png" />
+        <div class="title">省实第xx届体育节入场式直播</div>
+    </header>
+    <div class="videoframe">
+        <video id="video" src="http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8" autobuffer webkit-playsinline controls>
+            <p> 请使用支持HTML5的浏览器或者
+                <a href="src/media/index.mp4">下载本视频到本地</a></p>
+        </video>
+        <!-- <div class="controls">
+            <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
+            <div class="vol">
+                音量：<input id="vol" type="range" min="1" max="100" />
+            </div>
+        </div> -->
+    </div>
+    <div class="title-section">
+        <p class="title-section-text">广东实验中学第xx届体育节</p>
+        <p class="title-section-text">入场式</p>
+        <div class="livelabel">现场直播</div>
+    </div>
+</body>
+
+</html>
