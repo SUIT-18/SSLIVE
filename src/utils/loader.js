@@ -11,5 +11,6 @@ if (flvjs.isSupported()){
     flvPlayer.play();
 }
 else{
-    alert("您的浏览器过旧不支持HTML5 FLV直播，请使用更新的Chrome、Edge、Safari、Firefox浏览器访问。");
+    alert("您的浏览器不支持HTML5 FLV直播，将为您跳转到HLS模式。");
+    loadHLSPlayer();
 }
