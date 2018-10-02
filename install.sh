@@ -1,0 +1,1 @@
+sudo ./configure  --with-php-config=/usr/bin/php-config
