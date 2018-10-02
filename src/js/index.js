@@ -6,6 +6,7 @@ $(document).ready(function () {
     // }
     // alert($(window).height() + " " + $("header").height() + " " + $(".controls").height())
     $("video").css("max-height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
+    $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
     // $("video").css("width", $(window).width() * 0.9 + "px");
     //----控制模块---
     // var movie = document.getElementById("video");

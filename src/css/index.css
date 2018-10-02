@@ -42,7 +42,7 @@ body{
     height: auto;
 }
 
-video{
+video, #player{
     /*width: 100%;*/
     border:3px white solid;
     border-radius: 4px;
@@ -52,11 +52,11 @@ video{
     max-width: 80%;
 }
 
-.player-root {
+/* .player-root {
     position: relative;
     width: 100%;
     height: auto;
-}
+} */
 
 header{
     width:100%;
@@ -106,20 +106,14 @@ header{
 }
 
 button{
-    border: 2px white solid;
-    border-radius: 50%;
-    background-color:transparent;
+    border: 2px rgb(104, 199, 255) solid;
+    border-radius: 1em;
+    background-color:rgb(104, 199, 255);
     padding:5px;
     font-size: 1.5em;
-    width:2em;
     height:2em;
     margin:5px;
-}
-
-#player{
-    position: relative;
-    width: 100%;
-    height: auto;
+    color: white;
 }
 
 button:hover{
