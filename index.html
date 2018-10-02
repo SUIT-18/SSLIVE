@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="src/css/index.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/js/index.js"></script>
+    <script src="src/utils/HLSLoader.js"></script>
 </head>
 
 <body>
@@ -19,17 +20,22 @@
         <div class="title">省实第xx届体育节入场式直播</div>
     </header>
     <div class="content">
-        <div class="videoframe">
-            <script src="src/lib/flv.min.js" type="application/javascript"></script>
-            <video id="liveplayer" controls isLive></video>
-            <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-            <script src="src/utils/loader.js" type="application/javascript"></script>
-            <!-- <div class="controls">
-            <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
-            <div class="vol">
+        <div class="player-root">
+            <div class="videoframe" id='player'>
+                <script src="src/lib/flv.min.js" type="application/javascript"></script>
+                <video id="liveplayer" controls isLive></video>
+                <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+                <script src="src/utils/loader.js" type="application/javascript"></script>
+                <script src="src/lib/jwplayer/jwplayer.js"></script>
+                <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
+                <button onclick="loadHLSPlayer()">HLS</button>
+                <!-- <div class="controls">
+                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
+                <div class="vol">
                 音量：<input id="vol" type="range" min="1" max="100" />
-            </div>
-        </div> -->
+                </div>
+                </div> -->
+              </div>
         </div>
         <div class="title-section">
             <p class="title-section-text">广东实验中学第xx届体育节</p>

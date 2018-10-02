@@ -52,6 +52,12 @@ video{
     max-width: 80%;
 }
 
+.player-root {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
 header{
     width:100%;
     padding: 10px;
@@ -108,6 +114,12 @@ button{
     width:2em;
     height:2em;
     margin:5px;
+}
+
+#player{
+    position: relative;
+    width: 100%;
+    height: auto;
 }
 
 button:hover{
