@@ -26,6 +26,24 @@ body{
     width:30%;
     z-index: -1;
 }
+#danmuarea {
+    position: relative;
+    background: #222;
+	width:800px;
+    height: 445px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+.ctr {
+    font-size: 1em;
+    line-height: 2em;
+	position: absolute;
+    width: 100%;
+    height: auto;
+	top:80%;
+	color: white;
+    }
 
 .content{
     position: fixed;
@@ -38,7 +56,7 @@ body{
 
 .videoframe{
     position: relative;
-    width: 100%;
+    width: auto;
     height: auto;
 }
 

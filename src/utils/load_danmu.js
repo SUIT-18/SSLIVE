@@ -1,84 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-  <title>弹幕made by diligentyang</title>
-  <style>
-    body {
-      font-family: "Microsoft YaHei" ! important;
-      font-color:#222;
-    }
-    pre {
-      line-height: 2em;
-      font-family: "Microsoft YaHei" ! important;
-    }
-    h4 {
-      line-height: 2em;
-    }
-    #danmuarea {
-      position: relative;
-      background: #222;
-      width:800px;
-      height: 445px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .center {
-      text-align: center;
-    }
-    .ctr {
-      font-size: 1em;
-      line-height: 2em;
-    }
-  </style>
-  <script src="src/lib/jquery-3.3.1.min.js"></script>
-  <script src="src/lib/danmu/jquery.danmu.js"></script>
-</head>
- 
-<body class="center">
-Demo<br><br>
-<!--黑背景和弹幕区-->
-<div id="danmuarea">
-  <div id="danmu" >
-  </div>
-</div>
-<!--控制区-->
-<div class="ctr" >
-  <button type="button"  onclick="pauser()">弹幕暂停</button>  &nbsp;&nbsp;&nbsp;&nbsp;
-  <button type="button"  onclick="resumer() ">弹幕继续</button>&nbsp;&nbsp;&nbsp;&nbsp;
-  显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;
-  弹幕透明度:
-  <input type="range" name="op" id="op" onchange="op()" value="100"> <br>
-  当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
-  <!--设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
-  <button type="button"  onclick="settime()">设置</button>-->
-  <br>
-  发弹幕:
-  <select  name="color" id="color" >
-    <option value="white">白色</option>
-    <option value="red">红色</option>
-    <option value="green">绿色</option>
-    <option value="blue">蓝色</option>
-    <option value="yellow">黄色</option>
-  </select>
-  <select name="size" id="text_size" >
-    <option value="1">大文字</option>
-    <option value="0">小文字</option>
-  </select>
-  <select name="position" id="position"   >
-    <option value="0">滚动</option>
-    <option value="1">顶端</option>
-    <option value="2">底端</option>
-  </select>
-  <input type="textarea" id="text" max=300 />
-  <button type="button"  onclick="send()">发送</button>
-</div>
-<script>
     //WebSocket
-    var wsServer = 'ws://123.206.61.229:9505';
+    var wsServer = 'ws://192.168.0.100:9505';
     var websocket= new WebSocket(wsServer);
- 
     websocket.onopen = function (evt) {
         console.log("Connected to WebSocket server.");
         /*websocket.send("gaga");*/
@@ -107,11 +29,12 @@ Demo<br><br>
  
   //初始化
   $("#danmu").danmu({
-    left:0,
-    top:0,
-    height:"100%",
-    width:"100%",
-    speed:20000,
+    left: 0,
+    top: 0,
+	margin: 0,
+    height: "100%",
+    width: "100%",
+    speed:6000,
     opacity:1,
     font_size_small:16,
     font_size_big:24,
@@ -186,7 +109,3 @@ Demo<br><br>
     t=parseInt(t)
     $('#danmu').danmu("setTime",t);
   }
-</script>
- 
-</body>
-</html>
