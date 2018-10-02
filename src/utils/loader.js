@@ -17,6 +17,6 @@ else {
     loadHLSPlayer();
     $("#player").css("width", $("#player").height() * 9 / 16);
     $("#player").css("left", "50%");
-    $("#player").css("display", "inline-block !important");
+    $("#player").css("display", "inline-block");
 }
 // alert(playmode);
