@@ -24,11 +24,11 @@
             <div class="videoframe" id='player'>
                 <script src="src/lib/flv.min.js" type="application/javascript"></script>
                 <video id="liveplayer" controls isLive></video>
-                <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-                <script src="src/utils/loader.js" type="application/javascript"></script>
                 <script src="src/lib/jwplayer/jwplayer.js"></script>
                 <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
                 <button onclick="loadHLSPlayer()">HLS</button>
+				<!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+                <script src="src/utils/loader.js" type="application/javascript"></script>
                 <!-- <div class="controls">
                 <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
                 <div class="vol">
