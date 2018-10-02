@@ -19,4 +19,4 @@ else {
     $("#player").css("left", "50%");
     $("#player").css("display", "inline-block");
 }
-// alert(playmode);
+cons("播放器:" + playmode);
