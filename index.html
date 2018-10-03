@@ -22,34 +22,34 @@
     </header>
     <div class="content">
         <div class="videoframe">
-			<div id="danmu" max-width=80%></div>
+			<div id="danmu"></div>
             <!--FLV播放器-->
             <script src="src/lib/flv.min.js" type="application/javascript"></script>
             <video id="liveplayer" controls isLive></video>
             <!-- -------- -->
             <!-- jwplayer -->
-            <div id="player" style="display: none">  <div id="danmu" max-width=80%></div></div>
+            <div id="player" style="display: none"> </div>
+			 <div id="danmu"></div>
             <script src="src/lib/jwplayer/jwplayer.js"></script>
             <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
             <button class="HLSmode" onclick="loadHLSPlayer()" style="display: none">HLS模式</button>
             <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
             <script src="src/utils/loader.js" type="application/javascript"></script>
             <!-- -------- -->
-
-            <!-- <div class="controls">
-                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"></button>现场直播
+             <div class="controls">
+                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;" onclick="play()"></button>现场直播
                 <div class="vol">
                 音量：<input id="vol" type="range" min="1" max="100" />
                 </div>
-            </div> -->
+            </div>
         </div>
-        <div class="title-section">
+        </div>
+	<!--div class="title-section">
             <p class="title-section-text">广东实验中学第xx届体育节</p>
             <p class="title-section-text">入场式</p>
             <div class="livelabel"><span class="mode"></span>现场直播</div>
             <script>$(".mode").html(playmode);</script>
-        </div>
-    </div>
+    </div-->
 <div class="ctr" >
   <button type="button"  onclick="pauser()">弹幕暂停</button>
   <button type="button"  onclick="resumer() ">弹幕继续</button>

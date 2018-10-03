@@ -13,7 +13,8 @@ body{
     text-align: center;
     height: 100%;
     width: 100%;
-    overflow: hidden;
+	overflow-y: scroll;
+    overflow-x: hidden;
     font-family: PingFang, SF;
 }
 
@@ -26,22 +27,14 @@ body{
     width:30%;
     z-index: -1;
 }
-#danmuarea {
-    position: relative;
-    background: #222;
-	width:800px;
-    height: 445px;
-    margin-left: auto;
-    margin-right: auto;
-    }
 
 .ctr {
     font-size: 1em;
     line-height: 2em;
-	position: absolute;
+	position:absolute;
     width: 100%;
     height: auto;
-	top:80%;
+	top:100%;
 	color: white;
     }
 
@@ -55,9 +48,23 @@ body{
 }
 
 .videoframe{
-    position: relative;
+    position: absolute;
+	text-align: center; /*让div内部文字居中*/
+    background-color: #fff;
+    border-radius: 20px;
     width: auto;
-    height: auto;
+    height: 350px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#damnu{
+	object-fit: fill
+	
 }
 
 video, #player{
@@ -67,8 +74,9 @@ video, #player{
     top:0;
     left:0;
     margin: 0;
-    max-width: 80%;
+    max-width: 100%;
 }
+
 
 /* .player-root {
     position: relative;
@@ -166,7 +174,7 @@ button:hover{
 .title-section {
     width: 100%;
     margin:10px 0;
-    position: relative;
+    position: absolute;
 }
 
 .livelabel {
