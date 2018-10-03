@@ -10,6 +10,7 @@ if (flvjs.isSupported()) {
     flvPlayer.load();
     flvPlayer.play();
     playmode = "FLV";
+    setTimeout(function () { $(".controls").width($("video").width()); }, 1000);
 }
 else {
     //alert("您的浏览器不支持HTML5 FLV直播，将为您跳转到HLS模式。");
@@ -18,5 +19,6 @@ else {
     $("#player").css("width", $("#player").height() * 9 / 16);
     $("#player").css("left", "50%");
     $("#player").css("display", "inline-block");
+    $(".controls").width($("#player").width());
 }
 cons("播放器:" + playmode);

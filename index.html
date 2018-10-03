@@ -12,7 +12,7 @@
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/js/index.js"></script>
     <script src="src/utils/HLSLoader.js"></script>
-	<script src="src/lib/danmu/jquery.danmu.js"></script>
+    <script src="src/lib/danmu/jquery.danmu.js"></script>
 </head>
 
 <body>
@@ -22,70 +22,72 @@
     </header>
     <div class="content">
         <div class="videoframe">
-			<div id="danmu"></div>
+            <div id="danmu"></div>
             <!--FLV播放器-->
             <script src="src/lib/flv.min.js" type="application/javascript"></script>
-            <video id="liveplayer" controls isLive></video>
+            <video id="liveplayer" isLive></video>
             <!-- -------- -->
             <!-- jwplayer -->
             <div id="player" style="display: none"> </div>
-			 <div id="danmu"></div>
+            <div id="danmu"></div>
             <script src="src/lib/jwplayer/jwplayer.js"></script>
             <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
             <button class="HLSmode" onclick="loadHLSPlayer()" style="display: none">HLS模式</button>
             <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
             <script src="src/utils/loader.js" type="application/javascript"></script>
             <!-- -------- -->
-             <div class="controls">
-                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;" onclick="play()"></button>现场直播
+            <div class="controls">
+                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"
+                    onclick="play()"></button>现场直播
                 <div class="vol">
-                音量：<input id="vol" type="range" min="1" max="100" />
+                    音量：<input id="vol" type="range" min="1" max="100" />
                 </div>
             </div>
+            <!-- -------- -->
+            <div class="ctr">
+                <button onclick="pauser()" id="pr">弹幕暂停</button>
+                <button onclick="resumer()" id="rr" style="display: none">弹幕继续</button>
+                显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
+                弹幕透明度:
+                <input type="range" name="op" id="op" onchange="op()" value="100"> <br>
+                <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;</div>
+                设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
+          <button type="button"  onclick="settime()">设置</button>
+                <br>
+                发弹幕:
+                <select name="color" id="color">
+                    <option value="white">白色</option>
+                    <option value="red">红色</option>
+                    <option value="green">绿色</option>
+                    <option value="blue">蓝色</option>
+                    <option value="yellow">黄色</option>
+                </select>
+                <select name="size" id="text_size">
+                    <option value="1">大文字</option>
+                    <option value="0">小文字</option>
+                </select>
+                <select name="position" id="position">
+                    <option value="0">滚动</option>
+                    <option value="1">顶端</option>
+                    <option value="2">底端</option>
+                </select>
+                <input type="textarea" id="text" max=300 />
+                <button type="button" onclick="send()">发送</button>
+            </div>
         </div>
-        </div>
-	<!--div class="title-section">
+        <div class="title-section">
             <p class="title-section-text">广东实验中学第xx届体育节</p>
             <p class="title-section-text">入场式</p>
             <div class="livelabel"><span class="mode"></span>现场直播</div>
             <script>$(".mode").html(playmode);</script>
-    </div-->
-<div class="ctr" >
-  <button type="button"  onclick="pauser()">弹幕暂停</button>
-  <button type="button"  onclick="resumer() ">弹幕继续</button>
-  显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> 
-  弹幕透明度:
-  <input type="range" name="op" id="op" onchange="op()" value="100"> <br>
-  当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
-  <!--设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
-  <button type="button"  onclick="settime()">设置</button>-->
-  <br>
-  发弹幕:
-  <select  name="color" id="color" >
-    <option value="white">白色</option>
-    <option value="red">红色</option>
-    <option value="green">绿色</option>
-    <option value="blue">蓝色</option>
-    <option value="yellow">黄色</option>
-  </select>
-  <select name="size" id="text_size" >
-    <option value="1">大文字</option>
-    <option value="0">小文字</option>
-  </select>
-  <select name="position" id="position"   >
-    <option value="0">滚动</option>
-    <option value="1">顶端</option>
-    <option value="2">底端</option>
-  </select>
-  <input type="textarea" id="text" max=300 />
-  <button type="button"  onclick="send()">发送</button>
-</div>
+        </div>
+    </div>
     <img class="bg-img" src="src/img/SUIT+.png" />
     <div class="log" style="display: none">
         <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
         <button onclick="clearlog()">清空</button>
     </div>
-	<script src="src/utils/load_danmu.js"></script>
+    <script src="src/utils/load_danmu.js"></script>
 </body>
 
 </html>

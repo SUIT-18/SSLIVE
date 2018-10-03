@@ -1,105 +1,82 @@
-﻿@font-face{
+﻿@font-face {
     font-family: PingFang;
     src: url(../font/PingFangSC-Regular.woff2);
 }
 
-@font-face{
+@font-face {
     font-family: SF;
     src: url(../font/sf-pro-text_regular.ttf);
 }
 
-body{
+body {
     background-color: #4d4d4d;
     text-align: center;
     height: 100%;
     width: 100%;
-	overflow-y: scroll;
     overflow-x: hidden;
     font-family: PingFang, SF;
 }
 
-.bg-img{
-    right:0;
-    bottom:0;
+.bg-img {
+    right: 0;
+    bottom: 0;
     position: fixed;
-    transform: translate(20%,30%);
+    transform: translate(20%, 30%);
     opacity: 0.3;
-    width:30%;
+    width: 30%;
     z-index: -1;
+}
+
+.content {
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.videoframe {
+    position: relative;
+    width: 100%;
+    height: auto;
 }
 
 .ctr {
     font-size: 1em;
     line-height: 2em;
-	position:absolute;
     width: 100%;
     height: auto;
-	top:100%;
-	color: white;
-    }
-
-.content{
-    position: fixed;
-    top:50%;
-    transform: translate(-50%,-50%);
-    left:50%;
-    width:100%;
-    margin:10px 0;
+    top: 100%;
+    color: white;
 }
 
-.videoframe{
-    position: absolute;
-	text-align: center; /*让div内部文字居中*/
-    background-color: #fff;
-    border-radius: 20px;
-    width: auto;
-    height: 350px;
-    margin: auto;
-    position: absolute;
+video, #player {
+    /*width: 100%;*/
+    border: 3px white solid;
+    border-radius: 4px;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-#damnu{
-	object-fit: fill
-	
-}
-
-video, #player{
-    /*width: 100%;*/
-    border:3px white solid;
-    border-radius: 4px;
-    top:0;
-    left:0;
     margin: 0;
-    max-width: 100%;
+    max-width: 80%;
 }
 
-
-/* .player-root {
-    position: relative;
+header {
     width: 100%;
-    height: auto;
-} */
-
-header{
-    width:100%;
     padding: 10px;
     position: fixed;
-    top:0;
+    top: 0;
     min-height: 22px;
-    left:0;
+    left: 0;
     font-size: 24px;
     text-align: left;
     background-color: #2e2e2e;
     vertical-align: middle;
 }
 
-.icon{
-    width:32px;
-    height:32px;
+.icon {
+    width: 32px;
+    height: 32px;
     position: absolute;
     top: 50%;
     left: 5%;
@@ -108,16 +85,16 @@ header{
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     display: inline-block;
-    color:white;
+    color: white;
 }
 
-.title{
+.title {
     position: absolute;
     white-space: nowrap;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     top: 50%;
     left: 50%;
-    color:white;
+    color: white;
     display: inline-block;
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -125,39 +102,44 @@ header{
     transform: translate(-50%, -50%);
 }
 
-.controls{
+.controls {
     text-align: left;
     vertical-align: middle;
     background-color: lightgray;
+    display: inline-block;
+    border: 3px white solid;
+    border-radius: 3px;
 }
 
-button{
+button {
     border: 2px rgb(104, 199, 255) solid;
     border-radius: 1em;
-    background-color:rgb(104, 199, 255);
-    padding:5px 10px;
+    background-color: rgb(104, 199, 255);
+    padding: 5px 10px;
     font-size: 1em;
-    height:2em;
-    margin:5px;
+    height: 2em;
+    margin: 5px;
     color: white;
+    min-width: 2em;
 }
 
-button:hover{
-    background-color: aqua;
+button:hover {
+    background-color: rgb(56, 182, 255);
+    border: 2px rgb(56, 182, 255) solid;
 }
 
-.vol{
+.vol {
     /* display: inline-block; */
-    right:5px;
+    right: 5px;
     vertical-align: middle;
     float: right;
-    margin:15px;
-    top:50%;
+    margin: 15px;
+    top: 50%;
 }
 
-#vol{
+#vol {
     display: inline-block;
-    width:100px;
+    width: 100px;
 }
 
 .title-section-text {
@@ -173,8 +155,8 @@ button:hover{
 
 .title-section {
     width: 100%;
-    margin:10px 0;
-    position: absolute;
+    margin: 10px 0;
+    position: relative;
 }
 
 .livelabel {
@@ -184,12 +166,12 @@ button:hover{
     text-align: center;
     width: 100px;
     color: RGB(104, 199, 255);
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 10px;
 }
 
-.log{
-    float:left;
+.log {
+    float: left;
     opacity: 0.5;
     color: white;
 }
