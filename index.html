@@ -20,16 +20,15 @@
         <img class="icon" src="src/img/sslive-rectangle-white.png" />
         <div class="title">省实第xx届体育节入场式直播</div>
     </header>
+    <div id="danmu"></div>
     <div class="content">
         <div class="videoframe">
-            <div id="danmu"></div>
             <!--FLV播放器-->
             <script src="src/lib/flv.min.js" type="application/javascript"></script>
             <video id="liveplayer" isLive></video>
             <!-- -------- -->
             <!-- jwplayer -->
             <div id="player" style="display: none"> </div>
-            <div id="danmu"></div>
             <script src="src/lib/jwplayer/jwplayer.js"></script>
             <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
             <button class="HLSmode" onclick="loadHLSPlayer()" style="display: none">HLS模式</button>
@@ -37,23 +36,25 @@
             <script src="src/utils/loader.js" type="application/javascript"></script>
             <!-- -------- -->
             <div class="controls">
-                <button id="play" style="background-image: url(src/img/play.svg);background-repeat:no-repeat; background-size:50% 50%;background-position: center;"
-                    onclick="play()"></button>现场直播
-                <div class="vol">
+                <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button><span>现场直播</span>
+                <div class="onright">
+                    <button id="danmuctrl">弹幕</button>
                     音量：<input id="vol" type="range" min="1" max="100" />
+                    <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                 </div>
             </div>
             <!-- -------- -->
-            <div class="ctr">
+            <div class="ctr" style="display: none">
                 <button onclick="pauser()" id="pr">弹幕暂停</button>
                 <button onclick="resumer()" id="rr" style="display: none">弹幕继续</button>
-                显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
+                弹幕<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
                 弹幕透明度:
-                <input type="range" name="op" id="op" onchange="op()" value="100"> <br>
-                <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;</div>
-                设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
-          <button type="button"  onclick="settime()">设置</button>
+                <input type="range" name="op" id="op" onchange="op()" value="100">
                 <br>
+                <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
+                    设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
+                    <button type="button" onclick="settime()">设置</button><br>
+                </div>
                 发弹幕:
                 <select name="color" id="color">
                     <option value="white">白色</option>
@@ -62,10 +63,10 @@
                     <option value="blue">蓝色</option>
                     <option value="yellow">黄色</option>
                 </select>
-                <select name="size" id="text_size">
+                <!-- <select name="size" id="text_size">
                     <option value="1">大文字</option>
                     <option value="0">小文字</option>
-                </select>
+                </select> -->
                 <select name="position" id="position">
                     <option value="0">滚动</option>
                     <option value="1">顶端</option>

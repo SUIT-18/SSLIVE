@@ -10,7 +10,13 @@ if (flvjs.isSupported()) {
     flvPlayer.load();
     flvPlayer.play();
     playmode = "FLV";
-    setTimeout(function () { $(".controls").width($("video").width()); }, 1000);
+    setTimeout(function () {
+        $(".controls").width($("video").width());
+        $('#danmu').width($("video").width());
+        $('#danmu').height($("video").height());
+        $("#danmu").css("top", $("video").offset().top + 3 + "px");
+        $("#danmu").css("left", $("video").offset().left + 3 + "px");
+    }, 1000);
 }
 else {
     //alert("您的浏览器不支持HTML5 FLV直播，将为您跳转到HLS模式。");
@@ -19,6 +25,12 @@ else {
     $("#player").css("width", $("#player").height() * 9 / 16);
     $("#player").css("left", "50%");
     $("#player").css("display", "inline-block");
-    $(".controls").width($("#player").width());
+    setTimeout(function () {
+        $(".controls").width($("#player").width());
+        $('#danmu').width($("#player").width());
+        $('#danmu').height($("#player").height() - 50 + "px");
+        $("#danmu").css("top", $("#player").offset().top + 3 + "px");
+        $("#danmu").css("left", $("#player").offset().left + 3 + "px");
+    }, 1000);
 }
 cons("播放器:" + playmode);

@@ -14,6 +14,7 @@ body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    overflow-y: scroll;
     font-family: PingFang, SF;
 }
 
@@ -45,10 +46,6 @@ body {
 .ctr {
     font-size: 1em;
     line-height: 2em;
-    width: 100%;
-    height: auto;
-    top: 100%;
-    color: white;
 }
 
 video, #player {
@@ -102,13 +99,15 @@ header {
     transform: translate(-50%, -50%);
 }
 
-.controls {
+.controls, .ctr {
     text-align: left;
     vertical-align: middle;
-    background-color: lightgray;
+    background-color: #888888;
     display: inline-block;
-    border: 3px white solid;
+    /* border: 3px #4d4d4d solid; */
     border-radius: 3px;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 button {
@@ -128,18 +127,21 @@ button:hover {
     border: 2px rgb(56, 182, 255) solid;
 }
 
-.vol {
+.onright {
     /* display: inline-block; */
     right: 5px;
-    vertical-align: middle;
     float: right;
-    margin: 15px;
-    top: 50%;
+    margin-top: 5px;
 }
 
 #vol {
     display: inline-block;
-    width: 100px;
+}
+
+#play, #fullscreen {
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-position: center;
 }
 
 .title-section-text {
@@ -174,4 +176,36 @@ button:hover {
     float: left;
     opacity: 0.5;
     color: white;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 80px;
+    border-radius: 8em;
+    height: 1.6em;
+    /*这个属性设置使填充进度条时的图形为圆角*/
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.2em;
+    width: 1.2em;
+    background: rgb(104, 199, 255);
+    border-radius: 50%;
+    /*外观设置为圆形*/
+    border: solid 2px rgb(104, 199, 255);
+    /*设置边框*/
+    box-sizing: border-box;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 1.6em;
+    border-radius: 0.8em;
+    /*将轨道设为圆角的*/
+    border: solid 1px rgb(104, 199, 255);
+    padding: 0.1em;
+}
+
+input[type=range]:focus {
+    outline: none;
 }

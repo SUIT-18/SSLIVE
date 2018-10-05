@@ -21,26 +21,41 @@ $(document).ready(function () {
         $(".HLSmode").css("display", "");
         $(".log").css("width", $(".logcontents").width() + "px");
         $(".danmutime").css("display", "inline-block");
+        $("#danmu").css({ "background-color": "red", "opacity": "0.5" });
     }
     //设置播放器大小
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height() + " title高度:" + $(".title-section").height());
     if (playmode == "FLV") { //FLV模式下
         $("video").css("max-height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
         $(".controls").width($("video").width());
-        $('#danmu').width($("video").width);
-        $('#danmu').height($("video").height);
+        $("#danmu").css({ "top": $("video").offset().top + 3 + "px", "left": $("video").offset().left + 3 + "px", "width": $("video").width(), "height": $("video").height() });
+        $("#vol").val($("video").volume * 100);
+        $("#vol").change(function () {
+            $("video").volume = $("#vol").val() / 100;
+        });
         $('video').trigger('play');
+        playing = true;
+        $("#play").css("background-image", "url(src/img/pause.SVG)");
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
         $(".controls").width($("#player").width());
-        $('#danmu').width($("#player").width);
-        $('#danmu').height($("#player").height);
+        $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
+        $("#vol").val($("#player").volume * 100);
+        $("#vol").change(function () {
+            $("#player").volume = $("#vol").val() / 100;
+        });
     }
-    playing = true;
-    $("#play").css("background-image", "url(src/img/pause.SVG)");
-    $("#vol").val($("video").volume * 100);
-    $("#vol").change(function () {
-        $("video").volume = $("#vol").val() / 100;
+    //---------响应按钮点击事件-------------
+    $("#danmuctrl").click(function () {
+        cons("显示/隐藏弹幕控制条");
+        $(".ctr").fadeToggle("normal");
+    });
+    $("#fullscreen").click(function () {
+        if (playmode == "FLV") {
+
+        } else {
+            jwplayer().setFullscreen(true);
+        }
     });
 });
 $(window).resize(function () {  //当浏览器大小变化时
@@ -48,13 +63,11 @@ $(window).resize(function () {  //当浏览器大小变化时
     if (playmode == "FLV") { //FLV模式下
         $("video").css("max-height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
         $(".controls").width($("video").width());
-        $('#danmu').width($("video").width);
-        $('#danmu').height($("video").height);
+        $("#danmu").css({ "top": $("video").offset().top + 3 + "px", "left": $("video").offset().left + 3 + "px", "width": $("video").width(), "height": $("video").height() });
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
         $(".controls").width($("#player").width());
-        $('#danmu').width($("#player").width);
-        $('#danmu').height($("#player").height);
+        $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
     }
 });
 function play() {

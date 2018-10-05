@@ -1,51 +1,50 @@
 //WebSocket
-var wsServer = 'ws://192.168.0.100:9505';
+var wsServer = 'ws://localhost:9505';
 var websocket = new WebSocket(wsServer);
 websocket.onopen = function (evt) {
-  console.log("Connected to WebSocket server.");
-  /*websocket.send("gaga");*/
+  cons("Connected to WebSocket server.");
   //连上之后就打开弹幕
   $('#danmu').danmu('danmuResume');
 };
 
 websocket.onclose = function (evt) {
-  console.log("Disconnected");
+  cons("Disconnected");
 };
 
 websocket.onmessage = function (evt) {
-  console.log('Retrieved data from server: ' + evt.data);
+  cons('Retrieved data from server: ' + evt.data);
   var time = $('#danmu').data("nowTime") + 1;
   var text_obj = evt.data + ',"time":' + time + '}';//获取加上当前时间
-  console.log(text_obj);
+  cons(text_obj);
   var new_obj = eval('(' + text_obj + ')');
   $('#danmu').danmu("addDanmu", new_obj);//添加弹幕
 };
 
 websocket.onerror = function (evt, e) {
-  console.log('Error occured: ' + evt.data);
+  cons('Error occured: ' + evt.data);
 };
 
 
 
 //初始化
 $("#danmu").danmu({
-  left: 0,
-  top: 0,
+  left: 500,
+  top: 100,
   margin: 0,
   height: "100%",
-  width: $("video").width(),
+  width: "500px",
   speed: 6000,
-  opacity: 1,
+  opacity: 0.5,
   font_size_small: 16,
   font_size_big: 24,
-  top_botton_danmu_time: 6000
+  top_botton_danmu_time: 6000,
 });
 //一个定时器，监视弹幕时间并更新到页面上
 function timedCount() {
   $("#time").text($('#danmu').data("nowTime"));
-
-  t = setTimeout("timedCount()", 50)
-
+  if (debugmode) {
+    t = setTimeout("timedCount()", 50);
+  }
 }
 timedCount();
 
@@ -79,7 +78,8 @@ function send() {
   var color = document.getElementById('color').value;
   var position = document.getElementById('position').value;
   //var time = $('#danmu').data("nowTime")+1;
-  var size = document.getElementById('text_size').value;
+  // var size = document.getElementById('text_size').value;
+  var size = "小文字";
   //var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
   //为了处理简单，方便后续加time，和isnew，就先酱紫发一半吧。
   //注：time为弹幕出来的时间，isnew为是否加边框，自己发的弹幕，常理上来说是有边框的。
