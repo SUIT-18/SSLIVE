@@ -52,11 +52,25 @@ $(document).ready(function () {
     });
     $("#fullscreen").click(function () {
         if (playmode == "FLV") {
-
+var ele = document.getElementById("liveplayer");
+// going full-screen
+if (ele.requestFullscreen) {
+    ele.requestFullscreen();
+}
+else if (ele.webkitRequestFullscreen) {
+    ele.webkitRequestFullscreen();
+}
+else if (ele.msRequestFullscreen) {
+    ele.msRequestFullscreen();
+}
+else if (ele.mozRequestFullScreen) {
+    ele.mozRequestFullScreen();
+}     
         } else {
             jwplayer().setFullscreen(true);
         }
-    });
+    
+						   });
 });
 $(window).resize(function () {  //当浏览器大小变化时
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height() + " title高度:" + $(".title-section").height());
