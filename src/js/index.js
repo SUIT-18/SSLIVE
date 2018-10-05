@@ -37,40 +37,42 @@ $(document).ready(function () {
         playing = true;
         $("#play").css("background-image", "url(src/img/pause.SVG)");
     } else { //jwplayer模式下
-        $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
+        // $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
+        $("#player").css("width", $(window).width() * 0.9);
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
-        $("#vol").val($("#player").volume * 100);
+        $("#vol").val(jwplayer().getVolume());
         $("#vol").change(function () {
-            $("#player").volume = $("#vol").val() / 100;
+            jwplayer().setup({ volume: $("#vol").val() });
         });
     }
     //---------响应按钮点击事件-------------
     $("#danmuctrl").click(function () {
         cons("显示/隐藏弹幕控制条");
+        $(".title-section").fadeToggle("fast");
         $(".ctr").fadeToggle("normal");
     });
     $("#fullscreen").click(function () {
         if (playmode == "FLV") {
-var ele = document.getElementById("fullscr");
-// going full-screen
-if (ele.requestFullscreen) {
-    ele.requestFullscreen();
-}
-else if (ele.webkitRequestFullscreen) {
-    ele.webkitRequestFullscreen();
-}
-else if (ele.msRequestFullscreen) {
-    ele.msRequestFullscreen();
-}
-else if (ele.mozRequestFullScreen) {
-    ele.mozRequestFullScreen();
-}     
+            var ele = document.getElementById("fullscr");
+            // going full-screen
+            if (ele.requestFullscreen) {
+                ele.requestFullscreen();
+            }
+            else if (ele.webkitRequestFullscreen) {
+                ele.webkitRequestFullscreen();
+            }
+            else if (ele.msRequestFullscreen) {
+                ele.msRequestFullscreen();
+            }
+            else if (ele.mozRequestFullScreen) {
+                ele.mozRequestFullScreen();
+            }
         } else {
             jwplayer().setFullscreen(true);
         }
-    
-						   });
+
+    });
 });
 $(window).resize(function () {  //当浏览器大小变化时
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height() + " title高度:" + $(".title-section").height());

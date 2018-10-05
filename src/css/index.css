@@ -55,7 +55,7 @@ video, #player {
     top: 0;
     left: 0;
     margin: 0;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 header {
@@ -196,6 +196,12 @@ input[type=range]::-webkit-slider-thumb {
     border: solid 2px rgb(104, 199, 255);
     /*设置边框*/
     box-sizing: border-box;
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+    height: 2em;
+    width: 2em;
+    margin-top: -0.4em;
 }
 
 input[type=range]::-webkit-slider-runnable-track {

@@ -27,7 +27,7 @@
             <!--FLV播放器-->
             <script src="src/lib/flv.min.js" type="application/javascript"></script>
             <video id="liveplayer" isLive></video>
-            <!-- -------- -->
+            <!-- ========== -->
             <!-- jwplayer -->
             <div id="player" style="display: none"> </div>
             <script src="src/lib/jwplayer/jwplayer.js"></script>
@@ -35,16 +35,16 @@
             <button class="HLSmode" onclick="loadHLSPlayer()" style="display: none">HLS模式</button>
             <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
             <script src="src/utils/loader.js" type="application/javascript"></script>
-            <!-- -------- -->
+            <!-- ========== -->
             <div class="controls">
                 <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button><span>现场直播</span>
                 <div class="onright">
                     <button id="danmuctrl">弹幕</button>
-                    音量：<input id="vol" type="range" min="1" max="100" />
+                    音量<input id="vol" type="range" min="1" max="100" />
                     <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                 </div>
             </div>
-            <!-- -------- -->
+            <!-- ========== -->
             <div class="ctr" style="display: none">
                 <button onclick="pauser()" id="pr">弹幕暂停</button>
                 <button onclick="resumer()" id="rr" style="display: none">弹幕继续</button>

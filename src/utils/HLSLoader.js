@@ -6,7 +6,10 @@ function loadHLSPlayer() {
         controlbar: "none",
         events: {
             onComplete: function () { cons("jwplayer:播放结束"); },
-            onVolume: function () { cons("jwplayer:声音大小改变"); },
+            onVolume: function () {
+                cons("jwplayer:声音大小改变");
+                $("#vol").val(jwplayer().getVolume());
+            },
             onReady: function () { cons("jwplayer:准备就绪"); },
             onPlay: function () {
                 playing = true;
@@ -33,4 +36,5 @@ function loadHLSPlayer() {
         }
         // width:"100%",
     });
+    playmode = "HLS";
 }
