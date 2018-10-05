@@ -52,7 +52,7 @@ $(document).ready(function () {
     });
     $("#fullscreen").click(function () {
         if (playmode == "FLV") {
-var ele = document.getElementById("liveplayer");
+var ele = document.getElementById("fullscr");
 // going full-screen
 if (ele.requestFullscreen) {
     ele.requestFullscreen();
