@@ -84,10 +84,17 @@ function send() {
   //为了处理简单，方便后续加time，和isnew，就先酱紫发一半吧。
   //注：time为弹幕出来的时间，isnew为是否加边框，自己发的弹幕，常理上来说是有边框的。
   var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
-  //利用websocket发送
-  websocket.send(text_obj);
-  //清空相应的内容
-  document.getElementById('text').value = '';
+  //检查是否含有敏感内容
+  var c = check(text);
+  cons("敏感词检测:" + c);
+  if (c == "") {
+    //利用websocket发送
+    websocket.send(text_obj);
+    //清空相应的内容
+    document.getElementById('text').value = '';
+  } else {
+    alert("您的弹幕含有敏感词汇，请删除后重试");
+  }
 }
 //调整透明度函数
 function op() {

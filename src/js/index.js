@@ -1,5 +1,6 @@
 var playing = false;
 var playmode = "";
+var titlehided = false;
 console.log(window.location.search);
 var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
@@ -39,18 +40,27 @@ $(document).ready(function () {
     } else { //jwplayer模式下
         // $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
         $("#player").css("width", $(window).width() * 0.9);
+        $("#player").css("height", $("#player").width() * 9 / 16);
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
         $("#vol").val(jwplayer().getVolume());
         $("#vol").change(function () {
-            jwplayer().setup({ volume: $("#vol").val() });
+            jwplayer().setVolume($("#vol").val());
         });
     }
     //---------响应按钮点击事件-------------
     $("#danmuctrl").click(function () {
-        cons("显示/隐藏弹幕控制条");
-        $(".title-section").fadeToggle("fast");
-        $(".ctr").fadeToggle("normal");
+        if (!titlehided) {
+            cons("显示弹幕控制条");
+            $(".title-section").hide();
+            $(".ctr").fadeToggle("normal");
+            titlehided = true;
+        } else {
+            cons("隐藏弹幕控制条");
+            $(".title-section").fadeToggle("normal");
+            $(".ctr").hide();
+            titlehided = false;
+        }
     });
     $("#fullscreen").click(function () {
         if (playmode == "FLV") {
@@ -81,7 +91,9 @@ $(window).resize(function () {  //当浏览器大小变化时
         $(".controls").width($("video").width());
         $("#danmu").css({ "top": $("video").offset().top + 3 + "px", "left": $("video").offset().left + 3 + "px", "width": $("video").width(), "height": $("video").height() });
     } else { //jwplayer模式下
-        $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
+        // $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * 0.8 + "px");
+        $("#player").css("width", $(window).width() * 0.9);
+        $("#player").css("height", $("#player").width() * 9 / 16);
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
     }
