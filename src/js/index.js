@@ -48,6 +48,10 @@ $(document).ready(function () {
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * x + "px");
         $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+        if ($("#player").width() > $(window).width()) {
+            $("#player").css("width", $(window).width());
+            $("#player").css("height", $("#player").width() * 9 / 16 + "px");
+        }
         cons("height:" + $("#player").height() + " width:" + $("#player").width());
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });
@@ -109,6 +113,10 @@ $(window).resize(function () {  //当浏览器大小变化时
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * x + "px");
         $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+        if ($("#player").width() > $(window).width()) {
+            $("#player").css("width", $(window).width());
+            $("#player").css("height", $("#player").width() * 9 / 16 + "px");
+        }
         cons("height:" + $("#player").height() + " width:" + $("#player").width());
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + 3 + "px", "left": $("#player").offset().left + 3 + "px", "width": $("#player").width(), "height": $("#player").height() });

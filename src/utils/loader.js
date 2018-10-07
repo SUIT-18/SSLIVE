@@ -34,6 +34,10 @@ function loadPlayer(player) {
         setTimeout(function () {
             $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * x + "px");
             $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+            if ($("#player").width() > $(window).width()) {
+                $("#player").css("width", $(window).width());
+                $("#player").css("height", $("#player").width() * 9 / 16 + "px");
+            }
             $(".controls").width($("#player").width());
             $('#danmu').width($("#player").width());
             $('#danmu').height($("#player").height() - 50 + "px");
