@@ -48,9 +48,9 @@
                 <!-- ========== -->
                 <br>
                 <div class="ctr" style="display: none">
+                    弹幕<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
                     <button onclick="pauser()" id="pr">弹幕暂停</button>
                     <button onclick="resumer()" id="rr" style="display: none">弹幕继续</button>
-                    弹幕<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
                     弹幕透明度:
                     <input type="range" name="op" id="op" onchange="op()" value="100">
                     <br>
@@ -76,7 +76,7 @@
                         <option value="2">底端</option>
                     </select>
                     <input type="textarea" id="text" max=300 />
-                    <button type="button" onclick="send()">发送</button>
+                    <button type="button" onclick="send()" id="send" style="background-image: url(src/img/send2.svg)"></button>
                 </div>
             </div>
             <div class="title-section">

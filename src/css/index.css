@@ -141,7 +141,7 @@ button:hover {
     vertical-align: middle;
 }
 
-#play, #fullscreen {
+#play, #fullscreen, #send {
     background-repeat: no-repeat;
     background-size: 50% 50%;
     background-position: center;
@@ -184,6 +184,7 @@ button:hover {
 
 input[type=range] {
     -webkit-appearance: none;
+    vertical-align: middle;
     width: 80px;
     border-radius: 8em;
     height: 1.6em;
