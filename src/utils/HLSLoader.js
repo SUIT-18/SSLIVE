@@ -1,9 +1,11 @@
 function loadHLSPlayer() {
     $("#liveplayer").remove();
     jwplayer('player').setup({
-        file: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8',
+        // file: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8',
+        file: "src/media/test.mp4",
         autostart: true,
         controlbar: "none",
+        overstretch: "true",
         events: {
             onComplete: function () { cons("jwplayer:播放结束"); },
             onVolume: function () {
@@ -34,7 +36,6 @@ function loadHLSPlayer() {
             },
             onMute: function (obj) { cons("jwplayer:静音/取消静音") }
         }
-        // width:"100%",
     });
     playmode = "HLS";
 }

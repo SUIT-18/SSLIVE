@@ -33,15 +33,15 @@
                 <div id="player" style="display: none"> </div>
                 <script src="src/lib/jwplayer/jwplayer.js"></script>
                 <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
-                <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
                 <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-                <script src="src/utils/loader.js" type="application/javascript"></script>
+                <script src="src/utils/loader.js" type="application/javascript"></script><br>
                 <!-- ========== -->
                 <div class="controls">
                     <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button><span>现场直播</span>
+                    <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
                     <div class="onright">
                         <button id="danmuctrl">弹幕</button>
-                        音量<input id="vol" type="range" min="1" max="100" />
+                        <!-- 音量&nbsp;<input id="vol" type="range" min="1" max="100" /> -->
                         <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                     </div>
                 </div>

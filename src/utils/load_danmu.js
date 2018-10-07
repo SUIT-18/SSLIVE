@@ -8,7 +8,7 @@ websocket.onopen = function (evt) {
 };
 
 websocket.onclose = function (evt) {
-  cons("Disconnected");
+  cons("Disconnected to WebSocket server.");
 };
 
 websocket.onmessage = function (evt) {
