@@ -9,23 +9,13 @@
 }
 
 body {
-    background-color: #4d4d4d;
+    background-color: #fff;
     text-align: center;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: PingFang, SF;
-}
-
-.bg-img {
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    transform: translate(20%, 30%);
-    opacity: 0.3;
-    width: 30%;
-    z-index: -1;
 }
 
 .content {
@@ -49,37 +39,38 @@ body {
 }
 
 video, #player {
-    /*width: 100%;*/
-    border: 3px white solid;
-    border-radius: 4px;
     top: 0;
     left: 0;
     margin: 0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
 }
 
-video{
+video {
     max-width: 98%;
 }
 
 header {
     width: 100%;
-    padding: 10px;
+    /* padding: 10px; */
     position: fixed;
     top: 0;
-    min-height: 22px;
+    height: 93px;
     left: 0;
-    font-size: 24px;
+    font-size: 30px;
     text-align: left;
-    background-color: #2e2e2e;
+    background-color: white;
     vertical-align: middle;
+    border-bottom: 1px rgb(27, 27, 27) solid;
+    box-shadow: 0px 0px 4px 0px rgba(28, 27, 27, 0.31);
 }
 
 .icon {
-    width: 32px;
-    height: 32px;
+    width: 65px;
+    height: 65px;
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 12%;
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
@@ -90,46 +81,72 @@ header {
 
 .title {
     position: absolute;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    /* white-space: wrap; */
     top: 50%;
     left: 50%;
-    color: white;
     display: inline-block;
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    width: 60%;
+    text-align: center;
 }
 
 .controls, .ctr {
     text-align: left;
     vertical-align: middle;
-    background-color: #888888;
     display: inline-block;
-    /* border: 3px #4d4d4d solid; */
+    padding: 10px 0;
     border-radius: 3px;
+    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
+    margin: 0;
+}
+
+.ctr {
+    position: absolute;
+    display: block;
+    background-color: rgba(27, 27, 27, 0.871);
+    opacity: 0.8;
+    z-index: 100;
     padding: 10px;
-    margin-top: 10px;
+    color:white;
+    text-align: center;
 }
 
 button {
-    border: 2px rgb(104, 199, 255) solid;
-    border-radius: 1em;
-    background-color: rgb(104, 199, 255);
-    padding: 5px 10px;
     font-size: 1em;
-    height: 2em;
-    margin: 0 5px;
-    color: white;
-    min-width: 2em;
+    height: 44px;
+    margin: 5px;
+    min-width: 44px;
     vertical-align: middle;
     display: inline-block;
+    border: none;
+    background-color: transparent;
 }
 
 button:hover {
+    cursor: pointer;
+}
+
+#play {
+    border-radius: 1em;
+    padding: 5px 10px;
+    font-size: 1em;
+    height: 44px;
+    margin: 5px 15px;
+    color: white;
+    min-width: 44px;
+    vertical-align: middle;
+    display: inline-block;
+    border: 1px rgb(85, 156, 250) solid;
+    border-radius: 3px;
+    background-color: rgb(85, 156, 250);
+}
+
+#play:hover {
     background-color: rgb(56, 182, 255);
-    border: 2px rgb(56, 182, 255) solid;
+    border: 1px rgb(56, 182, 255) solid;
     cursor: pointer;
 }
 
@@ -144,19 +161,18 @@ button:hover {
     vertical-align: middle;
 }
 
-#play, #fullscreen, #send {
+#play, #fullscreen, #send, #danmuctrl, #danmuset {
     background-repeat: no-repeat;
     background-size: 50% 50%;
     background-position: center;
 }
 
-.title-section-text {
+/* .title-section-text {
     margin: 0 auto;
     text-align: center;
     width: auto;
     margin-top: 15px;
     font-size: 25px;
-    font-weight: 400;
     color: white;
     margin-top: auto;
     line-height: 1.3;
@@ -166,17 +182,17 @@ button:hover {
     width: 100%;
     margin: 10px 0;
     position: relative;
-}
+} */
 
 .livelabel {
-    border: 3px solid RGB(104, 199, 255);
-    border-radius: 3px;
-    font-weight: 400;
+    border: 2px solid RGB(104, 199, 255);
+    border-radius: 2px;
     text-align: center;
     width: 100px;
     color: RGB(104, 199, 255);
-    margin: 0 auto;
-    margin-top: 10px;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
 }
 
 .log {
@@ -190,8 +206,7 @@ input[type=range] {
     vertical-align: middle;
     width: 80px;
     border-radius: 8em;
-    height: 1.6em;
-    /*这个属性设置使填充进度条时的图形为圆角*/
+    height: 5px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -213,14 +228,20 @@ input[type=range]:hover::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+/* input[type=range]::-webkit-slider-runnable-track {
     height: 1.6em;
     border-radius: 0.8em;
-    /*将轨道设为圆角的*/
     border: solid 1px rgb(104, 199, 255);
     padding: 0.1em;
-}
+} */
 
 input[type=range]:focus {
     outline: none;
+}
+
+select {
+    border: 1px rgb(105, 105, 105) solid;
+    border-radius: 2px;
+    width: 60px;
+    text-align: center;
 }

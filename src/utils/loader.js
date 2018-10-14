@@ -15,8 +15,8 @@ function loadPlayer(player) {
             $(".controls").width($("video").width());
             $('#danmu').width($("video").width());
             $('#danmu').height($("video").height());
-            $("#danmu").css("top", $("video").offset().top + 3 + "px");
-            $("#danmu").css("left", $("video").offset().left + 3 + "px");
+            $("#danmu").css("top", $("video").offset().top + "px");
+            $("#danmu").css("left", $("video").offset().left + "px");
         }, 1000);
     } else if (player == "jwplayer" || !flvjs.isSupported()) {
         //alert("您的浏览器不支持HTML5 FLV直播，将为您跳转到HLS模式。");
@@ -32,7 +32,7 @@ function loadPlayer(player) {
             x = 0.8;
         }
         setTimeout(function () {
-            $("#player").css("height", ($(window).height() - $("header").height() - $(".title-section").height()) * x + "px");
+            $("#player").css("height", ($(window).height() - $("header").height()) * x + "px");
             $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
             if ($("#player").width() > $(window).width()) {
                 $("#player").css("width", $(window).width());
@@ -41,8 +41,8 @@ function loadPlayer(player) {
             $(".controls").width($("#player").width());
             $('#danmu').width($("#player").width());
             $('#danmu').height($("#player").height() - 50 + "px");
-            $("#danmu").css("top", $("#player").offset().top + 3 + "px");
-            $("#danmu").css("left", $("#player").offset().left + 3 + "px");
+            $("#danmu").css("top", $("#player").offset().top + "px");
+            $("#danmu").css("left", $("#player").offset().left + "px");
         }, 1000);
         $(".HLSmode").css("display", "none");
     }

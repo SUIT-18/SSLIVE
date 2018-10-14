@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <img class="icon" src="src/img/sslive-rectangle-white.png" />
+        <img class="icon" src="src/img/sslive-rectangle-std.png" />
         <div class="title">省实第十五届体育节入场式直播</div>
     </header>
     <div id="fullscr">
@@ -37,20 +37,21 @@
                 <script src="src/utils/loader.js" type="application/javascript"></script><br>
                 <!-- ========== -->
                 <div class="controls">
-                    <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button><span>现场直播</span>
+                    <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
+                    <div class="livelabel"><span class="mode"></span>现场直播</div>
+                    <script>$(".mode").html(playmode);</script>
                     <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
+                    <input type="textarea" id="text" max=300 />
+                    <button type="button" onclick="send()" id="send" style="background-image: url(src/img/send2.svg)"></button>
                     <div class="onright">
-                        <button id="danmuctrl">弹幕</button>
+                            <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
+                        <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
                         <!-- 音量&nbsp;<input id="vol" type="range" min="1" max="100" /> -->
                         <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                     </div>
                 </div>
                 <!-- ========== -->
-                <br>
                 <div class="ctr" style="display: none">
-                    弹幕<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'>
-                    <button onclick="pauser()" id="pr">弹幕暂停</button>
-                    <button onclick="resumer()" id="rr" style="display: none">弹幕继续</button>
                     弹幕透明度:
                     <input type="range" name="op" id="op" onchange="op()" value="100">
                     <br>
@@ -58,7 +59,7 @@
                         设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
                         <button type="button" onclick="settime()">设置</button><br>
                     </div>
-                    发弹幕:
+                    颜色：
                     <select name="color" id="color">
                         <option value="white">白色</option>
                         <option value="red">红色</option>
@@ -66,27 +67,22 @@
                         <option value="blue">蓝色</option>
                         <option value="yellow">黄色</option>
                     </select>
-                    <!-- <select name="size" id="text_size">
-                    <option value="1">大文字</option>
-                    <option value="0">小文字</option>
-                </select> -->
+                    <br>
+                    类型：
                     <select name="position" id="position">
                         <option value="0">滚动</option>
                         <option value="1">顶端</option>
                         <option value="2">底端</option>
                     </select>
-                    <input type="textarea" id="text" max=300 />
-                    <button type="button" onclick="send()" id="send" style="background-image: url(src/img/send2.svg)"></button>
                 </div>
             </div>
-            <div class="title-section">
+            <!-- <div class="title-section">
                 <p class="title-section-text">广东实验中学第十五届体育节</p>
                 <p class="title-section-text">入场式</p>
                 <div class="livelabel"><span class="mode"></span>现场直播</div>
                 <script>$(".mode").html(playmode);</script>
-            </div>
+            </div> -->
         </div>
-        <img class="bg-img" src="src/img/SUIT+.png" />
         <div class="log" style="display: none">
             <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
             <button onclick="clearlog()">清空</button>

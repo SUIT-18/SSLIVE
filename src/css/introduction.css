@@ -16,7 +16,6 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: PingFang, SF;
-    /* padding: 0; */
     margin: 0;
 }
 
@@ -127,11 +126,14 @@ h1 {
     z-index: -1;
     /* visibility: hidden; */
     display: none;
+    overflow: hidden;
 }
 
 .bg-img img{
     opacity: 0.5;
     height:100%;
+    object-fit: cover;
+    width:100%;
 }
 
 .bg-dots {

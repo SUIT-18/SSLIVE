@@ -53,13 +53,11 @@ function starter() {
   $('#danmu').danmu('danmuStart');
 }
 function pauser() {
-  $("#rr").css("display", "inline-block");
-  $("#pr").css("display", "none");
+  $("#damnuctrl").css("background-image", "url(src/img/danmu_on.svg)");
   $('#danmu').danmu('danmuPause');
 }
 function resumer() {
-  $("#pr").css("display", "inline-block");
-  $("#rr").css("display", "none");
+  $("#damnuctrl").css("background-image", "url(src/img/danmu_on.svg)");
   $('#danmu').danmu('danmuResume');
 }
 function stoper() {
@@ -101,16 +99,21 @@ function op() {
   var op = document.getElementById('op').value;
   $('#danmu').danmu("setOpacity", op / 100);
 }
-
+var hided = false;
 //调隐藏 显示
 function changehide() {
   var op = document.getElementById('op').value;
   op = op / 100;
-  if (document.getElementById("ishide").checked) {
-    $("#danmu").danmu("setOpacity", 1)
+  if (hided) {
+    $("#danmu").danmu("setOpacity", 1);
+    $("#danmuctrl").css("background-image", "url(src/img/danmu_off.svg)");
+    hided = false;
+    cons("显示");
   } else {
-    $("#danmu").danmu("setOpacity", 0)
-
+    $("#danmu").danmu("setOpacity", 0);
+    $("#danmuctrl").css("background-image", "url(src/img/danmu_on.svg)");
+    hided = true;
+    cons("隐藏");
   }
 }
 
