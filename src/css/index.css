@@ -94,7 +94,7 @@ header {
 }
 
 .controls, .ctr {
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
     display: inline-block;
     padding: 10px 0;
@@ -108,10 +108,13 @@ header {
     display: block;
     background-color: rgba(27, 27, 27, 0.871);
     opacity: 0.8;
-    z-index: 100;
+    z-index: 200;
     padding: 10px;
-    color:white;
+    color: white;
     text-align: center;
+    width: 185px;
+    height: 100px;
+    transform: translateX(-50%);
 }
 
 button {
@@ -148,6 +151,36 @@ button:hover {
     background-color: rgb(56, 182, 255);
     border: 1px rgb(56, 182, 255) solid;
     cursor: pointer;
+}
+
+#send {
+    border-radius: 3px;
+    background-color: rgb(85, 156, 250);
+    padding: 5px 20px;
+    display: inline-block;
+    margin: 0;
+    color: #fff;
+}
+
+#send:hover {
+    background-color: rgb(56, 182, 255);
+    cursor: pointer;
+}
+
+#text {
+    border-width: 1px;
+    border: 1px rgb(214, 213, 213) solid;
+    background-color: rgb(241, 237, 237);
+    width: 30%;
+    height: 40px;
+    text-align: center;
+}
+
+.senddanmu {
+    text-align: center;
+    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
+    display: inline;
+    margin: 0 5px;
 }
 
 .onright {
@@ -228,12 +261,9 @@ input[type=range]:hover::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-/* input[type=range]::-webkit-slider-runnable-track {
-    height: 1.6em;
-    border-radius: 0.8em;
-    border: solid 1px rgb(104, 199, 255);
-    padding: 0.1em;
-} */
+input[type=range]::-webkit-slider-runnable-track {
+    background-color: rgb(104, 199, 255);
+}
 
 input[type=range]:focus {
     outline: none;
@@ -242,6 +272,8 @@ input[type=range]:focus {
 select {
     border: 1px rgb(105, 105, 105) solid;
     border-radius: 2px;
-    width: 60px;
+    width: 80px;
     text-align: center;
+    background-color: transparent;
+    color: #fff;
 }

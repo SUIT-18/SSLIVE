@@ -105,6 +105,7 @@ h1 {
     text-align: center;
     width: 100%;
     display: none;
+    text-shadow: 2px 2px 4px #181818;
 }
 
 .promote {
@@ -115,6 +116,7 @@ h1 {
     text-align: center;
     width: 100%;
     display: none;
+    text-shadow: 2px 2px 4px #181818;
 }
 
 .bg-img {
@@ -151,8 +153,16 @@ h1 {
     background-color: #888888;
     display: inline-block;
     margin-right: 3px;
+    box-shadow: 5px 5px 5px rgb(34, 33, 33);
 }
 
 .bg-dots div:hover{
     cursor: pointer;
+}
+
+.contents{
+    width:100%;
+    background-color: red;
+    margin-top: 15px;
+    color: #fff;
 }

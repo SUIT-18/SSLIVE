@@ -182,7 +182,7 @@ int main()
 	// FILE * fp0=fopen("muban.txt","r");
 	// FILE * fp1=fopen("wenben.txt","r");
 	int i = 0;
-	basic_string s = "手机复制 12 3a sd";
+	string s = "手机复制 12 3a sd";
 	strcpy(str, s.c_str());
 	// while (fscanf(fp0, "%s", str[++i]) != EOF)
 	// {
@@ -192,7 +192,7 @@ int main()
 	ac_add(str[i], i);
 	// }
 	printf("num=%d\n", tot); //�鿴ģ�岻ͬ�ַ�����
-	basic_string t = "123123asdfas手机复制";
+	string t = "123123asdfas手机复制";
 	strcpy(text, t.c_str());
 	// fscanf(fp1,"%s",text);
 	if (!acautomata())
