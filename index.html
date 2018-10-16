@@ -12,7 +12,7 @@
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/js/index.js"></script>
     <script src="src/utils/HLSLoader.js"></script>
-    <script src="src/utils/checkwords.js"></script>
+    <!-- <script src="src/utils/checkwords.js"></script> -->
     <script src="src/lib/danmu/jquery.danmu.js"></script>
 </head>
 
@@ -41,39 +41,15 @@
                     <div class="livelabel"><span class="mode"></span>现场直播</div>
                     <script>$(".mode").html(playmode);</script>
                     <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
-                    <input type="textarea" id="text" max=300 />
-                    <button type="button" onclick="send()" id="send" style="background-image: url(src/img/send2.svg)"></button>
+                    <div class="senddanmu">
+                        <input type="textarea" id="text" max=300 placeholder="发个弹幕" /><button type="button" onclick="send()" id="send">发送</button>
+                    </div>
                     <div class="onright">
-                            <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
+                        <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
                         <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
                         <!-- 音量&nbsp;<input id="vol" type="range" min="1" max="100" /> -->
                         <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                     </div>
-                </div>
-                <!-- ========== -->
-                <div class="ctr" style="display: none">
-                    弹幕透明度:
-                    <input type="range" name="op" id="op" onchange="op()" value="100">
-                    <br>
-                    <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
-                        设置当前弹幕时间(秒)： <input type="text" id="set_time" max=20 />
-                        <button type="button" onclick="settime()">设置</button><br>
-                    </div>
-                    颜色：
-                    <select name="color" id="color">
-                        <option value="white">白色</option>
-                        <option value="red">红色</option>
-                        <option value="green">绿色</option>
-                        <option value="blue">蓝色</option>
-                        <option value="yellow">黄色</option>
-                    </select>
-                    <br>
-                    类型：
-                    <select name="position" id="position">
-                        <option value="0">滚动</option>
-                        <option value="1">顶端</option>
-                        <option value="2">底端</option>
-                    </select>
                 </div>
             </div>
             <!-- <div class="title-section">
@@ -83,6 +59,32 @@
                 <script>$(".mode").html(playmode);</script>
             </div> -->
         </div>
+        <!-- ========== -->
+        <div class="ctr" style="display: none">
+            弹幕透明度:
+            <input type="range" name="op" id="op" onchange="op()" value="100">
+            <br>
+            <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
+                设置当前弹幕时间(秒)：
+                <input type="text" id="set_time" max=20 />
+                <button type="button" onclick="settime()">设置</button><br>
+            </div>
+            颜色：
+            <select name="color" id="color">
+                <option value="white">白色</option>
+                <option value="red">红色</option>
+                <option value="green">绿色</option>
+                <option value="blue">蓝色</option>
+                <option value="yellow">黄色</option>
+            </select>
+            <br> 类型：
+            <select name="position" id="position">
+                <option value="0">滚动</option>
+                <option value="1">顶端</option>
+                <option value="2">底端</option>
+            </select>
+        </div>
+        <!-- =========== -->
         <div class="log" style="display: none">
             <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
             <button onclick="clearlog()">清空</button>

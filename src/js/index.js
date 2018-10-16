@@ -64,9 +64,9 @@ $(document).ready(function () {
     $("#danmuset").click(function () {
         if (!settinghided) {
             if (playmode == "FLV") {
-                $(".ctr").css({ bottom: ($(".controls").height() + 40) + "px", left: ($("video").width()) + "px" });
+                $(".ctr").css({ top: ($("video").offset().top + $("video").height() - 140) + "px", left: $("#danmuset").offset().left + "px" });
             } else {
-                $(".ctr").css({ bottom: ($(".controls").height() + 40) + "px", left: ($("#player").width()) + "px" });
+                $(".ctr").css({ top: ($("#player").offset().top + $("#player").height() - 140) + "px", left: ($("#player").width()) + "px" });
             }
             $(".ctr").fadeIn();
             cons("显示弹幕设置");
