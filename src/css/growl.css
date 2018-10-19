@@ -1,0 +1,32 @@
+.growl {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: #a5a4a4;
+    z-index: 500;
+    padding: 20px;
+    text-align: center;
+    opacity: 0.8;
+    max-height: 100px;
+    width: 100px;
+}
+
+.growl-img {
+    display: none;
+}
+
+#growl-img{
+    min-width: 60px;
+    max-width: 90px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.growl-text {
+    margin: 5px 0;
+    overflow: hidden;
+    font-size: 24px;
+}

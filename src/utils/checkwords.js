@@ -2,14 +2,22 @@ function change(c) { //字符转码
 	return c;
 }
 function Node(Node, v, num) { //二叉树节点
-	// Node *ch[2];
+	ch[2];
 	this.Node = this;
 	this.cmp = cmp;
 	function cmp(x) {
 		if (x == v) { return -1; }
 		return x < v ? 0 : 1;
 	}
-};
+}
+var Node = new Object;
+Node.ch = new Array(2);
+Node.v = 0;
+Node.num = 0;
+Node.cmp = function (x) {
+	if (x == v) return -1;
+	return x < v ? 0 : 1;
+}
 //------声明全局变量--------
 const MAX_NUM = 400;
 const TOT = 1e6 + 10;
@@ -21,71 +29,71 @@ var ch = new Array(TOT), val = new Array(TOT), f = new Array(TOT), last = new Ar
 var str = new Array(100010);
 var text = new Array(TOT_TEXT);
 var q = new array(TOT);
-Node * head = NULL;
+var head = 0;
 //------------------------
-function rotate(Node *&o, d) {
-	Node * k = o -> ch[d ^ 1];
-	o -> ch[d ^ 1] = k -> ch[d];
-	k -> ch[d] = o;
-	o = k;
+function rotate(int& oo, d) {
+	Node & o=tree[oo];
+	int kk = o.ch[d ^ 1];
+	Node & k=tree[kk];
+	o.ch[d ^ 1] = k.ch[d];
+	k.ch[d] = oo;
+	oo = kk;
 }
 function find(Node *&o, k) {
-	if (o == NULL)
-		return -1;
-	var d = o -> cmp(k);
+	if (oo == 0) return -1;
+	Node & o=tree[oo];
+	var d = o.cmp(k);
 	if (d != -1) {
-		Node * p = o -> ch[d];
-		if (p == NULL)
-			return -1;
-		var d2 = p -> cmp(k);
+		var p = o.ch[d];
+		if (p == 0) return -1;
+		var d2 = tree[p].cmp(k);
 		if (d2 != -1) {
-			return find(p -> ch[d2], k);
-			if (d == d2) {
-				rotate(o, d ^ 1);
-			} else {
-				rotate(o -> ch[d], d);
-			}
-		} else {
-			rotate(o, d ^ 1);
-			return p -> num;
-		}
-	} else {
-		return o -> num;
-	}
-}
-function add(Node *& o, int k)
-{
-	if (o == NULL) {
-		o = new Node();
-		o -> ch[0] = o -> ch[1] = NULL;
-		o -> num = ++tot;
-		o -> v = k;
-		return;
-	}
-	var d = o -> cmp(k);
-	if (d != -1) {
-		Node *& p = o -> ch[d];
-		if (p == NULL) {
-			p = new Node();
-			p -> ch[0] = p -> ch[1] = NULL;
-			p -> num = ++tot;
-			p -> v = k;
+			return find(tree[p].ch[d2], k);
+			if (d == d2) rotate(oo, d ^ 1); else rotate(o.ch[d], d);
 		}
 		else {
-			var d2 = p -> cmp(k);
+			rotate(oo, d ^ 1);
+			return tree[p].num;
+		}
+	}
+	else return o.num;
+}
+function add(int& oo, k) {
+	if (oo == 0) {
+		oo = ++node_max;
+		Node & o=tree[oo];
+		o.ch[0] = o.ch[1] = 0;
+		o.num = ++tot;
+		o.v = k;
+		return;
+	}
+	Node & o=tree[oo];
+	var d = o.cmp(k);
+	if (d != -1) {
+		int & pp = o.ch[d];
+		if (pp == 0) {
+			pp = ++node_max;
+			Node & p=tree[pp];
+			p.ch[0] = p.ch[1] = 0;
+			p.num = ++tot;
+			p.v = k;
+		} else {
+			Node & p=tree[pp];
+			var d2 = p.cmp(k);
 			if (d2 != -1) {
-				add(p -> ch[d2], k);
+				add(p.ch[d2], k);
 				if (d == d2)
-					rotate(o, d ^ 1);
+					rotate(oo, d ^ 1);
 				else
-					rotate(o -> ch[d], d);
+					rotate(o.ch[d], d);
 			}
 		}
-		rotate(o, d ^ 1);
+		rotate(oo, d ^ 1);
 	}
+	return;
 }
 //--------AC自动机------------
-function ac_add(* s, v) {
+function ac_add(s, v) {
 	var now = 0;
 	var len = strlen(s);
 	for (j = 0; j < len; j++) {

@@ -4,6 +4,24 @@ var settinghided = false;
 console.log(window.location.search);
 var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
+//跳转
+var now = new Date().getTime();//当前时间
+var liveplay = new Date(2018, 10, 25, 8, 00).getTime();//直播8点开始
+var leftTime = liveplay - now;//计算时差
+var delta = 1200000;//二十分钟
+if (leftTime <= delta) {
+    //alert("已到开播时间前20分钟");无需跳转
+}
+else {
+    //alert("未到开播日期");跳转
+    if (debugmode) {
+        alert("debug模式下不跳转");
+    }
+    else {
+        window.location.href = 'introduction.html';
+    }
+}
+//---------------
 function cons(content) {
     console.log(content);
     if (debugmode) {
@@ -15,6 +33,12 @@ function clearlog() {
     $(".logcontents").val("");
 }
 $(document).ready(function () {
+    //------兼容性检测---------
+    var info = new Browser();
+    if (info.device != 'Mobile') {
+        cons(info.browser + " " + info.version + " " + info.engine);
+    }
+    //------------------------
     if (debugmode) {
         $(".log").css("display", "block");
         var str = "调试模式已启动\n";
@@ -44,7 +68,7 @@ $(document).ready(function () {
         });
         $('video').trigger('play');
         playing = true;
-        $("#play").css("background-image", "url(src/img/pause.SVG)");
+        $("#play").css("background-image", "url(src/img/pause.svg)");
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height()) * x + "px");
         $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
@@ -98,6 +122,7 @@ $(document).ready(function () {
         }
 
     });
+    // growl.show({ text: "发送中...", type: "loading", autoclose: 3000 });
 });
 $(window).resize(function () {  //当浏览器大小变化时
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height());
@@ -129,10 +154,10 @@ function play() {
     if (playing) {
         $('video').trigger('pause');
         playing = false;
-        $("#play").css("background-image", "url(src/img/play.SVG)");
+        $("#play").css("background-image", "url(src/img/play.svg)");
     } else {
         $('video').trigger('play');
         playing = true;
-        $("#play").css("background-image", "url(src/img/pause.SVG)");
+        $("#play").css("background-image", "url(src/img/pause.svg)");
     }
 }
