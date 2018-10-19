@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>SSLIVE</title>
+    <link rel="shortcut icon" href="src/img/sslive-rectangle-white.png" type="image/png">
+    <meta name="description" content="SSLIVE">
+    <link rel="stylesheet" href="src/css/index.css">
+    <script src="src/lib/jquery-3.3.1.min.js"></script>
+    <script src="src/js/index.js"></script>
+    <script src="src/utils/HLSLoader.js"></script>
+    <script src="src/js/redirect.js"></script>
+    <script src="src/lib/danmu/jquery.danmu.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="icon" src="src/img/sslive-rectangle-std.png" />
+        <div class="title">省实第十五届体育节入场式直播</div>
+    </header>
+    <div id="fullscr">
+        <div id="danmu"></div>
+        <div class="content">
+            <div class="videoframe">
+                <!--FLV播放器-->
+                <script src="src/lib/flv.min.js" type="application/javascript"></script>
+                <video id="liveplayer" isLive></video>
+                <!-- ========== -->
+                <!-- jwplayer -->
+                <div id="player" style="display: none"> </div>
+                <script src="src/lib/jwplayer/jwplayer.js"></script>
+                <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
+                <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+                <script src="src/utils/loader.js" type="application/javascript"></script><br>
+                <!-- ========== -->
+                <div class="controls">
+                    <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
+                    <div class="livelabel"><span class="mode"></span>现场直播</div>
+                    <script>$(".mode").html(playmode);</script>
+                    <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
+                    <div class="senddanmu">
+                        <input type="textarea" id="text" max=300 placeholder="发个弹幕" /><button type="button" onclick="send()" id="send">发送</button>
+                    </div>
+                    <div class="onright">
+                        <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
+                        <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
+                        <!-- 音量&nbsp;<input id="vol" type="range" min="1" max="100" /> -->
+                        <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="title-section">
+                <p class="title-section-text">广东实验中学第十五届体育节</p>
+                <p class="title-section-text">入场式</p>
+                <div class="livelabel"><span class="mode"></span>现场直播</div>
+                <script>$(".mode").html(playmode);</script>
+            </div> -->
+        </div>
+        <!-- ========== -->
+        <div class="ctr" style="display: none">
+            弹幕透明度:
+            <input type="range" name="op" id="op" onchange="op()" value="100">
+            <br>
+            <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
+                设置当前弹幕时间(秒)：
+                <input type="text" id="set_time" max=20 />
+                <button type="button" onclick="settime()">设置</button><br>
+            </div>
+            颜色：
+            <select name="color" id="color">
+                <option value="white">白色</option>
+                <option value="red">红色</option>
+                <option value="green">绿色</option>
+                <option value="blue">蓝色</option>
+                <option value="yellow">黄色</option>
+            </select>
+            <br> 类型：
+            <select name="position" id="position">
+                <option value="0">滚动</option>
+                <option value="1">顶端</option>
+                <option value="2">底端</option>
+            </select>
+        </div>
+        <!-- =========== -->
+        <div class="log" style="display: none">
+            <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
+            <button onclick="clearlog()">清空</button>
+        </div>
+        <script src="src/utils/load_danmu.js"></script>
+    </div>
+</body>
+
+</html>
