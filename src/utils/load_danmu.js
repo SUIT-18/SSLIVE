@@ -1,14 +1,11 @@
 //WebSocket
 var wsServer = 'ws://47.92.218.251:9505';
 var websocket = new WebSocket(wsServer);
+function load_danmu(){
 websocket.onopen = function (evt) {
   cons("Connected to WebSocket server.");
   //连上之后就打开弹幕
   $('#danmu').danmu('danmuResume');
-};
-
-websocket.onclose = function (evt) {
-  cons("Disconnected to WebSocket server.");
 };
 
 websocket.onmessage = function (evt) {
@@ -18,6 +15,12 @@ websocket.onmessage = function (evt) {
   cons(text_obj);
   var new_obj = eval('(' + text_obj + ')');
   $('#danmu').danmu("addDanmu", new_obj);//添加弹幕
+};
+}
+load_danmu();
+websocket.onclose = function (evt) {
+  cons("Disconnected to WebSocket server.");
+  setTimeout(function(){window.location.reload();}, 2 * 1000);//2s自动重连弹幕服务器
 };
 
 websocket.onerror = function (evt, e) {
