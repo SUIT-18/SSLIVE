@@ -33,12 +33,6 @@ function clearlog() {
     $(".logcontents").val("");
 }
 $(document).ready(function () {
-    //------兼容性检测---------
-    var info = new Browser();
-    if (info.device != 'Mobile') {
-        cons(info.browser + " " + info.version + " " + info.engine);
-    }
-    //------------------------
     if (debugmode) {
         $(".log").css("display", "block");
         var str = "调试模式已启动\n";
@@ -48,6 +42,18 @@ $(document).ready(function () {
         $(".danmutime").css("display", "inline-block");
         $("#danmu").css({ "background-color": "red", "opacity": "0.5" });
     }
+    //------兼容性检测---------
+    var info = new Browser();
+    if (info.device != '') {
+        cons(info.browser + " " + info.version + " " + info.engine);
+        if (info.browser == "IE") {
+            growl.show({ text: "浏览器版本太旧", type: "warning", autoclose: 5000 });
+        }
+        if (info.browser == "Safari" && info.version<=10.0){
+            growl.show({ text: "浏览器版本太旧", type: "warning", autoclose: 5000 });
+        }
+    }
+    //------------------------
     //设置播放器大小
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height() + " title高度:" + $(".title-section").height());
     var x = 0.8;
