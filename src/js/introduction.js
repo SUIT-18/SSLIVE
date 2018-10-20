@@ -1,8 +1,8 @@
 var imgindex = 1;
 var str = "";
 function setsize() {
-    $(".main").css("top", $("header").height() + "px");
-    $(".main").css("height", $(window).height() - $("header").height());
+    $(".main").css("margin-top", $("header").height() + 30 + "px");
+    $(".main").css("height", $(window).height() - $("header").height() - 10 + "px");
 
 }
 $(document).ready(function () {
