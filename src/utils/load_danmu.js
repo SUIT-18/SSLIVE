@@ -86,14 +86,16 @@ function send() {
   //注：time为弹幕出来的时间，isnew为是否加边框，自己发的弹幕，常理上来说是有边框的。
   //--------检查（可能慢）-----------
   if (check(text)) {
-    growl.show({ text: "检测到敏感词!", type: "warning", autoclose: 3000 });
+    growl.close();
+    growl.show({ text: "检测到敏感词!", type: "warning", autoclose: 5000 });
   } else {
     var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
     //利用websocket发送
     websocket.send(text_obj);
+    growl.close();
     //清空相应的内容
     document.getElementById('text').value = '';
-    growl.show({ text: "发送成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 700});
+    growl.show({ text: "发送成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 3000});
   }
 }
 //调整透明度函数

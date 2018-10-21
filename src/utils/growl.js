@@ -46,6 +46,6 @@ growl.close = function (option) {
             $(".growl").remove();
         }
     } else {
-        // $(".growl").fadeToggle("slow", function () { $(".growl").remove(); });
+        $(".growl").fadeToggle("slow", function () { $(".growl").remove(); });
     }
 }
