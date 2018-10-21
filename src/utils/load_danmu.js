@@ -75,6 +75,7 @@ function getpaused() {
 
 //发送弹幕，使用了文档README.md第7节中推荐的方法
 function send() {
+  growl.show({ text: "发送中...", type: "custom", imgsrc: "src/img/danmu_loading.gif" });
   var text = document.getElementById('text').value;
   var color = document.getElementById('color').value;
   var position = document.getElementById('position').value;
@@ -92,6 +93,7 @@ function send() {
     websocket.send(text_obj);
     //清空相应的内容
     document.getElementById('text').value = '';
+    growl.show({ text: "发送成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 700});
   }
 }
 //调整透明度函数

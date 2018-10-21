@@ -5,17 +5,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    background-color: #a5a4a4;
+    background-color: rgba(166, 164, 164, 0.7);
     z-index: 500;
     padding: 20px;
     text-align: center;
-    opacity: 0.8;
+    opacity: 1;
     max-height: 120px;
     width: 120px;
 }
 
 .growl-img {
     display: none;
+    z-index:550;
+    opacity: 1;
 }
 
 #growl-img{
