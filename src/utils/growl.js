@@ -24,7 +24,6 @@ growl.show = function (settings) {
                     break;
             }
         }
-        console.log(src);
         $("#growl-img").attr("src", src);
     if (typeof (settings.mask) == "boolean") {
         if (settings.mask && settings.autoclose > 0) {

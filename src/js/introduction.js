@@ -87,6 +87,9 @@ $(document).ready(function () {
             });
         });
     });
+    $(".icon").click(function(){
+        window.location.href = "index.html";
+    });
 });
 $(window).resize(function () {
     setsize();

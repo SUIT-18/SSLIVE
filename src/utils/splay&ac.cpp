@@ -19,7 +19,7 @@ struct Node{
 		return x < v ? 0 : 1;
 	}
 }tree[MAX_NUM];
-int n,acmax=0,tot=0,ch[TOT][MAX_NUM],val[TOT],f[TOT],last[TOT],node_max=0;
+int n,acmax=0,tot=0,ch[TOT][MAX_NUM],val[TOT],f[TOT],last[TOT],node_max=0,moban_count=0;
 char str[1000010][100],text[TOT_TEXT];
 int q[TOT];
 int head=0;
@@ -130,15 +130,14 @@ void print(int j, int i)
 			print(last[j], i);
 	}
 }
-int acautomata()
+int acautomata(char *T)
 {
 	bool flag = false;
-	getfail();
-	int len = strlen(text);
+	int len = strlen(T);
 	int j = 0;
 	for (int i = 0; i < len; i++)
 	{
-		int c = find(head, change(text[i]));
+		int c = find(head, change(T[i]));
 		if (c == -1)
 			c = 0;
 		j = ch[j][c];
@@ -155,20 +154,33 @@ int acautomata()
 	}
 	return flag;
 }
+void input(char *s){
+	int len=strlen(s);
+	int l=-1,r=-1;
+	for (int i=0;i<len;++i){
+		if (s[i]!=' '&&s[i]!='\n') {
+			++r;
+			add(head,change(s[i]));
+		}else{
+			memcpy(str[++moban_count],s+l+1,sizeof(char)*(r-l)); //copy (r-l) letters (s[l+1] ~ s[r]) into str[moban_count].
+			// printf("%s\n",str[moban_count]);  //to see if the moban is cut correctly. delete it if needed.
+			ac_add(str[moban_count],moban_count);
+			l=r=i;
+		}
+	}
+	if (l!=r) memcpy(str[++moban_count],s+l+1,sizeof(char)*(r-l));
+	printf("%s\n",str[moban_count]);//to see if the moban is cut correctly. delete it if needed.
+}
 int main()
 {
-	 FILE * fp0=fopen("muban.txt","r");
-	 FILE * fp1=fopen("wenben.txt","r");
-	 int i = 0;
-	 while (fscanf(fp0, "%s", str[++i]) != EOF)
-	 {
-		int len = strlen(str[i]);
-		for (int j = 0; j < len; j++)add(head, change(str[i][j]));
-		ac_add(str[i], i);
-	 }
-	printf("num=%d\n",tot); 
-	fscanf(fp1,"%s",text);
-	if (!acautomata())printf("find nothing\n");
+	char moban[]="abc def bbb ccc hsdlakfh sfasd";
+	input(moban);
+	getfail();
+	// printf("num=%d\n",tot);  //to see how many different letters are there in moban. delete it if needed.
+	while (true) {  //delete or change 'while' to modify the times needed
+		scanf("%s",text);
+		if (!acautomata(text))printf("find nothing\n");	//input 'text' into function 'acautomata'
+	}
 	getchar();
 	return 0;
 }

@@ -47,6 +47,10 @@ header {
     color: white;
 }
 
+.icon:hover{
+    cursor: pointer;
+}
+
 .title {
     position: absolute;
     white-space: nowrap;

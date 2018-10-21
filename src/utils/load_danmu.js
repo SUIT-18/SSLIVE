@@ -1,26 +1,26 @@
 //WebSocket
 var wsServer = 'ws://47.92.218.251:9505';
 var websocket = new WebSocket(wsServer);
-function load_danmu(){
-websocket.onopen = function (evt) {
-  cons("Connected to WebSocket server.");
-  //连上之后就打开弹幕
-  $('#danmu').danmu('danmuResume');
-};
+function load_danmu() {
+  websocket.onopen = function (evt) {
+    cons("Connected to WebSocket server.");
+    //连上之后就打开弹幕
+    $('#danmu').danmu('danmuResume');
+  };
 
-websocket.onmessage = function (evt) {
-  cons('Retrieved data from server: ' + evt.data);
-  var time = $('#danmu').data("nowTime") + 1;
-  var text_obj = evt.data + ',"time":' + time + '}';//获取加上当前时间
-  cons(text_obj);
-  var new_obj = eval('(' + text_obj + ')');
-  $('#danmu').danmu("addDanmu", new_obj);//添加弹幕
-};
+  websocket.onmessage = function (evt) {
+    cons('Retrieved data from server: ' + evt.data);
+    var time = $('#danmu').data("nowTime") + 1;
+    var text_obj = evt.data + ',"time":' + time + '}';//获取加上当前时间
+    cons(text_obj);
+    var new_obj = eval('(' + text_obj + ')');
+    $('#danmu').danmu("addDanmu", new_obj);//添加弹幕
+  };
 }
 load_danmu();
 websocket.onclose = function (evt) {
   cons("Disconnected to WebSocket server.");
-  setTimeout(function(){window.location.reload();}, 2 * 1000);//2s自动重连弹幕服务器
+  setTimeout(function () { window.location.reload(); }, 2 * 1000);//2s自动重连弹幕服务器
 };
 
 websocket.onerror = function (evt, e) {
@@ -82,13 +82,17 @@ function send() {
   // var size = document.getElementById('text_size').value;
   var size = "小文字";
   //var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
-  //为了处理简单，方便后续加time，和isnew，就先酱紫发一半吧。
   //注：time为弹幕出来的时间，isnew为是否加边框，自己发的弹幕，常理上来说是有边框的。
-  var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
+  //--------检查（可能慢）-----------
+  if (check(text)) {
+    growl.show({ text: "检测到敏感词!", type: "warning", autoclose: 3000 });
+  } else {
+    var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
     //利用websocket发送
-  websocket.send(text_obj);
+    websocket.send(text_obj);
     //清空相应的内容
-  document.getElementById('text').value = '';
+    document.getElementById('text').value = '';
+  }
 }
 //调整透明度函数
 function op() {

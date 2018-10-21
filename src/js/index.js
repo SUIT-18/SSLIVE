@@ -8,16 +8,15 @@ if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 var now = new Date().getTime();//当前时间
 var liveplay = new Date(2018, 10, 25, 8, 00).getTime();//直播8点开始
 var leftTime = liveplay - now;//计算时差
-var delta = 1200000;//二十分钟
+var delta = 60000;//一分钟
 if (leftTime <= delta) {
-    //alert("已到开播时间前20分钟");无需跳转
+    //alert("已到开播时间前1分钟");无需跳转
 }
 else {
-    //alert("未到开播日期");跳转
+    growl.show({ text: "跳转中...", type: "notice"});
     if (debugmode) {
         alert("debug模式下不跳转");
-    }
-    else {
+    } else {
         window.location.href = 'introduction.html';
     }
 }
@@ -49,7 +48,7 @@ $(document).ready(function () {
         if (info.browser == "IE") {
             growl.show({ text: "浏览器版本太旧", type: "warning", autoclose: 5000 });
         }
-        if (info.browser == "Safari" && info.version<=10.0){
+        if (info.browser == "Safari" && info.version <= 10.0) {
             growl.show({ text: "浏览器版本太旧", type: "warning", autoclose: 5000 });
         }
     }
@@ -126,7 +125,9 @@ $(document).ready(function () {
         } else {
             jwplayer().setFullscreen(true);
         }
-
+    });
+    $(".icon").click(function(){
+        window.location.href = "index.html";
     });
     // growl.show({ text: "发送中...", type: "loading", autoclose: 3000 });
 });
