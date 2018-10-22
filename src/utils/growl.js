@@ -2,17 +2,8 @@ var growl = new Object;
 growl.show = function (settings) {
     console.log(settings);
     if (typeof (settings) != "object") { return "参数错误" };
-    if ($(".growl").length <= 0) {
-        $("body").append("<div class='growl'></div>");
-    }
+    $("body").append("<div class='growl'></div>");
     $(".growl").html("<div class='growl-img'><img id='growl-img'><br></div><p class='growl-text'>" + settings.text + "</p>");
-    var box = $('.growl-text');
-    if (box.text().length > 6) {
-        box.css("font-size", "14px");
-    }
-    else {
-        box.css("font-size", "20px");
-    }
     var src = "";
     $(".growl-img").css("display", "inline-block");
     switch (settings.type) {
