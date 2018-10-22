@@ -16,11 +16,11 @@
 
 .growl-img {
     display: none;
-    z-index:550;
+    z-index: 550;
     opacity: 1;
 }
 
-#growl-img{
+#growl-img {
     min-width: 80px;
     max-width: 110px;
     height: 80px;
@@ -28,7 +28,8 @@
 }
 
 .growl-text {
-    margin: 5px 0;
     overflow: hidden;
     font-size: 20px;
+    max-width: 110px;
+    text-align: center;
 }
