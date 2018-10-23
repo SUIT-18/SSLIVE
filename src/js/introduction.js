@@ -99,6 +99,9 @@ $(document).ready(function () {
     $(".icon").click(function () {
         window.location.href = "index.html";
     });
+    $(".QRcode").click(function () {
+        window.location.href = "http://live.bilibili.com/13694067";
+    });
 });
 $(window).resize(function () {
     setsize();

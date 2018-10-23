@@ -6,7 +6,7 @@ var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 10, 25, 8, 00).getTime();//直播8点开始
+var liveplay = new Date(2018, 10, 25, 13, 00).getTime();//直播8点开始
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
