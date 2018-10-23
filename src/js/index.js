@@ -13,9 +13,9 @@ if (leftTime <= delta) {
     //alert("已到开播时间前1分钟");无需跳转
 }
 else {
-    growl.show({ text: "跳转中...", type: "notice"});
+    growl.show({ text: "跳转中...", type: "notice" });
     if (debugmode) {
-        alert("debug模式下不跳转");
+        growl.show({ text: "debug模式下不跳转", type: "none", autoclose: 1500 });
     } else {
         window.location.href = 'introduction.html';
     }
@@ -126,7 +126,7 @@ $(document).ready(function () {
             jwplayer().setFullscreen(true);
         }
     });
-    $(".icon").click(function(){
+    $(".icon").click(function () {
         window.location.href = "index.html";
     });
     // growl.show({ text: "发送中...", type: "loading", autoclose: 3000 });
