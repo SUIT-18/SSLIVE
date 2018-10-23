@@ -12,8 +12,10 @@ $(document).ready(function () {
     setsize();
     var info = new Browser();
     if (info.device != '') {
-        console.log(info.browser);
+        console.log(info.device);
         if (info.device == "PC") {
+            $("#QRcode").css("width", "200px");
+            $("#QRcode").css("height", "200px");
             $(".main").css("font-size", "3.5em");
             $(".small").css("font-size", "35px");
         }
