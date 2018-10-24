@@ -18,7 +18,8 @@ $(document).ready(function () {
             $("#QRcode").css("height", "150px");
             $(".main").css("font-size", "3.5em");
             $(".small").css("font-size", "35px");
-			$(".main").css("top","45%");
+            $(".main").css("top", "45%");
+            $(".promote p").css("font-size", "22px");
         }
     }
     $(".timer").fadeIn().queue(function (next) {

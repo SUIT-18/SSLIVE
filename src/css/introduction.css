@@ -8,6 +8,12 @@
     src: url(../font/sf-pro-text_regular.ttf);
 }
 
+@font-face {
+    font-family: PingFang;
+    font-weight: lighter;
+    src: url(../font/PingFang_Light.woff2);
+}
+
 body {
     background-color: #4d4d4d;
     text-align: center;
@@ -68,11 +74,13 @@ header {
 h1 {
     font-size: 0.7em;
     margin: 10px;
+    font-weight: lighter;
 }
 
 .main {
     font-size: 2em;
     position: relative;
+    top: 30%;
     width: 100%;
     vertical-align: middle;
     height: 1080px;
@@ -81,7 +89,7 @@ h1 {
 
 .QRcode {
     position: absolute;
-    bottom: 0;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 0;
@@ -89,18 +97,19 @@ h1 {
 }
 
 #QRcode {
-    width: 150px;
-    height: 150px;
+    width: 40%;
+    height: 40%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .linktxt {
-    font-size: 20px;
+    font-size: 18px;
     text-shadow: 2px 2px 4px #181818;
 }
 
 .small {
     font-size: 28px;
+    font-family: PingFang;
 }
 
 .timer {
@@ -113,6 +122,10 @@ h1 {
     text-shadow: 2px 2px 4px #181818;
 }
 
+#timer{
+    font-family: Consolas;
+}
+
 .promote {
     position: absolute;
     margin: 15px 0;
@@ -122,6 +135,11 @@ h1 {
     width: 100%;
     display: none;
     text-shadow: 2px 2px 4px #181818;
+}
+
+.promote p{
+    margin:0;
+    font-size: 13px;
 }
 
 .bg-img {
