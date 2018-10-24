@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="src/css/introduction.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/lib/jquery.countdown-2.2.0/jquery.countdown.min.js"></script>
+    <script src="src/lib/Browser.js"></script>
     <script src="src/js/introduction.js"></script>
 
 </head>
@@ -25,13 +26,17 @@
             <h1>距离直播开始还有</h1>
             <div id="timer"></div>
         </div>
+        <div class="QRcode">
+            <div class="linktxt">直播链接</div>
+            <img id="QRcode" src="src/img/QRcode_white.png">
+        </div>
         <div class="promote">
             <p>向下滑动查看更多介绍</p>
             <img src="src/img/down.svg" id="down" height="50px">
         </div>
         <div class="bg-img">
             <img id="1" src="src/img/bg1.jpg">
-            <img id="2" src="src/img/bg2.jpg" style="display: none">
+            <img id="2" src="src/img/bg2.png" style="display: none">
             <img id="3" src="src/img/bg3.jpg" style="display: none">
         </div>
         <div class="bg-dots">
@@ -46,9 +51,9 @@
             2018年10月25日8：00～11：00<br>
             跑旗<br>
             队列式<br>
-            <del>班级节目展示</del><br>
+            <u>班级节目展示</u><br>
             ……<br>
-            入场式当天进入此网页<br>
+            入场式当天进入直播链接<br>
             解锁更多精彩<br>
             给予 不能来到现场的<br>
             每一个你<br>

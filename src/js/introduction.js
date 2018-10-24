@@ -10,7 +10,18 @@ $(document).ready(function () {
         $(this).html(event.strftime('%D <span class="small">天</span> %H <span class="small">时</span> %M <span class="small">分</span> %S <span class="small">秒</span>'));
     });
     setsize();
+    var info = new Browser();
+    if (info.device != '') {
+        console.log(info.device);
+        if (info.device == "PC") {
+            $("#QRcode").css("width", "200px");
+            $("#QRcode").css("height", "200px");
+            $(".main").css("font-size", "3.5em");
+            $(".small").css("font-size", "35px");
+        }
+    }
     $(".timer").fadeIn().queue(function (next) {
+        $(".main").fadeIn();
         $(".promote").fadeIn();
         $(".bg-img").fadeIn().queue(function (next) {
             $("#1").fadeIn(function () {
@@ -87,8 +98,11 @@ $(document).ready(function () {
             });
         });
     });
-    $(".icon").click(function(){
+    $(".icon").click(function () {
         window.location.href = "index.html";
+    });
+    $(".QRcode").click(function () {
+        window.location.href = "http://live.bilibili.com/13694067";
     });
 });
 $(window).resize(function () {

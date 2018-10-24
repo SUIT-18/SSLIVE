@@ -47,7 +47,7 @@ header {
     color: white;
 }
 
-.icon:hover{
+.icon:hover {
     cursor: pointer;
 }
 
@@ -55,7 +55,7 @@ header {
     position: absolute;
     white-space: nowrap;
     text-overflow: ellipsis;
-    top: 50%;
+    top: 45%;
     left: 50%;
     color: white;
     display: inline-block;
@@ -71,7 +71,7 @@ h1 {
 }
 
 .main {
-    font-size: 3em;
+    font-size: 2em;
     position: relative;
     width: 100%;
     vertical-align: middle;
@@ -79,8 +79,28 @@ h1 {
     color: white;
 }
 
+.QRcode {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    cursor: pointer;
+}
+
+#QRcode {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.linktxt {
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #181818;
+}
+
 .small {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .timer {
@@ -116,11 +136,11 @@ h1 {
     overflow: hidden;
 }
 
-.bg-img img{
-    opacity: 0.5;
-    height:100%;
+.bg-img img {
+    opacity: 0.8;
+    height: 100%;
     object-fit: cover;
-    width:100%;
+    width: 100%;
 }
 
 .bg-dots {
@@ -141,38 +161,38 @@ h1 {
     box-shadow: 2px 2px 3px rgb(34, 33, 33);
 }
 
-.bg-dots div:hover{
+.bg-dots div:hover {
     cursor: pointer;
 }
 
-.contents{
-    width:100%;
+.contents {
+    width: 100%;
     margin: 10px 0 20%;
     color: #fff;
     background-color: transparent;
-    display:flex;
+    display: flex;
     align-items: stretch;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-section:last-child{
-    border-right:none;
+section:last-child {
+    border-right: none;
 }
 
-section{
+section {
     /* width:100%; */
-    padding:20px 30px;
+    padding: 20px 30px;
     background-color: white;
-    color:#000;
+    color: #000;
     /* border-bottom: 1px #888888 solid; */
     display: inline-block;
-    height:auto;
-    border-right:1px #888888 solid;
-    min-width:270px;
+    height: auto;
+    border-right: 1px #888888 solid;
+    min-width: 270px;
 }
 
-section h2{
+section h2 {
     border-bottom: 3px rgb(85, 156, 250) solid;
     display: inline-block;
 }

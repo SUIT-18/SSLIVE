@@ -4,6 +4,8 @@ var websocket = new WebSocket(wsServer);
 function load_danmu() {
   websocket.onopen = function (evt) {
     cons("Connected to WebSocket server.");
+    $("#send").removeAttr("disabled");
+    $("#send").css("background-color", "rgb(85, 156, 250)");
     //连上之后就打开弹幕
     $('#danmu').danmu('danmuResume');
   };
@@ -20,7 +22,13 @@ function load_danmu() {
 load_danmu();
 websocket.onclose = function (evt) {
   cons("Disconnected to WebSocket server.");
-  setTimeout(function () { window.location.reload(); }, 2 * 1000);//2s自动重连弹幕服务器
+  $("#send").attr("disabled", "true");
+  $("#send").css("background-color", "#4d4d4d");
+  growl.show({ text: "无法连接弹幕服务", type: "warning", autoclose: 2000 });
+  setTimeout(function () {
+    cons("正在重连弹幕");
+    load_danmu();
+  }, 2000);//2s自动重连弹幕服务器
 };
 
 websocket.onerror = function (evt, e) {
@@ -86,16 +94,16 @@ function send() {
   //注：time为弹幕出来的时间，isnew为是否加边框，自己发的弹幕，常理上来说是有边框的。
   //--------检查（可能慢）-----------
   if (check(text)) {
-    growl.close();
+    growl.close("hard");
     growl.show({ text: "检测到敏感词!", type: "warning", autoclose: 5000 });
   } else {
     var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
     //利用websocket发送
     websocket.send(text_obj);
-    growl.close();
+    growl.close("hard");
     //清空相应的内容
     document.getElementById('text').value = '';
-    growl.show({ text: "发送成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 3000});
+    growl.show({ text: "发送成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1000 });
   }
 }
 //调整透明度函数
