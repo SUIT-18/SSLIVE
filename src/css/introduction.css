@@ -55,7 +55,7 @@ header {
     position: absolute;
     white-space: nowrap;
     text-overflow: ellipsis;
-    top: 45%;
+    top: 50%;
     left: 50%;
     color: white;
     display: inline-block;
@@ -95,7 +95,7 @@ h1 {
 }
 
 .linktxt {
-    font-size: 28px;
+    font-size: 20px;
     text-shadow: 2px 2px 4px #181818;
 }
 

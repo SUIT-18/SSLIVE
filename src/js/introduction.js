@@ -14,10 +14,11 @@ $(document).ready(function () {
     if (info.device != '') {
         console.log(info.device);
         if (info.device == "PC") {
-            $("#QRcode").css("width", "200px");
-            $("#QRcode").css("height", "200px");
+            $("#QRcode").css("width", "150px");
+            $("#QRcode").css("height", "150px");
             $(".main").css("font-size", "3.5em");
             $(".small").css("font-size", "35px");
+			$(".main").css("top","45%");
         }
     }
     $(".timer").fadeIn().queue(function (next) {
