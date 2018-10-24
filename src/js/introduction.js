@@ -6,7 +6,7 @@ function setsize() {
 
 }
 $(document).ready(function () {
-    $('#timer').countdown('2018/10/25', function (event) {
+    $('#timer').countdown('2018/10/25 08:00:00', function (event) {
         $(this).html(event.strftime('%D <span class="small">天</span> %H <span class="small">时</span> %M <span class="small">分</span> %S <span class="small">秒</span>'));
     });
     setsize();
