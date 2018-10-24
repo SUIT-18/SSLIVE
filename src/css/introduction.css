@@ -14,6 +14,11 @@
     src: url(../font/PingFang_Light.woff2);
 }
 
+@font-face{
+    font-family: Consola;
+    src: url(../font/consola.ttf);
+}
+
 body {
     background-color: #4d4d4d;
     text-align: center;
