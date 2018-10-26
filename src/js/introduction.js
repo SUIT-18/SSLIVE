@@ -20,6 +20,7 @@ $(document).ready(function () {
             $(".small").css("font-size", "35px");
             $(".main").css("top", "45%");
             $(".promote p").css("font-size", "22px");
+            $(".main").css("top", "40%");
         }
     }
     $(".timer").fadeIn().queue(function (next) {
