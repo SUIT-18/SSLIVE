@@ -79,7 +79,7 @@ header {
     color: white;
 }
 
-.icon:hover{
+.icon:hover {
     cursor: pointer;
 }
 
@@ -124,7 +124,7 @@ header {
 button {
     font-size: 1em;
     height: 44px;
-    margin: 5px;
+    margin: 5px 0;
     min-width: 44px;
     vertical-align: middle;
     display: inline-block;
@@ -145,10 +145,11 @@ button:hover {
     color: white;
     min-width: 44px;
     vertical-align: middle;
-    display: inline-block;
+    /* display: inline-block; */
     border: 1px rgb(85, 156, 250) solid;
     border-radius: 3px;
     background-color: rgb(85, 156, 250);
+    float: left;
 }
 
 #play:hover {
@@ -178,13 +179,14 @@ button:hover {
     width: 30%;
     height: 40px;
     text-align: center;
+    display: inline-block;
 }
 
 .senddanmu {
     text-align: center;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     display: inline;
-    margin: 0 5px;
+    margin: 10px 5px 0;
 }
 
 .onright {
@@ -202,6 +204,15 @@ button:hover {
     background-repeat: no-repeat;
     background-size: 50% 50%;
     background-position: center;
+}
+
+#fullscreen {
+    margin: 5px 5px 5px 0;
+}
+
+.HLSmode, .clearlog {
+    border: 1px #000 dashed;
+    border-radius: 50px;
 }
 
 /* .title-section-text {
@@ -227,9 +238,10 @@ button:hover {
     text-align: center;
     width: 100px;
     color: RGB(104, 199, 255);
-    display: inline-block;
-    margin: 5px;
+    /* display: inline-block; */
+    margin: 10px 5px 0;
     padding: 5px;
+    float: left;
 }
 
 .log {
@@ -273,7 +285,7 @@ input[type=range]:focus {
     outline: none;
 }
 
-select {
+.ctr select {
     border: 1px rgb(105, 105, 105) solid;
     border-radius: 2px;
     width: 80px;

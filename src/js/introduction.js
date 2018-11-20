@@ -1,26 +1,39 @@
 var imgindex = 1;
 var str = "";
+var now = new Date().getTime();//当前时间
+var liveplay = new Date(2018, 10, 28, 18, 00, 00).getTime();//开始时间 ！！注意：11月应写为10
 function setsize() {
     $(".main").css("margin-top", $("header").height() + 30 + "px");
     $(".main").css("height", $(window).height() - $("header").height() - 10 + "px");
 
 }
 $(document).ready(function () {
-    $('#timer').countdown('2018/10/25 08:00:00', function (event) {
+    $('#timer').countdown('2018/12/28 18:00:00', function (event) {
         $(this).html(event.strftime('%D <span class="small">天</span> %H <span class="small">时</span> %M <span class="small">分</span> %S <span class="small">秒</span>'));
     });
+    var interval = setInterval(function () {
+        now = new Date().getTime();//当前时间
+        console.log(now + " " + liveplay);
+        console.log(liveplay - now);
+        if (liveplay - now <= 60000) {//提前1分钟显示直播入口
+            $(".QRcode").fadeIn();
+            clearInterval(interval);
+        }
+    }, 1000);
     setsize();
     var info = new Browser();
     if (info.device != '') {
         console.log(info.device);
         if (info.device == "PC") {
+            $(".title").text("广东实验中学2019新年音乐会直播");
             $("#QRcode").css("width", "150px");
             $("#QRcode").css("height", "150px");
             $(".main").css("font-size", "3.5em");
-            $(".small").css("font-size", "35px");
+            $(".small").css("font-size", "38px");
             $(".main").css("top", "45%");
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
+            $("section").css("border-right", "1px #888888 solid");
         }
     }
     $(".timer").fadeIn().queue(function (next) {
@@ -105,7 +118,7 @@ $(document).ready(function () {
         window.location.href = "index.html";
     });
     $(".QRcode").click(function () {
-        window.location.href = "http://live.bilibili.com/13694067";
+        window.location.href = "http://live.ssersay.cn/";
     });
 });
 $(window).resize(function () {

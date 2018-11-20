@@ -22,7 +22,7 @@
 <body>
     <header>
         <img class="icon" src="src/img/sslive-rectangle-std.png" />
-        <div class="title">省实第十五届体育节入场式直播回放</div>
+        <div class="title">省实2019新年音乐会直播</div>
     </header>
     <div id="fullscr">
         <div id="danmu"></div>
@@ -41,7 +41,7 @@
                 <!-- ========== -->
                 <div class="controls">
                     <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
-                    <div class="livelabel"><span class="mode"></span>直播回放</div>
+                    <div class="livelabel"><span class="mode"></span>直播</div>
                     <script>$(".mode").html(playmode);</script>
                     <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
                     <div class="senddanmu">
@@ -51,6 +51,11 @@
                         <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
                         <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
                         <!-- 音量&nbsp;<input id="vol" type="range" min="1" max="100" /> -->
+                        <select id="res">
+                            <option>480P</option>
+                            <option selected="selected">720P</option>
+                            <option>1080P</option>
+                        </select>
                         <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                     </div>
                 </div>
@@ -67,11 +72,6 @@
             弹幕透明度:
             <input type="range" name="op" id="op" onchange="op()" value="100">
             <br>
-            <div class="danmutime" style="display: none">当前弹幕运行时间(秒)：<span id="time"></span>&nbsp;&nbsp;
-                设置当前弹幕时间(秒)：
-                <input type="text" id="set_time" max=20 />
-                <button type="button" onclick="settime()">设置</button><br>
-            </div>
             颜色：
             <select name="color" id="color">
                 <option value="white">白色</option>
@@ -90,7 +90,7 @@
         <!-- =========== -->
         <div class="log" style="display: none">
             <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
-            <button onclick="clearlog()">清空</button>
+            <button onclick="clearlog()" class="clearlog">清空</button>
         </div>
         <script src="src/utils/load_danmu.js"></script>
     </div>

@@ -6,16 +6,15 @@ var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 10, 25, 13, 00).getTime();//直播8点开始
+var liveplay = new Date(2018, 10, 28, 18, 00).getTime();
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
     //alert("已到开播时间前1分钟");无需跳转
-}
-else {
+} else {
     growl.show({ text: "跳转中...", type: "notice" });
     if (debugmode) {
-        growl.show({ text: "debug模式下不跳转", type: "none", autoclose: 1500 });
+        growl.show({ text: "debug模式", type: "none", autoclose: 1500 });
     } else {
         window.location.href = 'introduction.html';
     }
@@ -38,7 +37,6 @@ $(document).ready(function () {
         $(".logcontents").val(str);
         $(".HLSmode").css("display", "");
         $(".log").css("width", $(".logcontents").width() + "px");
-        $(".danmutime").css("display", "inline-block");
         $("#danmu").css({ "background-color": "red", "opacity": "0.5" });
     }
     //------兼容性检测---------
@@ -51,6 +49,9 @@ $(document).ready(function () {
         if (info.browser == "Safari" && info.version <= 10.0) {
             growl.show({ text: "浏览器版本太旧", type: "warning", autoclose: 5000 });
         }
+    }
+    if (info.device == "PC") { //电脑端
+        $(".title").text("广东实验中学2019新年音乐会直播");
     }
     //------------------------
     //设置播放器大小
