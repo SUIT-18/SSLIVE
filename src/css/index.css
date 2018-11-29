@@ -8,6 +8,11 @@
     src: url(../font/sf-pro-text_regular.ttf);
 }
 
+.swiper-container {
+    width: 100%;
+    height: 2000px;
+}
+
 body {
     background-color: #fff;
     text-align: center;

@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>SSLIVE</title>
     <link rel="shortcut icon" href="src/img/sslive-rectangle-white.png" type="image/png">
+    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <meta name="description" content="SSLIVE">
     <link rel="stylesheet" href="src/css/index.css">
     <link rel="stylesheet" href="src/css/growl.css">
@@ -17,14 +17,16 @@
     <script src="src/utils/HLSLoader.js"></script>
     <script src="src/utils/checkwords_slow.js"></script>
     <script src="src/lib/danmu/jquery.danmu.js"></script>
+    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
 </head>
-
 <body>
     <header>
         <img class="icon" src="src/img/sslive-rectangle-std.png" />
         <div class="title">省实2019新年音乐会直播</div>
     </header>
-    <div id="fullscr">
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide">
         <div id="danmu"></div>
         <div class="content">
             <div class="videoframe">
@@ -94,6 +96,32 @@
         </div>
         <script src="src/utils/load_danmu.js"></script>
     </div>
+    <div class="swiper-slide">SHIT</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    </div>
+    <script>        
+  var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal', // 垂直切换选项
+    loop: true, // 循环模式选项
+    
+    // 如果需要分页器
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    
+    // 如果需要滚动条
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
+  setTimeout(function(){$(".content").width("100%");},1000);
+  </script>
 </body>
-
 </html>

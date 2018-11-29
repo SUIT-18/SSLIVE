@@ -4,7 +4,7 @@ function loadPlayer(player) {
         var videoElement = document.getElementById('liveplayer');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: "src/media/test.flv"//改为直播FLV的url
+            url: "https://txy.live-play.acgvideo.com/live-txy/190067/live_6161116_3560638.flv?wsSecret=a8a7c7de37c5348c11e59c0edd1131c9&wsTime=1543473808&trid=73ca16b8ea6e40aeb21a0e5a7d7006a4&sig=no"//改为直播FLV的url
         }
         );
         flvPlayer.attachMediaElement(videoElement);
