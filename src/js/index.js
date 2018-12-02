@@ -130,6 +130,26 @@ $(document).ready(function () {
     $(".icon").click(function () {
         window.location.href = "index.html";
     });
+    $("#res").click(function () {
+        cons("清晰度切换:" + $('#test option:selected').val());
+        switch ($('#test option:selected').val()) {
+            case "480P":
+                if (playmode == "FLV") {
+                    
+                } else {
+                    jwplayer('player').setup({
+                        file: ""
+                    });
+                }
+                break;
+            case "720P":
+                
+                break;
+            case "1080P":
+
+                break;
+        }
+    });
     // growl.show({ text: "发送中...", type: "loading", autoclose: 3000 });
 });
 $(window).resize(function () {  //当浏览器大小变化时

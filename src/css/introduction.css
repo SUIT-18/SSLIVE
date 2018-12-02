@@ -20,7 +20,7 @@
 }
 
 body {
-    background-color: #4d4d4d;
+    background-color: #1b1b1b;
     text-align: center;
     height: 100%;
     width: 100%;
@@ -28,6 +28,7 @@ body {
     overflow-y: scroll;
     font-family: PingFang, SF;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 header {
@@ -110,16 +111,17 @@ h1 {
 
 .linktxt {
     font-size: 18px;
-    text-shadow: 2px 2px 4px #181818;
+    text-shadow: 2px 2px 4px #121212;
 }
 
 .small {
     font-size: 26px;
     font-family: PingFang;
+    color: white;
 }
 
 .timer {
-    top: 35%;
+    top: 43%;
     position: absolute;
     transform: translateY(-50%);
     text-align: center;
@@ -130,6 +132,7 @@ h1 {
 
 #timer{
     font-family: Consola;
+    color: #ffcc71;
 }
 
 .promote {
@@ -177,8 +180,8 @@ h1 {
 
 .bg-dots div {
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     background-color: #888888;
     display: inline-block;
     margin-right: 3px;
@@ -213,9 +216,10 @@ section {
     display: inline-block;
     height: auto;
     min-width: 270px;
+    opacity: 0.9;
 }
 
 section h2 {
-    border-bottom: 3px rgb(85, 156, 250) solid;
+    border-bottom: 3px #ffcc71 solid;
     display: inline-block;
 }

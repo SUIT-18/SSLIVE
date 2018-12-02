@@ -16,6 +16,7 @@ $(document).ready(function () {
         console.log(now + " " + liveplay);
         console.log(liveplay - now);
         if (liveplay - now <= 60000) {//提前1分钟显示直播入口
+            $(".timer").animate({ top: "35%" });
             $(".QRcode").fadeIn();
             clearInterval(interval);
         }
@@ -34,6 +35,7 @@ $(document).ready(function () {
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
             $("section").css("border-right", "1px #888888 solid");
+            $(".bg-dots div").css({ "width": "20px", "height": "20px" });
         }
     }
     $(".timer").fadeIn().queue(function (next) {
@@ -118,7 +120,7 @@ $(document).ready(function () {
         window.location.href = "index.html";
     });
     $(".QRcode").click(function () {
-        window.location.href = "http://live.ssersay.cn/";
+        window.location.href = "index.html";
     });
 });
 $(window).resize(function () {
