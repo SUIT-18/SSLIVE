@@ -1,7 +1,7 @@
 var imgindex = 1;
 var str = "";
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 10, 28, 18, 00, 00).getTime();//开始时间 ！！注意：11月应写为10
+var liveplay = new Date(2018, 11, 28, 18, 00, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
     $(".main").css("margin-top", $("header").height() + 30 + "px");
     $(".main").css("height", $(window).height() - $("header").height() - 10 + "px");

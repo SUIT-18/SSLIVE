@@ -1,8 +1,8 @@
 function loadHLSPlayer() {
     $("#liveplayer").remove();
     jwplayer('player').setup({
-        // file: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8',
-        file: "src/media/test.mp4",
+        file: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8',
+        // file: "src/media/test.mp4",
         autostart: true,
         controlbar: "none",
         overstretch: "true",

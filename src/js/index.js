@@ -90,6 +90,15 @@ $(document).ready(function () {
             jwplayer().setVolume($("#vol").val());
         });
     }
+    //---------swiper设置------------------
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal', // 水平切换选项
+        loop: false, // 循环模式选项
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    })
     //---------响应按钮点击事件-------------
     $("#danmuset").click(function () {
         if (!settinghided) {

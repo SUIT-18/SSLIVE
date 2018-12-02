@@ -23,8 +23,14 @@ body {
     font-family: PingFang, SF;
 }
 
+.swiper-container {
+    width: 100%;
+    height: 99%;
+    position: absolute;
+}
+
 .content {
-    position: fixed;
+    position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -219,23 +225,6 @@ button:hover {
     border: 1px #000 dashed;
     border-radius: 50px;
 }
-
-/* .title-section-text {
-    margin: 0 auto;
-    text-align: center;
-    width: auto;
-    margin-top: 15px;
-    font-size: 25px;
-    color: white;
-    margin-top: auto;
-    line-height: 1.3;
-}
-
-.title-section {
-    width: 100%;
-    margin: 10px 0;
-    position: relative;
-} */
 
 .livelabel {
     border: 2px solid RGB(104, 199, 255);
