@@ -8,12 +8,15 @@
     <title>SSLIVE</title>
     <link rel="shortcut icon" href="src/img/sslive-rectangle-white.png" type="image/png">
     <meta name="description" content="SSLIVE">
+    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="src/css/introduction.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/lib/jquery.countdown-2.2.0/jquery.countdown.min.js"></script>
+    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
     <script src="src/lib/Browser.js"></script>
+    <script src="src/lib/jwplayer/jwplayer.js"></script>
+    <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
     <script src="src/js/introduction.js"></script>
-
 </head>
 
 <body>
@@ -28,21 +31,23 @@
         </div>
         <div class="QRcode">
             <img id="QRcode" src="src/img/QRcode_white.png">
-			<div class="linktxt">点击此处进入直播</div>
+            <div class="linktxt">点击此处进入直播</div>
         </div>
         <div class="promote">
             <p>向下滑动查看节目单</p>
             <img src="src/img/down.svg" id="down" height="50px">
         </div>
         <div class="bg-img">
-            <img id="1" src="src/img/bg1.jpg">
-            <img id="2" src="src/img/bg2.png" style="display: none">
-            <img id="3" src="src/img/bg3.jpg" style="display: none">
-        </div>
-        <div class="bg-dots">
-            <div id="dot1"></div>
-            <div id="dot2"></div>
-            <div id="dot3"></div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide s1"></div>
+                    <div class="swiper-slide s2"></div>
+                    <div class="swiper-slide s3"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+            </div>
         </div>
     </div>
     <div class="contents">

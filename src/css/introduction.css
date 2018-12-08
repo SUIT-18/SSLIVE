@@ -14,7 +14,7 @@
     src: url(../font/PingFang_Light.woff2);
 }
 
-@font-face{
+@font-face {
     font-family: Consola;
     src: url(../font/consola.ttf);
 }
@@ -91,11 +91,12 @@ h1 {
     vertical-align: middle;
     height: 1080px;
     color: white;
+    z-index: 1;
 }
 
 .QRcode {
     position: absolute;
-    top:60%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 0;
@@ -123,14 +124,14 @@ h1 {
 .timer {
     top: 43%;
     position: absolute;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
+    left: 50%;
     display: none;
     text-shadow: 2px 2px 4px #181818;
 }
 
-#timer{
+#timer {
     font-family: Consola;
     color: #ffcc71;
 }
@@ -141,13 +142,14 @@ h1 {
     bottom: 0;
     font-size: 15px;
     text-align: center;
-    width: 100%;
     display: none;
     text-shadow: 2px 2px 4px #181818;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.promote p{
-    margin:0;
+.promote p {
+    margin: 0;
     font-size: 13px;
 }
 
@@ -222,4 +224,34 @@ section {
 section h2 {
     border-bottom: 3px #ffcc71 solid;
     display: inline-block;
+}
+
+#player {
+    height: 100% !important;
+    display: inline-block !important;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-pagination {
+    text-align: right;
+}
+
+.swiper-pagination-bullets{
+    width: auto !important;
+    right: 0;
+    left: auto !important;
+}
+
+.swiper-pagination-bullet{
+    width: 20px;
+    height:20px;
+    background-color: #ffcc71;
+}
+
+.jw-controlbar{
+    display: none !important;
 }

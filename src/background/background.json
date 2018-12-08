@@ -1,0 +1,17 @@
+{
+    "item1": {
+        "type": "img",
+        "url": "src/img/bg1.jpg",
+        "time": 7000
+    },
+    "item2": {
+        "type": "video",
+        "url": "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8",
+        "time": 15000
+    },
+    "item3": {
+        "type": "img",
+        "url": "src/img/bg3.jpg",
+        "time": 7000
+    }
+}

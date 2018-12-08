@@ -1,11 +1,38 @@
-var imgindex = 1;
 var str = "";
+var bgsetting = {};
+var mySwiper;
 var now = new Date().getTime();//当前时间
 var liveplay = new Date(2018, 11, 28, 18, 00, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
+    console.log("Risizing...");
     $(".main").css("margin-top", $("header").height() + 30 + "px");
     $(".main").css("height", $(window).height() - $("header").height() - 10 + "px");
-
+    $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+}
+function loadPlayer(url) {
+    jwplayer('player').setup({
+        file: url,
+        autostart: false,
+        overstretch: "true",
+        mute: true
+    });
+}
+function nextbg() {
+    var time = 0;
+    switch (mySwiper.realIndex) {
+        case 0:
+            time = bgsetting.item1.time;
+            break;
+        case 1:
+            time = bgsetting.item2.time;
+            break;
+        case 2:
+            time = bgsetting.item3.time;
+            break;
+    }
+    mySwiper.slideNext(1500);
+    setTimeout("nextbg()", time);
+    return;
 }
 $(document).ready(function () {
     $('#timer').countdown('2018/12/28 18:00:00', function (event) {
@@ -13,7 +40,6 @@ $(document).ready(function () {
     });
     var interval = setInterval(function () {
         now = new Date().getTime();//当前时间
-        console.log(now + " " + liveplay);
         console.log(liveplay - now);
         if (liveplay - now <= 60000) {//提前1分钟显示直播入口
             $(".timer").animate({ top: "35%" });
@@ -21,7 +47,6 @@ $(document).ready(function () {
             clearInterval(interval);
         }
     }, 1000);
-    setsize();
     var info = new Browser();
     if (info.device != '') {
         console.log(info.device);
@@ -35,9 +60,53 @@ $(document).ready(function () {
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
             $("section").css("border-right", "1px #888888 solid");
-            $(".bg-dots div").css({ "width": "20px", "height": "20px" });
         }
     }
+    setsize();
+    mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true,//修改swiper的父元素时，自动初始化swiper
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    })
+    mySwiper.on('slideChange', function () {
+        console.log(mySwiper.realIndex);
+        //---检查是否有视频需要暂停---
+        switch (mySwiper.realIndex) {
+            case 0:
+                if (bgsetting.item1.type == "video") {
+                    $('video').trigger('play');
+                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
+                } else {
+                    $('video').trigger('pause');
+                }
+                break;
+            case 1:
+                if (bgsetting.item2.type == "video") {
+                    $('video').trigger('play');
+                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
+                } else {
+                    $('video').trigger('pause');
+                }
+                break;
+            case 2:
+                if (bgsetting.item3.type == "video") {
+                    $('video').trigger('play');
+                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
+                } else {
+                    $('video').trigger('pause');
+                }
+                break;
+        }
+    });
     $(".timer").fadeIn().queue(function (next) {
         $(".main").fadeIn();
         $(".promote").fadeIn();
@@ -58,63 +127,37 @@ $(document).ready(function () {
             next();
         });
     }, 10000);
-    setInterval(function () { //图片轮播
-        if (imgindex >= 3) {
-            imgindex = 1;
-            $("#3").fadeOut(function () {
-                $("#dot3").css("background-color", "#888");
-                $("#1").fadeIn(function () {
-                    $("#dot1").css("background-color", "white");
-                });
-            });
-        } else {
-            imgindex++;
+    //---------------图片轮播-----------------
+    $.ajax({
+        url: "src/background/background.json",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            bgsetting = data;
+            if (data.item1.type == "img") {
+                $(".s1").append("<img src='" + data.item1.url + "'>");
+            } else {
+                $(".s1").append("<div id='player' class='1'></div>");
+                loadPlayer(data.item1.url);
+            }
+            if (data.item2.type == "img") {
+                $(".s2").append("<img src='" + data.item2.url + "'>");
+            } else {
+                $(".s2").append("<div id='player' class='2'></div>");
+                loadPlayer(data.item2.url);
+            }
+            if (data.item3.type == "img") {
+                $(".s3").append("<img src='" + data.item3.url + "'>");
+            } else {
+                $(".s3").append("<div id='player' class='3'></div>");
+                loadPlayer(data.item3.url);
+            }
+            mySwiper.slideToLoop(0);
+            //-----------------------------
+            setTimeout(function () {
+                nextbg();
+            }, data.item1.time);
         }
-        console.log(imgindex);
-        str = "#" + (imgindex - 1);
-        $(str).fadeOut(function () {
-            str = "#dot" + (imgindex - 1);
-            $(str).css("background-color", "#888");
-            str = "#" + imgindex;
-            $(str).fadeIn(function () {
-                str = "#dot" + imgindex;
-                $(str).css("background-color", "white");
-            });
-        });
-    }, 7500);
-    //---------强制切换图片---------------
-    $("#dot1").click(function () {
-        imgindex = 1;
-        $("#3").fadeOut();
-        $("#2").fadeOut(function () {
-            $("#dot2").css("background-color", "#888");
-            $("#dot3").css("background-color", "#888");
-            $("#1").fadeIn(function () {
-                $("#dot1").css("background-color", "white");
-            });
-        });
-    });
-    $("#dot2").click(function () {
-        imgindex = 2;
-        $("#1").fadeOut();
-        $("#3").fadeOut(function () {
-            $("#dot1").css("background-color", "#888");
-            $("#dot3").css("background-color", "#888");
-            $("#2").fadeIn(function () {
-                $("#dot2").css("background-color", "white");
-            });
-        });
-    });
-    $("#dot3").click(function () {
-        imgindex = 3;
-        $("#1").fadeOut();
-        $("#2").fadeOut(function () {
-            $("#dot2").css("background-color", "#888");
-            $("#dot1").css("background-color", "#888");
-            $("#3").fadeIn(function () {
-                $("#dot3").css("background-color", "white");
-            });
-        });
     });
     $(".icon").click(function () {
         window.location.href = "index.html";
