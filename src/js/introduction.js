@@ -60,23 +60,36 @@ $(document).ready(function () {
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
             $("section").css("border-right", "1px #888888 solid");
+            mySwiper = new Swiper('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            })
+        } else {
+            mySwiper = new Swiper('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            })
+            $(".swiper-button-prev").remove();
+            $(".swiper-button-next").remove();
         }
     }
     setsize();
-    mySwiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
-        loop: true,
-        observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true,//修改swiper的父元素时，自动初始化swiper
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    })
     mySwiper.on('slideChange', function () {
         console.log(mySwiper.realIndex);
         //---检查是否有视频需要暂停---
