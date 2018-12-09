@@ -172,28 +172,6 @@ h1 {
     width: 100%;
 }
 
-.bg-dots {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    padding: 5px 10px;
-    z-index: 50;
-}
-
-.bg-dots div {
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    background-color: #888888;
-    display: inline-block;
-    margin-right: 3px;
-    box-shadow: 2px 2px 3px rgb(34, 33, 33);
-}
-
-.bg-dots div:hover {
-    cursor: pointer;
-}
-
 .contents {
     width: 100%;
     margin: 10px 0 20%;

@@ -1,6 +1,7 @@
 var str = "";
 var bgsetting = {};
 var mySwiper;
+var timeout;
 var now = new Date().getTime();//当前时间
 var liveplay = new Date(2018, 11, 28, 18, 00, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
@@ -14,24 +15,15 @@ function loadPlayer(url) {
         file: url,
         autostart: false,
         overstretch: "true",
-        mute: true
+        mute: true,
+        repeat: true,
+        bwfile: "src/img/bg1.jpg"
     });
 }
 function nextbg() {
-    var time = 0;
-    switch (mySwiper.realIndex) {
-        case 0:
-            time = bgsetting.item1.time;
-            break;
-        case 1:
-            time = bgsetting.item2.time;
-            break;
-        case 2:
-            time = bgsetting.item3.time;
-            break;
-    }
     mySwiper.slideNext(1500);
-    setTimeout("nextbg()", time);
+    var time = bgsetting.items[mySwiper.realIndex].time;
+    timeout = setTimeout("nextbg()", time);
     return;
 }
 $(document).ready(function () {
@@ -60,66 +52,83 @@ $(document).ready(function () {
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
             $("section").css("border-right", "1px #888888 solid");
-            mySwiper = new Swiper('.swiper-container', {
-                direction: 'horizontal',
-                loop: true,
-                observer: true,//修改swiper自己或子元素时，自动初始化swiper
-                observeParents: true,//修改swiper的父元素时，自动初始化swiper
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            })
         } else {
-            mySwiper = new Swiper('.swiper-container', {
-                direction: 'horizontal',
-                loop: true,
-                observer: true,//修改swiper自己或子元素时，自动初始化swiper
-                observeParents: true,//修改swiper的父元素时，自动初始化swiper
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            })
             $(".swiper-button-prev").remove();
             $(".swiper-button-next").remove();
         }
     }
-    setsize();
-    mySwiper.on('slideChange', function () {
-        console.log(mySwiper.realIndex);
-        //---检查是否有视频需要暂停---
-        switch (mySwiper.realIndex) {
-            case 0:
-                if (bgsetting.item1.type == "video") {
+    //---------------图片轮播-----------------
+    var j = 0;
+    $.ajax({
+        url: "src/background/background.json",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            bgsetting = data;
+            for (i = 0; i <= data.items.length - 1; i++) {
+                str = ".s" + i;
+                if (data.items[i].type == "img") {
+                    $(str).append("<img src='" + data.items[i].url + "'>");
+                } else if (data.items[i].type == "video") {
+                    $(str).append("<div id='player'></div>");
+                    j = i;
+                }
+            }
+            if (info.device == "PC") {
+                mySwiper = new Swiper('.swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    centeredSlides: true,
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                })
+            } else {
+                mySwiper = new Swiper('.swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    centeredSlides: true,
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                })
+            }
+            mySwiper.on('slideChange', function () {
+                console.log(mySwiper.realIndex);
+                //---检查是否有视频需要暂停---
+                if (bgsetting.items[mySwiper.realIndex].type == "video") {
                     $('video').trigger('play');
                     $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
+                    $(".timer").animate({opacity: "0.5"});
                 } else {
+                    $(".timer").animate({opacity: "1"});
                     $('video').trigger('pause');
                 }
-                break;
-            case 1:
-                if (bgsetting.item2.type == "video") {
-                    $('video').trigger('play');
-                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
-                } else {
-                    $('video').trigger('pause');
-                }
-                break;
-            case 2:
-                if (bgsetting.item3.type == "video") {
-                    $('video').trigger('play');
-                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
-                } else {
-                    $('video').trigger('pause');
-                }
-                break;
+                clearTimeout(timeout);
+                var time = bgsetting.items[mySwiper.realIndex];
+                setTimeout("nextbg()", time);
+            });
+            setTimeout(function () {
+                loadPlayer(bgsetting.items[j].url);
+            }, 1000);
+            mySwiper.slideToLoop(0);
+            //-----------------------------
+            setTimeout(function () {
+                nextbg();
+            }, data.items[0].time);
         }
     });
+    setsize();
     $(".timer").fadeIn().queue(function (next) {
         $(".main").fadeIn();
         $(".promote").fadeIn();
@@ -140,37 +149,15 @@ $(document).ready(function () {
             next();
         });
     }, 10000);
-    //---------------图片轮播-----------------
-    $.ajax({
-        url: "src/background/background.json",
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            bgsetting = data;
-            if (data.item1.type == "img") {
-                $(".s1").append("<img src='" + data.item1.url + "'>");
-            } else {
-                $(".s1").append("<div id='player' class='1'></div>");
-                loadPlayer(data.item1.url);
-            }
-            if (data.item2.type == "img") {
-                $(".s2").append("<img src='" + data.item2.url + "'>");
-            } else {
-                $(".s2").append("<div id='player' class='2'></div>");
-                loadPlayer(data.item2.url);
-            }
-            if (data.item3.type == "img") {
-                $(".s3").append("<img src='" + data.item3.url + "'>");
-            } else {
-                $(".s3").append("<div id='player' class='3'></div>");
-                loadPlayer(data.item3.url);
-            }
-            mySwiper.slideToLoop(0);
-            //-----------------------------
-            setTimeout(function () {
-                nextbg();
-            }, data.item1.time);
-        }
+    setInterval(function () { //切换按钮自动变暗
+        $(".swiper-button-prev").animate({ opacity: "0.5" });
+        $(".swiper-button-next").animate({ opacity: "0.5" });
+    }, 5000);
+    $(".swiper-button-prev").mouseover(function () {
+        $(this).animate({ opacity: "1" });
+    });
+    $(".swiper-button-next").mouseover(function () {
+        $(this).animate({ opacity: "1" });
     });
     $(".icon").click(function () {
         window.location.href = "index.html";
