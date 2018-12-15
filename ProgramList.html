@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
+    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
+    <style>
+        @font-face {
+            font-family: SF;
+            src: url(../src/font/sf-pro-text_regular.ttf);
+        }
+
+        @font-face {
+            font-family: PingFang;
+            font-weight: lighter;
+            src: url(../src/font/PingFang_Light.woff2);
+        }
+
+        body {
+            height: max-content;
+            font-family: PingFang, SF;
+            text-align: center;
+        }
+
+        .swiper-pagination {
+            margin-top: 10px;
+        }
+
+        .swiper-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: rgb(200, 160, 106);
+        }
+
+        .swiper-slide {
+            width: 325px;
+        }
+
+        section {
+            padding: 20px 30px;
+            background-color: white;
+            color: #000;
+            display: inline-block;
+            height: auto;
+            width: 270px;
+        }
+
+        section h2 {
+            border-bottom: 3px rgb(200, 160, 106) solid;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container Prog" id="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目1</h2><br>
+                    节目内容1<br>节目内容1<br>
+                    节目内容1<br>节目内容1<br>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目2</h2><br>
+                    节目内容2<br>节目内容2<br>节目内容2<br>节目内容2<br>节目内容2
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目3</h2><br>
+                    节目内容3
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目4</h2><br>
+                    节目内容4
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目5</h2><br>
+                    节目内容5
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h2>节目6</h2><br>
+                    节目内容6
+                </section>
+            </div>
+        </div><br>
+        <div class="swiper-pagination Prog-pagination"></div>
+    </div>
+    <script>
+        var Swiper = new Swiper('.Prog', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            loop: false,
+            observer: true,
+            observeParents: true,
+            pagination: {
+                el: '.Prog-pagination',
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -30,8 +30,38 @@ function cons(content) {
 function clearlog() {
     $(".logcontents").val("");
 }
+function get_cookie(Name) {
+    var search = Name + "=";
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search);
+        if (offset != -1) {
+            // if cookie exists 
+            offset += search.length;
+            // set index of beginning of value 
+            end = document.cookie.indexOf(";", offset);
+            // set index of end of cookie value 
+            if (end == 10) {
+                end = document.cookie.length;
+                returnvalue = unescape(document.cookie.substring(offset, end));
+            }
+        }
+    }
+    return returnvalue;
+}
+function loadpopup() {
+    if (get_cookie("popped") == "") {
+        document.cookie = "popped=yes";
+        $(".noticemask").fadeIn("slow", function () {
+            $(".noticemask").click(function () {
+                $(".noticemask").fadeOut(function () { $(".noticemask").remove(); });
+            });
+        });
+    }
+}
 $(document).ready(function () {
     if (debugmode) {
+        $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">');
         $(".log").css("display", "block");
         var str = "调试模式已启动\n";
         $(".logcontents").val(str);
@@ -51,7 +81,26 @@ $(document).ready(function () {
         }
     }
     if (info.device == "PC") { //电脑端
-        $(".title").text("广东实验中学2019新年音乐会直播");
+        $(".title1").text("广东实验中学新年音乐会");
+        $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
+        $("body").css("background-size", "cover");
+    } else {
+        $("video").css("min-width", "93%");
+        $("#player").css("min-width", "93%");
+        $("#play").css("margin-left", "1px");
+        $("#play").css("margin-right", "1px");
+        $(".livelabel").css("margin-left", "1px");
+        $(".livelabel").css("margin-right", "1px");
+        $(".senddanmu").css("margin", "10px 0");
+        $(".controls").css("font-size", "smaller");
+        $("#text").css({ "max-width": "100px", "height": "35px", "margin-top": ($(".controls").height() - 35) / 2 + "px" });
+        $(".fullscreen").css("margin-right", "0");
+        $("button").css({ "height": "35px", "min-width": "35px", "margin-top": ($(".controls").height() - 35) / 2 + "px" });
+        $("#send").css({ "height": "39px", "padding": "5px 0", "margin-top": "-1px" });
+        setTimeout("loadpopup()", 5000);
+        $(".proglist-title").text("节目单");
+        $(".proglist-title").css("border-bottom", "5px rgb(133, 83, 23) solid");
+        $(".proglist").css("text-align", "center");
     }
     //------------------------
     //设置播放器大小
@@ -90,14 +139,11 @@ $(document).ready(function () {
             jwplayer().setVolume($("#vol").val());
         });
     }
+    $(".proglist").css({ "top": $(".videoframe").height() / 2 + 25 + "px", "width": $(".controls").width() - 20 + "px" });
     //---------swiper设置------------------
     var mySwiper = new Swiper('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
         loop: false, // 循环模式选项
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
     })
     //---------响应按钮点击事件-------------
     $("#danmuset").click(function () {
@@ -144,7 +190,7 @@ $(document).ready(function () {
         switch ($('#test option:selected').val()) {
             case "480P":
                 if (playmode == "FLV") {
-                    
+
                 } else {
                     jwplayer('player').setup({
                         file: ""
@@ -152,14 +198,13 @@ $(document).ready(function () {
                 }
                 break;
             case "720P":
-                
+
                 break;
             case "1080P":
 
                 break;
         }
     });
-    // growl.show({ text: "发送中...", type: "loading", autoclose: 3000 });
 });
 $(window).resize(function () {  //当浏览器大小变化时
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height());
@@ -186,6 +231,7 @@ $(window).resize(function () {  //当浏览器大小变化时
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
     }
+    $(".proglist").css({ "top": $(".videoframe").height() / 2 + 25 + "px", "width": $(".controls").width() - 20 + "px" });
 });
 function play() {
     if (playing) {

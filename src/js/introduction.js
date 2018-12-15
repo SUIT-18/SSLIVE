@@ -1,7 +1,9 @@
 var str = "";
 var bgsetting = {};
 var mySwiper;
+var Swiper;
 var timeout;
+if (window.location.search.search("debug=1") > 0) { $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">'); }
 var now = new Date().getTime();//当前时间
 var liveplay = new Date(2018, 11, 28, 18, 00, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
@@ -27,9 +29,6 @@ function nextbg() {
     return;
 }
 $(document).ready(function () {
-    $('#timer').countdown('2018/12/28 18:00:00', function (event) {
-        $(this).html(event.strftime('%D <span class="small">天</span> %H <span class="small">时</span> %M <span class="small">分</span> %S <span class="small">秒</span>'));
-    });
     var interval = setInterval(function () {
         now = new Date().getTime();//当前时间
         console.log(liveplay - now);
@@ -75,30 +74,30 @@ $(document).ready(function () {
                 }
             }
             if (info.device == "PC") {
-                mySwiper = new Swiper('.swiper-container', {
+                mySwiper = new Swiper('.Pic', {
                     direction: 'horizontal',
                     loop: true,
                     centeredSlides: true,
                     observer: true,//修改swiper自己或子元素时，自动初始化swiper
                     observeParents: true,//修改swiper的父元素时，自动初始化swiper
                     pagination: {
-                        el: '.swiper-pagination',
+                        el: '.Pic-pagination',
                         clickable: true,
                     },
                     navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
+                        nextEl: '.Pic-button-r',
+                        prevEl: '.Pic-button-l',
                     },
                 })
             } else {
-                mySwiper = new Swiper('.swiper-container', {
+                mySwiper = new Swiper('.Pic', {
                     direction: 'horizontal',
                     loop: true,
                     centeredSlides: true,
                     observer: true,//修改swiper自己或子元素时，自动初始化swiper
                     observeParents: true,//修改swiper的父元素时，自动初始化swiper
                     pagination: {
-                        el: '.swiper-pagination',
+                        el: '.Pic-pagination',
                         clickable: true,
                     },
                 })
@@ -109,9 +108,9 @@ $(document).ready(function () {
                 if (bgsetting.items[mySwiper.realIndex].type == "video") {
                     $('video').trigger('play');
                     $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
-                    $(".timer").animate({opacity: "0.5"});
+                    $(".timer").animate({ opacity: "0.5" });
                 } else {
-                    $(".timer").animate({opacity: "1"});
+                    $(".timer").animate({ opacity: "1" });
                     $('video').trigger('pause');
                 }
                 clearTimeout(timeout);
@@ -128,7 +127,13 @@ $(document).ready(function () {
             }, data.items[0].time);
         }
     });
+    //设置大小
     setsize();
+    setTimeout(function () {
+        $(".contents").animate({ height: $(".contents").contents().find("#swiper").height() });
+    }, 1000);
+    //动画
+    newtime();
     $(".timer").fadeIn().queue(function (next) {
         $(".main").fadeIn();
         $(".promote").fadeIn();

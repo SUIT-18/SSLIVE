@@ -1,5 +1,6 @@
 ﻿@font-face {
     font-family: PingFang;
+    font-weight: normal;
     src: url(../font/PingFangSC-Regular.woff2);
 }
 
@@ -9,7 +10,7 @@
 }
 
 body {
-    background-color: #fff;
+    background: url(../img/background.png) no-repeat;
     text-align: center;
     height: 100%;
     width: 100%;
@@ -35,8 +36,25 @@ body {
 
 .videoframe {
     position: relative;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    left: 50%;
     width: 100%;
-    height: auto;
+    margin: 10px 0;
+}
+
+.proglist {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+.proglist-title {
+    font-size: 1.5em;
+    color: rgb(133, 83, 23);
+    line-height: 1.9;
+    width: 4em;
+    display: inline-block;
 }
 
 .ctr {
@@ -50,6 +68,8 @@ video, #player {
     margin: 0;
     border-radius: 3px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
+    min-width: 50%;
+    background-color: #fff;
 }
 
 video {
@@ -65,10 +85,8 @@ header {
     left: 0;
     font-size: 30px;
     text-align: left;
-    background-color: white;
     vertical-align: middle;
-    border-bottom: 1px rgb(27, 27, 27) solid;
-    box-shadow: 0px 0px 4px 0px rgba(28, 27, 27, 0.31);
+    color: rgb(133, 83, 23);
 }
 
 .icon {
@@ -89,28 +107,37 @@ header {
     cursor: pointer;
 }
 
-.title {
-    position: absolute;
-    /* white-space: wrap; */
+.title1 {
+    position: relative;
     top: 50%;
     left: 50%;
+    width: 100%;
+    font-size: 1.2em;
     display: inline-block;
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 60%;
     text-align: center;
+    margin: 0;
+    line-height: 1;
+}
+
+.title2 {
+    display: inline-block;
+    font-size: 0.6em;
+    text-align: right;
+    transform: translateX(40px);
 }
 
 .controls, .ctr {
     text-align: center;
     vertical-align: middle;
     display: inline-block;
-    padding: 10px 0;
+    padding: 2px 0;
     border-radius: 3px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     margin: 0;
+    background-color: #fff;
+    overflow: hidden;
+    height: 55px;
 }
 
 .ctr {
@@ -152,21 +179,19 @@ button:hover {
     min-width: 44px;
     vertical-align: middle;
     /* display: inline-block; */
-    border: 1px rgb(85, 156, 250) solid;
     border-radius: 3px;
-    background-color: rgb(85, 156, 250);
     float: left;
 }
 
 #play:hover {
-    background-color: rgb(56, 182, 255);
-    border: 1px rgb(56, 182, 255) solid;
+    opacity: 0.6;
     cursor: pointer;
 }
 
 #send {
-    border-radius: 3px;
-    background-color: rgb(85, 156, 250);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: rgb(200, 160, 106);
     padding: 5px 20px;
     display: inline-block;
     margin: 0;
@@ -174,7 +199,6 @@ button:hover {
 }
 
 #send:hover {
-    background-color: rgb(56, 182, 255);
     cursor: pointer;
 }
 
@@ -182,15 +206,17 @@ button:hover {
     border-width: 1px;
     border: 1px rgb(214, 213, 213) solid;
     background-color: rgb(241, 237, 237);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
     width: 30%;
     height: 40px;
     text-align: center;
     display: inline-block;
+    margin: 0;
 }
 
 .senddanmu {
     text-align: center;
-    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     display: inline;
     margin: 10px 5px 0;
 }
@@ -208,12 +234,13 @@ button:hover {
 
 #play, #fullscreen, #send, #danmuctrl, #danmuset {
     background-repeat: no-repeat;
-    background-size: 50% 50%;
+    background-size: 75% 75%;
     background-position: center;
 }
 
 #fullscreen {
     margin: 5px 5px 5px 0;
+    background-size: 50% 50%;
 }
 
 .HLSmode, .clearlog {
@@ -222,14 +249,12 @@ button:hover {
 }
 
 .livelabel {
-    border: 2px solid RGB(104, 199, 255);
+    border: 2px solid rgb(200, 160, 106);
     border-radius: 2px;
     text-align: center;
-    width: 100px;
-    color: RGB(104, 199, 255);
-    /* display: inline-block; */
+    color: rgb(200, 160, 106);
     margin: 10px 5px 0;
-    padding: 5px;
+    padding: 5px 10px;
     float: left;
 }
 
@@ -251,10 +276,10 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 1.2em;
     width: 1.2em;
-    background: rgb(104, 199, 255);
+    background: rgb(200, 160, 106);
     border-radius: 50%;
     /*外观设置为圆形*/
-    border: solid 2px rgb(104, 199, 255);
+    border: solid 2px rgb(200, 160, 106);
     /*设置边框*/
     box-sizing: border-box;
 }
@@ -267,7 +292,7 @@ input[type=range]:hover::-webkit-slider-thumb {
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    background-color: rgb(104, 199, 255);
+    background-color: rgb(200, 160, 106);
 }
 
 input[type=range]:focus {
@@ -281,4 +306,38 @@ input[type=range]:focus {
     text-align: center;
     background-color: transparent;
     color: #fff;
+}
+
+.noticemask {
+    background-color: #000;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: none;
+}
+
+.noticemask-content {
+    font-size: 32px;
+    color: rgb(253, 253, 253);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    vertical-align: middle;
+}
+
+.noticetext{
+    display: inline-block;
+}
+
+.noticemask img {
+    width: 42px;
+    display: inline-block;
+    margin-right: 10px;
+    transform: translateY(-10px);
 }

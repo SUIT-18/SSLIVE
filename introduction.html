@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="src/css/introduction.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
-    <script src="src/lib/jquery.countdown-2.2.0/jquery.countdown.min.js"></script>
     <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
     <script src="src/lib/Browser.js"></script>
     <script src="src/lib/jwplayer/jwplayer.js"></script>
     <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
+    <script src="src/utils/countdown.js"></script>
     <script src="src/js/introduction.js"></script>
 </head>
 
@@ -38,42 +38,17 @@
             <img src="src/img/down.svg" id="down" height="50px">
         </div>
         <div class="bg-img">
-            <div class="swiper-container">
+            <div class="swiper-container Pic">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide s0"></div>
                     <div class="swiper-slide s1"></div>
                     <div class="swiper-slide s2"></div>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
-                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-pagination Pic-pagination"></div>
+                <div class="swiper-button-prev Pic-button-l swiper-button-white"></div>
+                <div class="swiper-button-next Pic-button-r swiper-button-white"></div>
             </div>
         </div>
     </div>
-    <div class="contents">
-        <section>
-            <h2>节目1</h2><br>
-            节目内容1
-        </section>
-        <section>
-            <h2>节目2</h2><br>
-            节目内容2
-        </section>
-        <section>
-            <h2>节目3</h2><br>
-            节目内容3
-        </section>
-        <section>
-            <h2>节目4</h2><br>
-            节目内容4
-        </section>
-        <section>
-            <h2>节目5</h2><br>
-            节目内容5
-        </section>
-        <section>
-            <h2>节目6</h2><br>
-            节目内容6
-        </section>
-    </div>
+    <iframe class="contents" src="ProgramList.html" scrolling="no"></iframe>
 </body>

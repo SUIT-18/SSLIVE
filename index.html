@@ -24,45 +24,48 @@
 <body>
     <header>
         <img class="icon" src="src/img/sslive-rectangle-std.png" />
-        <div class="title">省实2019新年音乐会直播</div>
+        <div class="title1">省实新年音乐会<br><span class="title2">New Year's Concert | 2019</span></div>
     </header>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div id="danmu"></div>
-                <div class="content">
-                    <div class="videoframe">
-                        <!--FLV播放器-->
-                        <script src="src/lib/flv.min.js" type="application/javascript"></script>
-                        <video id="liveplayer" isLive></video>
-                        <!-- ========== -->
-                        <!-- jwplayer -->
-                        <div id="player" style="display: none"> </div>
-                        <script src="src/lib/jwplayer/jwplayer.js"></script>
-                        <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
-                        <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-                        <script src="src/utils/loader.js" type="application/javascript"></script><br>
-                        <!-- ========== -->
-                        <div class="controls">
-                            <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
-                            <div class="livelabel"><span class="mode"></span>直播</div>
-                            <script>$(".mode").html(playmode);</script>
-                            <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
-                            <div class="senddanmu">
-                                <input type="textarea" id="text" max=300 placeholder="发个弹幕" /><button type="button"
-                                    onclick="send()" id="send">发送</button>
-                            </div>
-                            <div class="onright">
-                                <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
-                                <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
-                                <select id="res">
+                <div class="videoframe">
+                    <!--FLV播放器-->
+                    <script src="src/lib/flv.min.js" type="application/javascript"></script>
+                    <video id="liveplayer" isLive></video>
+                    <!-- ========== -->
+                    <!-- jwplayer -->
+                    <div id="player" style="display: none"> </div>
+                    <script src="src/lib/jwplayer/jwplayer.js"></script>
+                    <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
+                    <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
+                    <script src="src/utils/loader.js" type="application/javascript"></script><br>
+                    <!-- ========== -->
+                    <div class="controls">
+                        <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
+                        <div class="livelabel"><span class="mode"></span>直播</div>
+                        <script>$(".mode").html(playmode);</script>
+                        <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
+                        <div class="senddanmu">
+                            <input type="textarea" id="text" max=300 placeholder="发个弹幕" /><button type="button" onclick="send()"
+                                id="send">发送</button>
+                        </div>
+                        <div class="onright">
+                            <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
+                            <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
+                            <!-- <select id="res">
                                     <option>480P</option>
                                     <option selected="selected">720P</option>
                                     <option>1080P</option>
-                                </select>
-                                <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
-                            </div>
+                                </select> -->
+                            <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
                         </div>
+                    </div>
+                </div>
+                <div class="proglist">
+                    <div class="proglist-title">
+                        | 节目单
                     </div>
                 </div>
                 <!-- ========== -->
@@ -101,8 +104,9 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+    </div>
+    <div class="noticemask">
+        <div class="noticemask-content"><img src="src/img/slideleft.svg"><div class="noticetext">向左滑可以看<br>到图文直播喔</div></div>
     </div>
 </body>
 
