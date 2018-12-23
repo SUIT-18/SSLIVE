@@ -14,3 +14,5 @@ All the source code in this repository (**EXCEPT FOR** the code in src/lib/ fold
 Contributors:  
 1. Lin Sixing (@LSX-s-Software)  
 2. Zeng Wenyi (@vincenttsang)  
+3. Zeng Chengzhi
+4. Wu Kai

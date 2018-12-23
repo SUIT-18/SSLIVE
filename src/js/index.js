@@ -6,7 +6,7 @@ var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 10, 28, 18, 00).getTime();
+var liveplay = new Date(2018, 10, 28, 14, 30).getTime();
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
@@ -69,6 +69,15 @@ $(document).ready(function () {
         $(".log").css("width", $(".logcontents").width() + "px");
         $("#danmu").css({ "background-color": "red", "opacity": "0.5" });
     }
+    $.ajax({
+        url: "currentprogram.json",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            $("#now").text(data.current);
+            $("#next").text(data.next);
+        }
+    });
     //------兼容性检测---------
     var info = new Browser();
     if (info.device != '') {
@@ -101,6 +110,7 @@ $(document).ready(function () {
         $(".proglist-title").text("节目单");
         $(".proglist-title").css("border-bottom", "5px rgb(133, 83, 23) solid");
         $(".proglist").css("text-align", "center");
+        $(".mode").remove();
     }
     //------------------------
     //设置播放器大小
@@ -139,7 +149,7 @@ $(document).ready(function () {
             jwplayer().setVolume($("#vol").val());
         });
     }
-    $(".proglist").css({ "top": $(".videoframe").height() / 2 + 25 + "px", "width": $(".controls").width() - 20 + "px" });
+    $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
     //---------swiper设置------------------
     var mySwiper = new Swiper('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
@@ -231,7 +241,7 @@ $(window).resize(function () {  //当浏览器大小变化时
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
     }
-    $(".proglist").css({ "top": $(".videoframe").height() / 2 + 25 + "px", "width": $(".controls").width() - 20 + "px" });
+    $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 25 + "px", "width": $(".controls").width() - 20 + "px" });
 });
 function play() {
     if (playing) {

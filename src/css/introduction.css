@@ -1,6 +1,6 @@
 @font-face {
     font-family: PingFang;
-    src: url(../font/PingFangSC-Regular.woff2);
+    src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
 }
 
 @font-face {
@@ -11,7 +11,7 @@
 @font-face {
     font-family: PingFang;
     font-weight: lighter;
-    src: url(../font/PingFang_Light.woff2);
+    src: local("PingFangSC-Light"), url(../font/PingFang_Light.woff2);
 }
 
 @font-face {
@@ -124,7 +124,24 @@ h1 {
     text-align: center;
     left: 50%;
     display: none;
-    text-shadow: 2px 2px 4px #181818;
+    /* text-shadow: 4px 4px 10px #000000; */
+    white-space: nowrap;
+    padding: 0 10px 10px;
+}
+
+.timer::after {
+    position: absolute;
+    background-color: #000000;
+    filter: blur(3px);
+    opacity: 0.6;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 10px;
 }
 
 #timer {
@@ -170,14 +187,14 @@ h1 {
 
 .contents {
     width: 100%;
-    margin: 10px 0 20%;
+    margin: 10px 0 30%;
     background-color: transparent;
     border: none;
-    height: 500px;
+    height: 470px;
 }
 
 #player {
-    height: 100% !important;
+    width: 100% !important;
     display: inline-block !important;
 }
 
@@ -204,4 +221,146 @@ h1 {
 
 .jw-controlbar {
     display: none !important;
+}
+
+footer {
+    width: 100%;
+    font-family: PingFang, SF;
+    text-align: center;
+    background-color: #2e2e2e;
+    color: rgb(194, 194, 194);
+    padding: 20px 0;
+}
+
+.logos {
+    transform: translateX(47.5px);
+    margin-top: 10px;
+}
+
+.logo {
+    display: inline-block;
+    padding: 5px 15px;
+    height: 100px;
+}
+
+.itlogo {
+    border-right: 2px #fff solid;
+}
+
+.passlogo {
+    height: 60px;
+    margin: 20px 0;
+}
+
+.suit {
+    padding: 5px 0 10px 0;
+    border-bottom: 1px #444 solid;
+    width: 80%;
+    display: inline-block;
+    min-width: 350px;
+}
+
+footer a, .links span {
+    color: inherit;
+    padding: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+footer .links {
+    margin-top: 10px;
+}
+
+footer .links:last-child {
+    margin-right: 0;
+}
+
+.followbox {
+    background-color: #2e2e2e;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 20;
+    height: auto;
+    box-shadow: #121212 5px 5px 3px 3px;
+    color: rgb(194, 194, 194);
+    width: 40%;
+    min-width: 250px;
+    display: none;
+}
+
+#QR1, #QR2 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.QR {
+    display: inline-block;
+    width: 40%;
+    margin-top: 25px;
+}
+
+.QRs {
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+#close {
+    float: right;
+    display: block;
+    cursor: pointer;
+    transform: rotate(45deg);
+    font-size: x-large;
+}
+
+.spliter {
+    width: 1px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 20px;
+    height: 150px;
+}
+
+.description {
+    z-index: 10;
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 0.3em;
+}
+
+.description::after {
+    background-color: rgba(46, 46, 46, 0.5);
+    filter: blur(2px);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.openvideo {
+    color: rgb(102, 187, 255);
+    cursor: pointer;
+    font-size: 0.3em;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.openvideo:hover {
+    text-decoration: underline;
 }

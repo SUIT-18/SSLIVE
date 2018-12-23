@@ -1,37 +1,45 @@
 var str = "";
 var bgsetting = {};
 var mySwiper;
-var Swiper;
 var timeout;
+var firstslide = true;
 if (window.location.search.search("debug=1") > 0) { $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">'); }
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 11, 28, 18, 00, 00).getTime();//开始时间 ！！注意：12月应写为11
+var liveplay = new Date(2018, 11, 28, 14, 30, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
     console.log("Risizing...");
     $(".main").css("margin-top", $("header").height() + 30 + "px");
     $(".main").css("height", $(window).height() - $("header").height() - 10 + "px");
-    $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+    $("#player").css("height", $(window).width() * 9 / 16 + 10 + "px");
+    $(".contents").css({ width: $(window).width() });
 }
 function loadPlayer(url) {
     jwplayer('player').setup({
         file: url,
         autostart: false,
         overstretch: "true",
-        mute: true,
+        // mute: true,
         repeat: true,
-        bwfile: "src/img/bg1.jpg"
+        smoothing: true,
+        enablejs: true,
+        onComplete: function () {
+            cons("jwplayer:播放结束");
+            nextbg();
+        }
     });
 }
 function nextbg() {
-    mySwiper.slideNext(1500);
-    var time = bgsetting.items[mySwiper.realIndex].time;
-    timeout = setTimeout("nextbg()", time);
+    mySwiper.slideNext(2000);
+    $(".description").text(bgsetting.items[mySwiper.realIndex].des);
+    if (bgsetting.items[mySwiper.realIndex].type != "video") {
+        var time = bgsetting.items[mySwiper.realIndex].time;
+        timeout = setTimeout("nextbg()", time);
+    }
     return;
 }
 $(document).ready(function () {
     var interval = setInterval(function () {
         now = new Date().getTime();//当前时间
-        console.log(liveplay - now);
         if (liveplay - now <= 60000) {//提前1分钟显示直播入口
             $(".timer").animate({ top: "35%" });
             $(".QRcode").fadeIn();
@@ -51,7 +59,11 @@ $(document).ready(function () {
             $(".promote p").css("font-size", "22px");
             $(".main").css("top", "40%");
             $("section").css("border-right", "1px #888888 solid");
+            $(".spliter").css("height", "350px");
         } else {
+            $(".logos").css("transform", "translateX(27.5px)");
+            $(".logo").css({ "height": "50px" });
+            $(".passlogo").css({ "height": "30px", "margin": "10px 0" });
             $(".swiper-button-prev").remove();
             $(".swiper-button-next").remove();
         }
@@ -67,7 +79,11 @@ $(document).ready(function () {
             for (i = 0; i <= data.items.length - 1; i++) {
                 str = ".s" + i;
                 if (data.items[i].type == "img") {
-                    $(str).append("<img src='" + data.items[i].url + "'>");
+                    if (info.device == "PC") {
+                        $(str).append("<img src='" + data.items[i].url.pc + "'>");
+                    } else {
+                        $(str).append("<img src='" + data.items[i].url.mobile + "'>");
+                    }
                 } else if (data.items[i].type == "video") {
                     $(str).append("<div id='player'></div>");
                     j = i;
@@ -105,26 +121,34 @@ $(document).ready(function () {
             mySwiper.on('slideChange', function () {
                 console.log(mySwiper.realIndex);
                 //---检查是否有视频需要暂停---
-                if (bgsetting.items[mySwiper.realIndex].type == "video") {
-                    $('video').trigger('play');
-                    $("#player").css("width", $("#player").height() * 16 / 9 + 5 + "px");
-                    $(".timer").animate({ opacity: "0.5" });
-                } else {
-                    $(".timer").animate({ opacity: "1" });
-                    $('video').trigger('pause');
-                }
                 clearTimeout(timeout);
-                var time = bgsetting.items[mySwiper.realIndex];
-                setTimeout("nextbg()", time);
+                if (firstslide) {
+                    var i = mySwiper.realIndex - 1;
+                } else {
+                    var i = mySwiper.realIndex;
+                }
+                if (bgsetting.items[i].type == "video") {
+                    $('video').trigger('play');
+                    $("#player").css("height", $(window).width() * 9 / 16 + 10 + "px");
+                    $(".openvideo").fadeIn();
+                } else {
+                    var time = bgsetting.items[i];
+                    timeout = setTimeout("nextbg()", time);
+                    $('video').trigger('pause');
+                    $(".openvideo").fadeOut();
+                }
             });
             setTimeout(function () {
-                loadPlayer(bgsetting.items[j].url);
+                if (info.device == "PC") {
+                    loadPlayer(bgsetting.items[j].url.pc);
+                } else {
+                    loadPlayer(bgsetting.items[j].url.mobile);
+                }
             }, 1000);
-            mySwiper.slideToLoop(0);
-            //-----------------------------
-            setTimeout(function () {
-                nextbg();
-            }, data.items[0].time);
+            var index = Math.floor(Math.random() * (bgsetting.items.length - 1));
+            $(".description").text(bgsetting.items[index].des);
+            mySwiper.slideToLoop(index);
+            firstslide = false;
         }
     });
     //设置大小
@@ -170,6 +194,15 @@ $(document).ready(function () {
     $(".QRcode").click(function () {
         window.location.href = "index.html";
     });
+    $("#follow").click(function () {
+        $(".followbox").fadeIn();
+    });
+    $("#close").click(function () {
+        $(".followbox").fadeOut();
+    });
+    $("#QR1").click(function () { window.open("https://space.bilibili.com/362781087"); });
+    $("#QR2").click(function () { window.open("http://v.qq.com/vplus/40459976ac5f7141f5b4cb69d2266a89"); });
+    $(".openvideo").click(function () { jwplayer().setFullscreen(true); });
 });
 $(window).resize(function () {
     setsize();

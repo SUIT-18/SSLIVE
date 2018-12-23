@@ -1,7 +1,7 @@
 ﻿@font-face {
     font-family: PingFang;
     font-weight: normal;
-    src: url(../font/PingFangSC-Regular.woff2);
+    src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
 }
 
 @font-face {
@@ -10,7 +10,7 @@
 }
 
 body {
-    background: url(../img/background.png) no-repeat;
+    background: url(../background/background.png) no-repeat;
     text-align: center;
     height: 100%;
     width: 100%;
@@ -44,9 +44,12 @@ body {
 }
 
 .proglist {
-    position: relative;
+    position: absolute;
     display: inline-block;
     text-align: left;
+    transform: translate(-50%, 0);
+    font-size: larger;
+    line-height: 1.5;
 }
 
 .proglist-title {
@@ -90,7 +93,7 @@ header {
 }
 
 .icon {
-    width: 65px;
+    /* width: 65px; */
     height: 65px;
     position: absolute;
     top: 50%;
@@ -191,6 +194,8 @@ button:hover {
 #send {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     background-color: rgb(200, 160, 106);
     padding: 5px 20px;
     display: inline-block;
@@ -208,6 +213,8 @@ button:hover {
     background-color: rgb(241, 237, 237);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     width: 30%;
     height: 40px;
     text-align: center;
@@ -268,8 +275,8 @@ input[type=range] {
     -webkit-appearance: none;
     vertical-align: middle;
     width: 80px;
-    border-radius: 8em;
-    height: 5px;
+    border-radius: 8px;
+    height: 3px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -282,17 +289,14 @@ input[type=range]::-webkit-slider-thumb {
     border: solid 2px rgb(200, 160, 106);
     /*设置边框*/
     box-sizing: border-box;
-}
-
-input[type=range]:hover::-webkit-slider-thumb {
-    height: 2em;
-    width: 2em;
-    margin-top: -0.4em;
     cursor: pointer;
+    margin-top: -5px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
     background-color: rgb(200, 160, 106);
+    height: 3px;
+    border-radius: 1.5px;
 }
 
 input[type=range]:focus {
@@ -306,6 +310,10 @@ input[type=range]:focus {
     text-align: center;
     background-color: transparent;
     color: #fff;
+}
+
+.ctr select:focus{
+    background-color: #000;
 }
 
 .noticemask {
@@ -326,12 +334,12 @@ input[type=range]:focus {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     vertical-align: middle;
 }
 
-.noticetext{
+.noticetext {
     display: inline-block;
 }
 

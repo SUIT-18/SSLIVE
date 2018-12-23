@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>SSLIVE</title>
-    <link rel="shortcut icon" href="src/img/sslive-rectangle-white.png" type="image/png">
+    <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
     <meta name="description" content="SSLIVE">
     <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="src/css/introduction.css">
@@ -17,6 +17,7 @@
     <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
     <script src="src/utils/countdown.js"></script>
     <script src="src/js/introduction.js"></script>
+    <script src="src/lib/baidustat.js"></script>
 </head>
 
 <body>
@@ -29,6 +30,7 @@
             <h1>距离新年音乐会开始还有</h1>
             <div id="timer"></div>
         </div>
+        <div class="openvideo">全屏查看宣传视频 ></div>
         <div class="QRcode">
             <img id="QRcode" src="src/img/QRcode_white.png">
             <div class="linktxt">点击此处进入直播</div>
@@ -43,12 +45,40 @@
                     <div class="swiper-slide s0"></div>
                     <div class="swiper-slide s1"></div>
                     <div class="swiper-slide s2"></div>
+                    <div class="swiper-slide s3"></div>
+                    <div class="swiper-slide s4"></div>
+                    <div class="swiper-slide s5"></div>
+                    <div class="swiper-slide s6"></div>
                 </div>
                 <div class="swiper-pagination Pic-pagination"></div>
                 <div class="swiper-button-prev Pic-button-l swiper-button-white"></div>
                 <div class="swiper-button-next Pic-button-r swiper-button-white"></div>
             </div>
+            <div class="description">加载中...</div>
         </div>
     </div>
     <iframe class="contents" src="ProgramList.html" scrolling="no"></iframe>
+    <div class="followbox">
+        <span id="close">+</span>
+        <div class="QRs">
+            <div class="QR"><img id="QR1" src="src/img/tencentvQR.png" style="filter:invert(1);"><br>腾讯视频 帐号</div><span class="spliter"></span>
+            <div class="QR"><img id="QR2" src="src/img/bilibiliQR.png" style="filter:invert(1);"><br>bilibili 帐号</div>
+        </div>
+        不定期会有高质量的校园活动宣传视频和回放视频放出~
+    </div>
+    <footer>
+        <span class="pb">Powered By</span><br>
+        <div class="logos">
+            <img class="logo itlogo" src="src/img/SUIT+.png"><img class="logo passlogo" src="src/img/PASS-white.png"><br>
+        </div>
+        <span class="suit">广东实验中学学生会信息部 & PASS+ 极光工作室</span>
+        <div class="links">
+            <a href="about.html">关于我们</a>
+            <!-- <span id="support">支持我们</span> -->
+            <span id="follow">关注我们</span>
+            <a href="feedback.html">反馈问题</a>
+            <a href="README.md">查看README</a>
+        </div>
+        ©2018 SUIT+
+    </footer>
 </body>

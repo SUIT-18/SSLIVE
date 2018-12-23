@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>反馈</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+            background-color: #1b1b1b;
+            color: gray;
+            font-size: 25px;
+        }
+
+        .dd {
+            top: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .title {
+            margin-top: 3px;
+            margin-left: 10px;
+        }
+
+        .content {
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .c1, .c2, #btn {
+            background-color: transparent;
+            border: 1px rgb(200, 160, 106) solid;
+            border-radius: 5px;
+            padding: 3px;
+            font-size: 25px;
+            color: lightgray;
+        }
+
+        #btn {
+            padding: 5px 20px;
+            cursor: pointer;
+        }
+
+        #t2 {
+            width: 320px;
+        }
+    </style>
+
+    <script type="text/javascript" src="src/lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url: "src/console/feedback.php",
+                    dataType: "text",
+                    method: "GET",
+                    data: {
+                        title: $("#t1").val(),
+                        content: $("#t2").val()
+                    },
+                    success: function(data){
+                        console.log(data);
+                        if (data=="success"){
+                            alert("提交成功！感谢您的反馈");
+                            window.history.back();
+                        } else {
+                            alert(data);
+                        }
+                    }
+                });
+            })
+        }
+        )
+    </script>
+</head>
+
+<body>
+    <div class="dd">
+        <div class="title">
+            <label>标题：</label><input type="text" id="t1" class="c1" placeholder="输入标题" size="20" maxlength="18" />
+        </div>
+
+        <div class="content">
+            <label>反馈内容：</label><br /><textarea id="t2" class="c1" rows="6" cols="40" placeholder="输入反馈内容" maxlength="150"></textarea>
+        </div>
+        <button id="btn">提交</button>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-﻿var end = new Date("2018/12/28,18:00:00");
+﻿var end = new Date("2018/12/28,14:30:00");
 function newtime() {
     var now = new Date();
     var rest = parseInt((end.getTime() - now.getTime()) / 1000);
