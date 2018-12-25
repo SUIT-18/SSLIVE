@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>SSLIVE</title>
+    <title>省实新年音乐会直播 | SSLIVE</title>
     <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
     <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <meta name="description" content="SSLIVE">
@@ -69,9 +69,10 @@
                         | 节目单
                     </div>
                     <br>
+                    <span class="pre"><b>上一个节目： </b><span id="pre"></span></span><br>
                     <b>当前节目： </b><span id="now"></span><br>
-                    <b>下一个节目： </b><span id="next"></span><br>
-                    <span onclick="window.open('introduction.html')" style="color: rgb(50, 163, 255);cursor: pointer;text-decoration: underline;">查看完整节目单
+                    <span class="next"><b>下一个节目： </b><span id="next"></span></span><br>
+                    <span onclick="window.open('introduction.html')" style="color: rgb(50, 163, 255);cursor: pointer;text-decoration: underline;font-size: large">查看完整节目单
                         ></span>
                 </div>
                 <!-- ========== -->
@@ -102,12 +103,11 @@
                 <script src="src/utils/load_danmu.js"></script>
             </div>
             <div class="swiper-slide">
-                <div class="content">
-                    <section class="PicLive">
-                        <img class="liveimg">
-                        <div class="livetext">图文直播容器</div>
-                    </section>
-                </div>
+                <section class="PicLive">
+                    <img class="liveimg" src="src/background/title.jpg">
+                    <span class="livetext">这是一个图文直播容器，这里是图文直播的文字，左边是图文直播的图片</span>
+                </section>
+                <div class="liveimgbig"><img class="liveimg" src="src/background/title.jpg"></div>
             </div>
         </div>
     </div>

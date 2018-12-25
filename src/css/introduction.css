@@ -98,6 +98,7 @@ h1 {
     padding: 0;
     cursor: pointer;
     display: none;
+    width: auto;
 }
 
 #QRcode {
@@ -109,6 +110,13 @@ h1 {
 .linktxt {
     font-size: 18px;
     text-shadow: 2px 2px 4px #121212;
+    color: rgb(102, 187, 255);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.linktext:hover {
+    text-decoration: underline;
 }
 
 .small {

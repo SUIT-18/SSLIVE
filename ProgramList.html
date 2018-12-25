@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
+    <script src="src/lib/jquery-3.3.1.min.js"></script>
     <style>
         @font-face {
             font-family: SF;
@@ -43,13 +44,14 @@
 
         section {
             padding: 20px 30px;
-            background-color: white;
+            background-color: rgb(238, 223, 203);
             color: #000;
             display: inline-block;
             height: auto;
             width: 270px;
-            height: 400px;
+            height: 300px;
             overflow-y: auto;
+            border-radius: 15px;
         }
 
         section h2 {
@@ -58,14 +60,15 @@
             padding: 2px 5px;
         }
 
-        .like {
-            color: rgb(200, 160, 106);
-            border: 2px rgb(200, 160, 106) solid;
+        .now {
+            color: rgb(241, 173, 83);
+            border: 4px rgb(243, 182, 103) solid;
             border-radius: 4px;
             padding: 5px 15px;
             background-color: transparent;
             margin-top: 20px;
-            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
         }
 
         .bold {
@@ -81,7 +84,7 @@
             font-size: 30px;
             word-wrap: break-word;
             padding: 0 10px 10px;
-            margin: 110px 0;
+            margin: 60px 0;
             font-family: HYSWSS;
         }
 
@@ -100,7 +103,14 @@
 
         .icon {
             width: 50%;
-            margin-top: 80px;
+            margin-top: 50px;
+        }
+
+        .highlight {
+            padding: 15px 25px;
+            border: 5px rgb(243, 182, 103) solid;
+            width: 260px;
+            height: 290px;
         }
     </style>
 </head>
@@ -115,7 +125,7 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s1">
                     <h2>序篇：砥砺奋进大省实</h2><br>
                     <span class="bold">表演：</span>本部合唱团、交响乐团、民乐团、舞蹈团、天河省实行进间管乐团、顺德省实舞动队、越秀省实啦啦队、白云省实＋荔湾省实狮子队、南海省实健美操队<br>
                     <span class="bold">编导：</span>徐磊 杨丹<br>
@@ -124,11 +134,11 @@
             </div>
             <div class="swiper-slide">
                 <section class="sectiontitlecontainer">
-                    <div class="sectiontitle"><span class="sectiontitleb">篇一：</span>古往今来 熠熠华夏</div><br>
+                    <div class="sectiontitle"><span class="sectiontitleb">篇一：</span>熠熠华夏 弦歌不辍</div><br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s2">
                     <h2>民乐合奏：《佛跳墙》</h2><br>
                     <span class="bold">作曲：</span>邹航<br>
                     <span class="bold">演奏：</span>广东实验中学民乐团<br>
@@ -137,7 +147,7 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s3">
                     <h2>合唱:《绒花•我的中国心》</h2><br>
                     <span class="bold">领唱：</span>陈铿 汪加文 李宝璇 潘叶琴 程俊 阮玲等<br>
                     <span class="bold">合唱：</span>广东实验中学教工合唱团 省实本部 天河分校 顺德分校 南海分校 白云分校 越秀分校<br>
@@ -148,18 +158,18 @@
             </div>
             <div class="swiper-slide">
                 <section class="sectiontitlecontainer">
-                    <div class="sectiontitle"><span class="sectiontitleb">篇二：</span>莘莘学子 多彩校园</div><br>
+                    <div class="sectiontitle"><span class="sectiontitleb">篇二：</span>莘莘学子 薪火相传</div><br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s4">
                     <h2>相声：《读书达人》</h2><br>
                     <span class="bold">表演：</span>谭楚燊 黎泰承<br>
                     <span class="bold">指导：</span>杨丹<br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s5">
                     <h2>舞蹈《洛水佼人》</h2><br>
                     <span class="bold">表演：</span>省实舞蹈团<br>
                     <span class="bold">指导：</span>杨丹 徐磊<br><br>
@@ -167,7 +177,7 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s6">
                     <h2>盖世音雄《光年之外》《当你老了》《Starving》</h2><br>
                     <span class="bold">演唱：</span>郑梓晴 李盈萱 王益彰 彭瑭轩<br>
                     <span class="bold">指导：</span>曾徐、王军<br>
@@ -175,11 +185,11 @@
             </div>
             <div class="swiper-slide">
                 <section class="sectiontitlecontainer">
-                    <div class="sectiontitle"><span class="sectiontitleb">篇三：</span>精彩人生 交响生辉</div><br>
+                    <div class="sectiontitle"><span class="sectiontitleb">篇三：</span>精彩人生 交响辉映</div><br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s7">
                     <h2>交响乐演奏：《f小调第四交响乐曲》第四乐章</h2><br>
                     <span class="bold">作曲：</span>柴可夫斯基<br>
                     <span class="bold">演奏：</span>广东实验中学交响乐团<br>
@@ -190,7 +200,19 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s8">
+                    <h2>交响乐演奏：《颂歌·我的祖国》</h2><br>
+                    <span class="bold">作曲：</span>刘炽<br>
+                    <span class="bold">编曲：</span>周晶<br>
+                    <span class="bold">演奏：</span>广东实验中学交响乐团<br>
+                    <span class="bold">指挥：</span>洪建亮<br><br>
+                    广东实验中学交响乐团成立一年多来，在省教育厅的直接领导下、在学校领导的大力支持下，连续举办了两场专场音乐会，好评如潮！邀请了维也纳爱乐乐团副主席采特纳教授；维也纳音乐与艺术表演大学哈克尔教授；中国国家一级指挥卞祖善教授；德国慕尼黑交响乐团崔鸿嘉教授及广州本土等多名国内外著名交响乐专家为乐团作排练指导。<br>
+                    今年暑假，交响乐团“一带一路”欧洲研学之旅德奥巡演活动如期举行，因其开路先锋的显要地位，必将在搭建文化矩阵、弘扬丝路精神、展示并传播中国优秀音乐文化、促进中德奥文明互鉴及交流、增进两国人民之间的友谊等方面，起到模范带头作用，从而引领国内音乐教育，形成全新的国际化音乐研学教育新课程，开创学生交响乐团发展新局面！<br>
+                    交响乐团将秉承“全面落实党的教育方针，全面推进素质教育”精神，以“学校艺术教育特色”为品牌定位，为学校艺术教育的发展打造高水平的艺术团队。
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section id="s9">
                     <h2>小品《精彩的你》</h2><br>
                     <span class="bold">表演：</span>柴佳希 温祉璇 张欣 郭淏雯 柴佳岐 张鼎言 朱雨轩<br>
                     <span class="bold">指导：</span>杨丹 潘叶琴<br>
@@ -198,11 +220,11 @@
             </div>
             <div class="swiper-slide">
                 <section class="sectiontitlecontainer">
-                    <div class="sectiontitle"><span class="sectiontitleb">篇四：</span>似水流年 致敬岁月</div><br>
+                    <div class="sectiontitle"><span class="sectiontitleb">篇四：</span>实验创新 似水流年</div><br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s10">
                     <h2>合唱《时间都去哪儿了》</h2><br>
                     <span class="bold">合唱：</span>校友合唱团<br>
                     <span class="bold">指挥：</span>钟声<br>
@@ -214,7 +236,7 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s11">
                     <h2>舞蹈：《盛世刀歌》</h2><br>
                     <span class="bold">编导、指导：</span>杨丹 徐磊<br>
                     <span class="bold">领舞：</span>方琪 温芷晴 孟默蕾<br>
@@ -223,13 +245,13 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s12">
                     <h2>校长集体拜年</h2><br>
                     集团办学展宏图，一花九叶贺新春<br>
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s13">
                     <h2>合唱：《我是你的少年》《我们迎着春风歌唱》《启程》</h2><br>
                     <span class="bold">合唱：</span>省实合唱团 顺德分校合唱团 天河分校合唱团 南海分校合唱团 越秀分校合唱团 白云分校合唱团<br>
                     <span class="bold">指导：</span> 潘叶琴 阮玲 高国良 汪加文 胡洁莹 蔡夏生 朱颖 田静<br>
@@ -243,7 +265,7 @@
                 </section>
             </div>
             <div class="swiper-slide">
-                <section>
+                <section id="s14">
                     <h2>《在灿烂的阳光下》</h2><br>
                     <span class="bold">表演：</span>全体演员<br>
                 </section>
@@ -274,6 +296,20 @@
                 el: '.Prog-pagination',
             },
         })
+        $.ajax({
+            url: 'currentprogram.json',
+            dataType: "json",
+            success: function (data) {
+                i = data.currentindex;
+                if (i >= 1) {
+                    var str = "#s" + i;
+                    $(str).attr("class", "highlight");
+                    $(str).append("<span class='now'>正在上演</span>");
+                    console.log($(str).index("section"));
+                    Swiper.slideTo($(str).index("section"));
+                }
+            }
+        });
     </script>
 </body>
 

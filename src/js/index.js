@@ -30,28 +30,22 @@ function cons(content) {
 function clearlog() {
     $(".logcontents").val("");
 }
-function get_cookie(Name) {
-    var search = Name + "=";
-    var returnvalue = "";
-    if (document.cookie.length > 0) {
-        offset = document.cookie.indexOf(search);
-        if (offset != -1) {
-            // if cookie exists 
-            offset += search.length;
-            // set index of beginning of value 
-            end = document.cookie.indexOf(";", offset);
-            // set index of end of cookie value 
-            if (end == 10) {
-                end = document.cookie.length;
-                returnvalue = unescape(document.cookie.substring(offset, end));
-            }
+function getProgram() {
+    $.ajax({
+        url: "currentprogram.json",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            $("#pre").text(data.previous);
+            $("#now").text(data.current);
+            $("#next").text(data.next);
         }
-    }
-    return returnvalue;
+    });
 }
 function loadpopup() {
-    if (get_cookie("popped") == "") {
-        document.cookie = "popped=yes";
+    cons("popped:" + localStorage.getItem("popped"));
+    if (localStorage.getItem("popped") == null) {
+        localStorage.setItem("popped", "yes");
         $(".noticemask").fadeIn("slow", function () {
             $(".noticemask").click(function () {
                 $(".noticemask").fadeOut(function () { $(".noticemask").remove(); });
@@ -69,15 +63,8 @@ $(document).ready(function () {
         $(".log").css("width", $(".logcontents").width() + "px");
         $("#danmu").css({ "background-color": "red", "opacity": "0.5" });
     }
-    $.ajax({
-        url: "currentprogram.json",
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            $("#now").text(data.current);
-            $("#next").text(data.next);
-        }
-    });
+    getProgram();
+    setInterval("getProgram()", 60000);
     //------兼容性检测---------
     var info = new Browser();
     if (info.device != '') {
@@ -93,6 +80,7 @@ $(document).ready(function () {
         $(".title1").text("广东实验中学新年音乐会");
         $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
         $("body").css("background-size", "cover");
+        $(".livetext").css("font-size", "30px");
     } else {
         $("video").css("min-width", "93%");
         $("#player").css("min-width", "93%");
@@ -155,6 +143,10 @@ $(document).ready(function () {
         direction: 'horizontal', // 水平切换选项
         loop: false, // 循环模式选项
     })
+    mySwiper.on("slideChange", function () {
+        //更新图文直播内容
+
+    });
     //---------响应按钮点击事件-------------
     $("#danmuset").click(function () {
         if (!settinghided) {
@@ -215,6 +207,9 @@ $(document).ready(function () {
                 break;
         }
     });
+    $(".liveimg").click(function(){
+        (".liveimgbig").fadeIn();
+    });
 });
 $(window).resize(function () {  //当浏览器大小变化时
     cons("窗口高度:" + $(window).height() + " header高度:" + $("header").height() + " 控制条高度:" + $(".controls").height());
@@ -241,7 +236,7 @@ $(window).resize(function () {  //当浏览器大小变化时
         $(".controls").width($("#player").width());
         $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
     }
-    $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 25 + "px", "width": $(".controls").width() - 20 + "px" });
+    $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
 });
 function play() {
     if (playing) {

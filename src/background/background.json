@@ -28,10 +28,19 @@
             "des": "广东实验中学民乐团"
         },
         {
+            "type": "img",
+            "url": {
+                "pc": "src/background/合唱团.jpg",
+                "mobile": "src/background/合唱团_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学合唱团"
+        },
+        {
             "type": "video",
             "url": {
-                "pc": "src/media/1.0_15.mp4",
-                "mobile": "src/media/1.0_10.mp4"
+                "pc": "src/media/4.0_15.mp4",
+                "mobile": "src/media/4.0_10.mp4"
             },
             "time": 89000,
             "des": "介绍视频"

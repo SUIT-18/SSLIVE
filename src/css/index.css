@@ -23,6 +23,8 @@ body {
     width: 100%;
     height: 99%;
     position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .content {
@@ -48,16 +50,34 @@ body {
     display: inline-block;
     text-align: left;
     transform: translate(-50%, 0);
-    font-size: larger;
-    line-height: 1.5;
+    font-size: x-large;
+    line-height: 1.3;
+    color: rgb(133, 83, 23);
 }
 
 .proglist-title {
-    font-size: 1.5em;
-    color: rgb(133, 83, 23);
     line-height: 1.9;
     width: 4em;
     display: inline-block;
+}
+
+.pre, .next {
+    opacity: 0.6;
+    margin-left: 0.5em;
+    display: inline-block;
+    font-size: large;
+}
+
+.pre {
+    transform: rotateX(35deg) skewX(-10deg);
+}
+
+.next {
+    transform: rotateX(-35deg) skewX(10deg);
+}
+
+#pre, #next {
+    display: inline;
 }
 
 .ctr {
@@ -77,6 +97,10 @@ video, #player {
 
 video {
     max-width: 98%;
+    background-image: url(../img/notready.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
 }
 
 header {
@@ -135,7 +159,7 @@ header {
     vertical-align: middle;
     display: inline-block;
     padding: 2px 0;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     margin: 0;
     background-color: #fff;
@@ -199,7 +223,7 @@ button:hover {
     background-color: rgb(200, 160, 106);
     padding: 5px 20px;
     display: inline-block;
-    margin: 0;
+    margin: 5px 0;
     color: #fff;
 }
 
@@ -219,7 +243,7 @@ button:hover {
     height: 40px;
     text-align: center;
     display: inline-block;
-    margin: 0;
+    margin: 5px 0;
 }
 
 .senddanmu {
@@ -312,7 +336,7 @@ input[type=range]:focus {
     color: #fff;
 }
 
-.ctr select:focus{
+.ctr select:focus {
     background-color: #000;
 }
 
@@ -348,4 +372,45 @@ input[type=range]:focus {
     display: inline-block;
     margin-right: 10px;
     transform: translateY(-10px);
+}
+
+.PicLive {
+    width: 80%;
+    height: 60%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    min-width: 380px;
+    padding: 5px;
+}
+
+.liveimg {
+    width: 60%;
+    float: left;
+    border-radius: 20px;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.liveimg:hover {
+    cursor: pointer;
+    filter: brightness(120%);
+}
+
+.livetext {
+    font-size: large;
+}
+
+.liveimgbig {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    width: 400px;
+    background-color: #000;
 }
