@@ -11,6 +11,8 @@
 
 body {
     background: url(../background/background.png) no-repeat;
+    background-size:100% 100%;
+    background-attachment: fixed;
     text-align: center;
     height: 100%;
     width: 100%;
