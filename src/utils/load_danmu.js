@@ -1,5 +1,5 @@
 //WebSocket
-var wsServer = 'ws://47.92.218.251:9505';
+var wsServer = 'ws://www.ssersay.cn:9505';
 var websocket = new WebSocket(wsServer);
 function load_danmu() {
   websocket.onopen = function (evt) {
