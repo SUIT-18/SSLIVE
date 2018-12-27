@@ -1,3 +1,3 @@
 #!/bin/sh
-nohup /bin/startup.sh &
+nohup /var/www/html/startup.sh &
 exit 0

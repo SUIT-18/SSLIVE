@@ -198,7 +198,7 @@ h1 {
     margin: 10px 0 30%;
     background-color: transparent;
     border: none;
-    height: 470px;
+    height: 370px;
 }
 
 #player {
@@ -367,6 +367,7 @@ footer .links:last-child {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+    display: none;
 }
 
 .openvideo:hover {

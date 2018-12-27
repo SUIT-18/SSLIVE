@@ -30,7 +30,6 @@ function loadPlayer(url) {
 }
 function nextbg() {
     mySwiper.slideNext(2000);
-    $(".description").text(bgsetting.items[mySwiper.realIndex].des);
     if (bgsetting.items[mySwiper.realIndex].type != "video") {
         var time = bgsetting.items[mySwiper.realIndex].time;
         timeout = setTimeout("nextbg()", time);
@@ -127,6 +126,7 @@ $(document).ready(function () {
                 } else {
                     var i = mySwiper.realIndex;
                 }
+                $(".description").text(bgsetting.items[i].des);
                 if (bgsetting.items[i].type == "video") {
                     $('video').trigger('play');
                     $("#player").css("height", $(window).width() * 9 / 16 + 10 + "px");
@@ -145,7 +145,10 @@ $(document).ready(function () {
                     loadPlayer(bgsetting.items[j].url.mobile);
                 }
             }, 1000);
-            var index = Math.floor(Math.random() * (bgsetting.items.length - 1));
+            var index = 0;
+            // var index = Math.floor(Math.random() * (bgsetting.items.length - 1));
+            firstslide = false;
+            timeout = setTimeout("nextbg()", 20000);
             $(".description").text(bgsetting.items[index].des);
             mySwiper.slideToLoop(index);
             firstslide = false;

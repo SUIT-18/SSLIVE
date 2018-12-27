@@ -9,10 +9,14 @@
     <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
     <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <meta name="description" content="SSLIVE">
+    <link rel="stylesheet" href="src/lib/PhotoSwipe-4.1.2/dist/photoswipe.css">
+    <link rel="stylesheet" href="src/lib/PhotoSwipe-4.1.2/dist/default-skin/default-skin.css">
     <link rel="stylesheet" href="src/css/index.css">
     <link rel="stylesheet" href="src/css/growl.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
+    <script src="src/lib/PhotoSwipe-4.1.2/dist/photoswipe.min.js"></script>
+    <script src="src/lib/PhotoSwipe-4.1.2/dist/photoswipe-ui-default.min.js"></script>
     <script src="src/utils/growl.js"></script>
     <script src="src/lib/Browser.js"></script>
     <script src="src/js/index.js"></script>
@@ -69,7 +73,7 @@
                         | 节目单
                     </div>
                     <br>
-                    <span class="pre"><b>上一个节目： </b><span id="pre"></span></span><br>
+                    <span class="pre"><b>上一个节目： </b><span id="pre"></span></span><br id="prebr">
                     <b>当前节目： </b><span id="now"></span><br>
                     <span class="next"><b>下一个节目： </b><span id="next"></span></span><br>
                     <span onclick="window.open('introduction.html')" style="color: rgb(50, 163, 255);cursor: pointer;text-decoration: underline;font-size: large">查看完整节目单
@@ -104,10 +108,9 @@
             </div>
             <div class="swiper-slide">
                 <section class="PicLive">
-                    <img class="liveimg" src="src/background/title.jpg">
-                    <span class="livetext">这是一个图文直播容器，这里是图文直播的文字，左边是图文直播的图片</span>
+                    <img class="liveimg">
+                    <span class="livetext">加载中...</span>
                 </section>
-                <div class="liveimgbig"><img class="liveimg" src="src/background/title.jpg"></div>
             </div>
         </div>
     </div>
@@ -115,6 +118,45 @@
         <div class="noticemask-content"><img src="src/img/slideleft.svg">
             <div class="noticetext">向左滑可以看<br>到图文直播喔</div>
         </div>
+    </div>
+    <!-- ========== PhotoSwipe ========== -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 

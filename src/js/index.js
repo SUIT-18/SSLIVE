@@ -1,12 +1,13 @@
 var playing = false;
 var playmode = "";
 var settinghided = false;
+var PicLive = {};
 console.log(window.location.search);
 var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 10, 28, 14, 30).getTime();
+var liveplay = new Date(2018, 11, 28, 14, 30).getTime();
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
@@ -36,11 +37,80 @@ function getProgram() {
         dataType: "json",
         success: function (data) {
             console.log(data);
-            $("#pre").text(data.previous);
+            if (data.previous == "") {
+                $(".pre").hide();
+                $("#prebr").hide();
+            } else {
+                $("#prebr").show();
+                $(".pre").show();
+                $("#pre").text(data.previous);
+            }
             $("#now").text(data.current);
-            $("#next").text(data.next);
+            if (data.next == "") {
+                $(".next").hide();
+            } else {
+                $(".next").show();
+                $("#next").text(data.next);
+            }
         }
     });
+}
+function ShowGallery() {
+    //----------PhotoSwipe设置-------------
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    var items = [
+        {
+            mediumImage: {
+                src: PicLive.smallImg,
+                w: PicLive.img2w,
+                h: PicLive.img2h,
+                caption: PicLive.text
+            },
+            originalImage: {
+                src: PicLive.bigImg,
+                w: PicLive.img1w,
+                h: PicLive.img1h,
+                caption: PicLive.text
+            }
+        }
+    ];
+    var options = {
+        index: 0
+    };
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+    var realViewportWidth,
+        useLargeImages = false,
+        firstResize = true,
+        imageSrcWillChange;
+    gallery.listen('beforeResize', function () {
+        realViewportWidth = gallery.viewportSize.x * window.devicePixelRatio;
+        if (useLargeImages && realViewportWidth < 1000) {
+            useLargeImages = false;
+            imageSrcWillChange = true;
+        } else if (!useLargeImages && realViewportWidth >= 1000) {
+            useLargeImages = true;
+            imageSrcWillChange = true;
+        }
+        if (imageSrcWillChange && !firstResize) {
+            gallery.invalidateCurrItems();
+        }
+        if (firstResize) {
+            firstResize = false;
+        }
+        imageSrcWillChange = false;
+    });
+    gallery.listen('gettingData', function (index, item) {
+        if (useLargeImages) {
+            item.src = item.originalImage.src;
+            item.w = item.originalImage.w;
+            item.h = item.originalImage.h;
+        } else {
+            item.src = item.mediumImage.src;
+            item.w = item.mediumImage.w;
+            item.h = item.mediumImage.h;
+        }
+    });
+    gallery.init();
 }
 function loadpopup() {
     cons("popped:" + localStorage.getItem("popped"));
@@ -90,10 +160,10 @@ $(document).ready(function () {
         $(".livelabel").css("margin-right", "1px");
         $(".senddanmu").css("margin", "10px 0");
         $(".controls").css("font-size", "smaller");
-        $("#text").css({ "max-width": "100px", "height": "35px", "margin-top": ($(".controls").height() - 35) / 2 + "px" });
+        $("#text").css({ "max-width": "100px", "height": "35px" });
         $(".fullscreen").css("margin-right", "0");
-        $("button").css({ "height": "35px", "min-width": "35px", "margin-top": ($(".controls").height() - 35) / 2 + "px" });
-        $("#send").css({ "height": "39px", "padding": "5px 0", "margin-top": "-1px" });
+        $("button").css({ "height": "35px", "min-width": "35px" });
+        $("#send").css({ "height": "39px", "padding": "5px 0" });
         setTimeout("loadpopup()", 5000);
         $(".proglist-title").text("节目单");
         $(".proglist-title").css("border-bottom", "5px rgb(133, 83, 23) solid");
@@ -145,7 +215,23 @@ $(document).ready(function () {
     })
     mySwiper.on("slideChange", function () {
         //更新图文直播内容
-
+        if (mySwiper.activeIndex == 1) {
+            $.ajax({
+                url: "src/piclive/piclive.json",
+                dataType: "json",
+                success: function (data) {
+                    PicLive = data;
+                    PicLive.bigImg = "src/piclive/" + PicLive.bigImg;
+                    PicLive.smallImg = "src/piclive/" + PicLive.smallImg;
+                    $(".livetext").text(data.text);
+                    if (info.device == "PC") {
+                        $(".liveimg").attr("src", PicLive.bigImg);
+                    } else {
+                        $(".liveimg").attr("src", PicLive.smallImg);
+                    }
+                }
+            });
+        }
     });
     //---------响应按钮点击事件-------------
     $("#danmuset").click(function () {
@@ -207,8 +293,8 @@ $(document).ready(function () {
                 break;
         }
     });
-    $(".liveimg").click(function(){
-        (".liveimgbig").fadeIn();
+    $(".liveimg").click(function () {
+        ShowGallery();
     });
 });
 $(window).resize(function () {  //当浏览器大小变化时
