@@ -1,5 +1,5 @@
 //WebSocket
-var wsServer = 'ws://backend.ssersay.cn:9505';
+var wsServer = 'wss://backend.ssersay.cn:9505';
 var websocket = new WebSocket(wsServer);
 function load_danmu() {
   websocket.onopen = function (evt) {
