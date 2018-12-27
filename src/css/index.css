@@ -293,6 +293,7 @@ button:hover {
     float: left;
     opacity: 0.5;
     color: white;
+    z-index: 10;
 }
 
 input[type=range] {
