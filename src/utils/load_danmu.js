@@ -95,7 +95,6 @@ function send() {
   //--------检查（可能慢）-----------
   if (check(text)) {
     growl.close("hard");
-    alert("asfasdfas");
     growl.show({ text: "检测到敏感词!", type: "warning", autoclose: 5000 });
   } else {
     var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
