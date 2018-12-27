@@ -37,6 +37,7 @@ function nextbg() {
     return;
 }
 $(document).ready(function () {
+    $("#error").remove();
     var interval = setInterval(function () {
         now = new Date().getTime();//当前时间
         if (liveplay - now <= 60000) {//提前1分钟显示直播入口

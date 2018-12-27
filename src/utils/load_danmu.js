@@ -5,7 +5,7 @@ function load_danmu() {
   websocket.onopen = function (evt) {
     cons("Connected to WebSocket server.");
     $("#send").removeAttr("disabled");
-    $("#send").css("background-color", "rgb(85, 156, 250)");
+    $("#send").css("background-color", "rgb(200, 160, 106)");
     //连上之后就打开弹幕
     $('#danmu').danmu('danmuResume');
   };
