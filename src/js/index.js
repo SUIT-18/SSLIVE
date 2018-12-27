@@ -124,6 +124,7 @@ function loadpopup() {
     }
 }
 $(document).ready(function () {
+    $("#error").remove();
     if (debugmode) {
         $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">');
         $(".log").css("display", "block");

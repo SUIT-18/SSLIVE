@@ -31,6 +31,7 @@
         <img class="icon" src="src/img/2019LOGO.png" />
         <div class="title1">省实新年音乐会<br><span class="title2">New Year's Concert | 2019</span></div>
     </header>
+    <h1 style="color: red" id="error">错误，您的浏览器阻止了JavaScript</h1>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -99,11 +100,6 @@
                         <option value="2">底端</option>
                     </select>
                 </div>
-                <!-- =========== -->
-                <div class="log" style="display: none">
-                    <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
-                    <button onclick="clearlog()" class="clearlog">清空</button>
-                </div>
                 <script src="src/utils/load_danmu.js"></script>
             </div>
             <div class="swiper-slide">
@@ -113,6 +109,11 @@
                 </section>
             </div>
         </div>
+    </div>
+    <!-- =========== -->
+    <div class="log" style="display: none">
+        <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
+        <button onclick="clearlog()" class="clearlog">清空</button>
     </div>
     <div class="noticemask">
         <div class="noticemask-content"><img src="src/img/slideleft.svg">
