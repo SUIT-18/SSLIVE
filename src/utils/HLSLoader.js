@@ -28,10 +28,10 @@ function loadHLSPlayer() {
             onFullscreen: function (obj) {
                 if (obj.fullscreen) {
                     cons("jwplayer:全屏");
-                    $("#player").css("border", "none");
+                    $("#player").css("background-color", "#000");
                 } else {
                     cons("jwplayer:非全屏");
-                    $("#player").css("border", "3px white solid");
+                    $("#player").css("background-color", "#fff");
                 }
             },
             onMute: function (obj) { cons("jwplayer:静音/取消静音") }

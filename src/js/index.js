@@ -35,6 +35,7 @@ function getProgram() {
     $.ajax({
         url: "currentprogram.json",
         dataType: "json",
+        cache: false,
         success: function (data) {
             console.log(data);
             if (data.previous == "") {
@@ -212,26 +213,30 @@ $(document).ready(function () {
         cons("横屏模式");
         x = 0.8;
     }
-    if (playmode == "FLV") { //FLV模式下
-        $('video').trigger('play');
-        $("video").css("max-height", ($(window).height() - $("header").height() - $(".proglist").height()) * 0.8 + "px");
-        $(".controls").width($("video").width());
-        $("#danmu").css({ "top": $("video").offset().top + "px", "left": $("video").offset().left + "px", "width": $("video").width(), "height": $("video").height() });
-        $("#vol").val($("video").volume * 100);
-        playing = true;
-        $("#play").css("background-image", "url(src/img/pause.svg)");
-    } else { //jwplayer模式下
-        $("#player").css("height", ($(window).height() - $("header").height() - $(".proglist").height()) * x + "px");
-        $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
-        if ($("#player").width() > $(window).width()) {
-            $("#player").css("width", $(window).width());
-            $("#player").css("height", $("#player").width() * 9 / 16 + "px");
+    setTimeout(function () {
+        if (playmode == "FLV") { //FLV模式下
+            $('video').trigger('play');
+            $("video").css("max-height", ($(window).height() - $("header").height() - $(".proglist").height()) * 0.8 + "px");
+            $(".controls").width($("video").width());
+            $("#danmu").css({ "top": $("video").offset().top + "px", "left": $("video").offset().left + "px", "width": $("video").width(), "height": $("video").height() });
+            $("#vol").val($("video").volume * 100);
+            playing = true;
+            $("#play").css("background-image", "url(src/img/pause.svg)");
+        } else { //jwplayer模式下
+            jwplayer().play();
+            $("#player").css("height", ($(window).height() - $("header").height() - $(".proglist").height()) * x + "px");
+            $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
+            if ($("#player").width() > $(window).width()) {
+                $("#player").css("width", $(window).width());
+                $("#player").css("height", $("#player").width() * 9 / 16 + "px");
+            }
+            cons("height:" + $("#player").height() + " width:" + $("#player").width());
+            $(".controls").width($("#player").width());
+            $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
         }
-        cons("height:" + $("#player").height() + " width:" + $("#player").width());
-        $(".controls").width($("#player").width());
-        $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
-    }
-    $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
+        $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
+        setsize();
+    }, 3000);
     //---------swiper设置------------------
     var mySwiper = new Swiper('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
