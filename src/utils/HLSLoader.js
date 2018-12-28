@@ -15,12 +15,12 @@ function loadHLSPlayer() {
             onReady: function () { cons("jwplayer:准备就绪"); },
             onPlay: function () {
                 playing = true;
-                $("#play").css("background-image", "url(./src/img/pause.SVG)");
+                $("#play").css("background-image", "url(./src/img/pause.svg)");
                 cons("jwplayer:开始播放");
             },
             onPause: function () {
                 playing = false;
-                $("#play").css("background-image", "url(./src/img/play.SVG)");
+                $("#play").css("background-image", "url(./src/img/play.svg)");
                 cons("jwplayer:暂停");
             },
             onBufferFull: function () { cons("jwplayer:视频缓冲完成"); },
