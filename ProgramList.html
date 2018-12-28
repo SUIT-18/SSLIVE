@@ -299,6 +299,7 @@
         $.ajax({
             url: 'currentprogram.json',
             dataType: "json",
+            cache: false,
             success: function (data) {
                 i = data.currentindex;
                 if (i >= 1) {
