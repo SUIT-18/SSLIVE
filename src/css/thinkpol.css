@@ -4,7 +4,7 @@
     margin: 10px 5px 0;
 }
 
-#text{
+#text,#quantities{
     position: relative;
 }
 

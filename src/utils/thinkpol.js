@@ -41,11 +41,17 @@ function timedCount() {
 }
 timedCount();
 function send() {
+  var n=0;
+  var q=0;
   var text = document.getElementById('text').value;
   var color = document.getElementById('color').value;
   var position = document.getElementById('position').value;
   var size = "小文字";
+  q = document.getElementById('quantities').value;
   var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '"';
-  websocket.send(text_obj);
-  document.getElementById('text').value = '';
+  while(n<=q-1){
+      websocket.send(text_obj);
+      document.getElementById('text').value = '';
+      n=n+1;
+  }
   }
