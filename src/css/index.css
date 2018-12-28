@@ -96,7 +96,7 @@ video, #player {
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     min-width: 50%;
     background-color: #000;
-    min-height: 350px;
+    min-height: 300px;
 }
 
 video {
@@ -180,7 +180,7 @@ header {
     padding: 10px;
     color: white;
     text-align: center;
-    width: 185px;
+    width: 195px;
     height: 100px;
     transform: translateX(-50%);
 }

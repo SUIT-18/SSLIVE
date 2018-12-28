@@ -45,7 +45,7 @@ $("#danmu").danmu({
   height: "100%",
   width: "500px",
   speed: 6000,
-  opacity: 0.5,
+  opacity: 0.75,
   font_size_small: 16,
   font_size_big: 24,
   top_botton_danmu_time: 6000,

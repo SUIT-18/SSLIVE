@@ -1,5 +1,5 @@
 <?php
-    error_reporting(0);
+    //error_reporting(0);
     if ($_POST["pw"] != ""){
         if($_POST["pw"] == "lovesuit"){
             die("success");

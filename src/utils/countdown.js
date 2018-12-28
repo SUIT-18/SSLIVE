@@ -1,4 +1,5 @@
 ﻿var end = new Date("2018/12/28,14:30:00");
+var countdown;
 function newtime() {
     var now = new Date();
     var rest = parseInt((end.getTime() - now.getTime()) / 1000);
@@ -10,8 +11,13 @@ function newtime() {
     if (hour.toString().length == 1) { hour = "0" + hour }
     if (min.toString().length == 1) { min = "0" + min }
     if (sec.toString().length == 1) { sec = "0" + sec }
-    $("#timer").html(day + ' <span class="small">天</span> ' + hour + ' <span class="small">时</span> ' + min + ' <span class="small">分</span> ' + sec + ' <span class="small">秒</span>');
+    if (rest <= 0) {
+        $("#timer").html('00 <span class="small">天</span> 00 <span class="small">时</span> 00 <span class="small">分</span> 00 <span class="small">秒</span>');
+        clearInterval(countdown);
+    } else {
+        $("#timer").html(day + ' <span class="small">天</span> ' + hour + ' <span class="small">时</span> ' + min + ' <span class="small">分</span> ' + sec + ' <span class="small">秒</span>');
+    }
 }
 window.onload = function () {
-    setInterval(newtime, 1000);
+    countdown = setInterval(newtime, 1000);
 }

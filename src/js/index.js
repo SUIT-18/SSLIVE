@@ -217,7 +217,7 @@ $(document).ready(function () {
                     PicLive = data;
                     PicLive.Img1 = "src/piclive/" + PicLive.Img1;
                     PicLive.Img2 = "src/piclive/" + PicLive.Img2;
-                    $(".livetext").text(data.text);
+                    $(".livetext").html(data.text);
                     $("#liveimg1").attr("src", PicLive.Img1);
                     $("#liveimg2").attr("src", PicLive.Img2);
                 }
