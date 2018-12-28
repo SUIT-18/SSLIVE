@@ -56,61 +56,27 @@ function getProgram() {
         }
     });
 }
-function ShowGallery() {
+function ShowGallery(index) {
     //----------PhotoSwipe设置-------------
     var pswpElement = document.querySelectorAll('.pswp')[0];
     var items = [
         {
-            mediumImage: {
-                src: PicLive.smallImg,
-                w: PicLive.img2w,
-                h: PicLive.img2h,
-                caption: PicLive.text
-            },
-            originalImage: {
-                src: PicLive.bigImg,
-                w: PicLive.img1w,
-                h: PicLive.img1h,
-                caption: PicLive.text
-            }
+            src: PicLive.Img1,
+            w: PicLive.img1w,
+            h: PicLive.img1h,
+            caption: PicLive.text
+        },
+        {
+            src: PicLive.Img2,
+            w: PicLive.img2w,
+            h: PicLive.img2h,
+            caption: PicLive.text
         }
     ];
     var options = {
-        index: 0
+        index: index
     };
     var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-    var realViewportWidth,
-        useLargeImages = false,
-        firstResize = true,
-        imageSrcWillChange;
-    gallery.listen('beforeResize', function () {
-        realViewportWidth = gallery.viewportSize.x * window.devicePixelRatio;
-        if (useLargeImages && realViewportWidth < 1000) {
-            useLargeImages = false;
-            imageSrcWillChange = true;
-        } else if (!useLargeImages && realViewportWidth >= 1000) {
-            useLargeImages = true;
-            imageSrcWillChange = true;
-        }
-        if (imageSrcWillChange && !firstResize) {
-            gallery.invalidateCurrItems();
-        }
-        if (firstResize) {
-            firstResize = false;
-        }
-        imageSrcWillChange = false;
-    });
-    gallery.listen('gettingData', function (index, item) {
-        if (useLargeImages) {
-            item.src = item.originalImage.src;
-            item.w = item.originalImage.w;
-            item.h = item.originalImage.h;
-        } else {
-            item.src = item.mediumImage.src;
-            item.w = item.mediumImage.w;
-            item.h = item.mediumImage.h;
-        }
-    });
     gallery.init();
 }
 function loadpopup() {
@@ -219,7 +185,6 @@ $(document).ready(function () {
             $("video").css("max-height", ($(window).height() - $("header").height() - $(".proglist").height()) * 0.8 + "px");
             $(".controls").width($("video").width());
             $("#danmu").css({ "top": $("video").offset().top + "px", "left": $("video").offset().left + "px", "width": $("video").width(), "height": $("video").height() });
-            $("#vol").val($("video").volume * 100);
             playing = true;
             $("#play").css("background-image", "url(src/img/pause.svg)");
         } else { //jwplayer模式下
@@ -250,14 +215,11 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data) {
                     PicLive = data;
-                    PicLive.bigImg = "src/piclive/" + PicLive.bigImg;
-                    PicLive.smallImg = "src/piclive/" + PicLive.smallImg;
+                    PicLive.Img1 = "src/piclive/" + PicLive.Img1;
+                    PicLive.Img2 = "src/piclive/" + PicLive.Img2;
                     $(".livetext").text(data.text);
-                    if (info.device == "PC") {
-                        $(".liveimg").attr("src", PicLive.bigImg);
-                    } else {
-                        $(".liveimg").attr("src", PicLive.smallImg);
-                    }
+                    $("#liveimg1").attr("src", PicLive.Img1);
+                    $("#liveimg2").attr("src", PicLive.Img2);
                 }
             });
         }
@@ -323,7 +285,8 @@ $(document).ready(function () {
         }
     });
     $(".liveimg").click(function () {
-        ShowGallery();
+        cons("打开了第" + $(this).attr("id").substring(7, 8) + "张图");
+        ShowGallery($(this).attr("id").substring(7, 8) - 1);
     });
 });
 $(window).resize(function () {

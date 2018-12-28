@@ -216,7 +216,6 @@ $(document).ready(function () {
         $("video").css("max-height", ($(window).height() - $("header").height() - $(".proglist").height()) * 0.8 + "px");
         $(".controls").width($("video").width());
         $("#danmu").css({ "top": $("video").offset().top + "px", "left": $("video").offset().left + "px", "width": $("video").width(), "height": $("video").height() });
-        $("#vol").val($("video").volume * 100);
         playing = true;
         $("#play").css("background-image", "url(src/img/pause.svg)");
     } else { //jwplayer模式下

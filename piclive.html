@@ -116,7 +116,7 @@
                             formFile.append("img1w", $("#p1w").val());
                             formFile.append("img1h", $("#p1h").val());
                             formFile.append("img2w", $("#p2w").val());
-                            formFile.append("img2h", $("#p1h").val());
+                            formFile.append("img2h", $("#p2h").val());
                             $.ajax({
                                 url: "src/console/piclive.php",
                                 method: "POST",
@@ -142,10 +142,10 @@
 <body>
     <h2>图文直播内容上传</h2>
     <hr>
-    电脑端 <input id="p0" type="file" onchange="GetInfo(0,this)"><br>
+    图1 <input id="p0" type="file" onchange="GetInfo(0,this)"><br>
     尺寸 <input disabled id="p1w" class="size"> x <input disabled id="p1h" class="size"><br>
     <hr>
-    移动端 <input id="p1" type="file" onchange="GetInfo(1,this)"><br>
+    图2 <input id="p1" type="file" onchange="GetInfo(1,this)"><br>
     尺寸 <input disabled id="p2w" class="size"> x <input disabled id="p2h" class="size"><br>
     <hr>
     请输入图文直播文字：<br>
