@@ -10,16 +10,29 @@
         body {
             text-align: center;
             font-size: x-large;
+            background-color: #222;
+            color: #fff;
         }
 
         textarea {
             font-size: inherit;
             width: 300px;
-            height: 300px;
+            height: 200px;
+            color: inherit;
+            background-color: transparent;
+            border: 1px rgb(200, 160, 106) solid;
+            border-radius: 10px;
+            margin-top: 10px;
         }
 
         .size {
             width: 4em;
+            background-color: transparent;
+            color: inherit;
+            border-radius: 10px;
+            border: 2px rgb(200, 160, 106) solid;
+            padding: 2px 0;
+            text-align: center;
         }
 
         #send {
@@ -28,11 +41,29 @@
             border: 2px rgb(200, 160, 106) solid;
             font-size: inherit;
             cursor: pointer;
-            background-color: #fff;
+            background-color: transparent;
+            color: inherit;
         }
 
         #send:hover {
             filter: brightness(90%);
+        }
+
+        #pw {
+            background-color: transparent;
+            color: inherit;
+            border-radius: 10px;
+            border: 2px rgb(200, 160, 106) solid;
+            padding: 8px 0;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: large;
+        }
+
+        .count {
+            font-size: small;
+            width: 2em;
+            display: inline-block;
         }
     </style>
     <script src="src/lib/jquery-3.3.1.min.js"></script>
@@ -61,6 +92,9 @@
                     $("#p2h").val(h);
                 }
             });
+        }
+        function change() {
+            $("#count").text($("#text").val().length);
         }
         function upload() {
             $.ajax({
@@ -106,7 +140,7 @@
 </head>
 
 <body>
-    图片上传：<br>
+    <h2>图文直播内容上传</h2>
     <hr>
     电脑端 <input id="p0" type="file" onchange="GetInfo(0,this)"><br>
     尺寸 <input disabled id="p1w" class="size"> x <input disabled id="p1h" class="size"><br>
@@ -115,9 +149,10 @@
     尺寸 <input disabled id="p2w" class="size"> x <input disabled id="p2h" class="size"><br>
     <hr>
     请输入图文直播文字：<br>
-    <textarea placeholder="请输入图文直播文字" id="text"></textarea><br>
+    <textarea placeholder="请输入图文直播文字" id="text" maxlength="150" oninput="change()"></textarea>
+    <span class="count">字数<span id="count">0</span> / 150</span><br>
     <hr>
-    密钥 <input id="pw" placeholder="请输入密钥"><br><br>
+    密钥 <input id="pw" placeholder="请输入密钥" type="password" maxlength="8"><br><br>
     <button id="send" onclick="upload()">上传</button>
 </body>
 
