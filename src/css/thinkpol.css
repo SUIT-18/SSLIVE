@@ -12,10 +12,6 @@
     position: relative;
 }
 
-#danmu{
-    position: relative !important; 
-}
-
-#color,#position{
+#color,#position,#history,#danmu{
     position: relative !important; 
 }

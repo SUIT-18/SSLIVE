@@ -14,8 +14,12 @@ function load_danmu() {
     var text_obj = evt.data + ',"time":' + time + '}';//获取加上当前时间
     var new_obj = eval('(' + text_obj + ')');
     $('#danmu').danmu("addDanmu", new_obj);//添加弹幕
+    var history = text_obj.toString();
+    var text_history = "<b>"+history.split('"')[3]+"</b><br>";
+    $("#history").append(text_history);
+    $("b").css("background-color","yellow");
   };
-}
+} 
 load_danmu();
 //初始化
 $("#danmu").danmu({
