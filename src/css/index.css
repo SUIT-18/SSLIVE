@@ -1,6 +1,7 @@
 ﻿@font-face {
     font-family: PingFang;
-    src: url(../font/PingFangSC-Regular.woff2);
+    font-weight: normal;
+    src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
 }
 
 @font-face {
@@ -9,7 +10,9 @@
 }
 
 body {
-    background-color: #fff;
+    background: url(../background/background.png) no-repeat;
+    background-size:100% 100%;
+    background-attachment: fixed;
     text-align: center;
     height: 100%;
     width: 100%;
@@ -18,8 +21,16 @@ body {
     font-family: PingFang, SF;
 }
 
+.swiper-container {
+    width: 100%;
+    height: 99%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .content {
-    position: fixed;
+    position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -29,8 +40,47 @@ body {
 
 .videoframe {
     position: relative;
+    top: 43%;
+    transform: translate(-50%, -50%);
+    left: 50%;
     width: 100%;
-    height: auto;
+    margin: 10px 0;
+}
+
+.proglist {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    transform: translate(-50%, 0);
+    font-size: x-large;
+    line-height: 1.3;
+    color: rgb(133, 83, 23);
+    min-width: 380px;
+}
+
+.proglist-title {
+    line-height: 1.9;
+    width: 4em;
+    display: inline-block;
+}
+
+.pre, .next {
+    opacity: 0.6;
+    margin-left: 0.5em;
+    display: inline-block;
+    font-size: large;
+}
+
+.pre {
+    transform: rotateX(35deg) skewX(-10deg);
+}
+
+.next {
+    transform: rotateX(-35deg) skewX(10deg);
+}
+
+#pre, #next {
+    display: inline;
 }
 
 .ctr {
@@ -44,10 +94,17 @@ video, #player {
     margin: 0;
     border-radius: 3px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
+    min-width: 50%;
+    background-color: #000;
+    min-height: 350px;
 }
 
 video {
     max-width: 98%;
+    background-image: url(../img/notready.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
 }
 
 header {
@@ -59,14 +116,12 @@ header {
     left: 0;
     font-size: 30px;
     text-align: left;
-    background-color: white;
     vertical-align: middle;
-    border-bottom: 1px rgb(27, 27, 27) solid;
-    box-shadow: 0px 0px 4px 0px rgba(28, 27, 27, 0.31);
+    color: rgb(133, 83, 23);
 }
 
 .icon {
-    width: 65px;
+    /* width: 65px; */
     height: 65px;
     position: absolute;
     top: 50%;
@@ -79,32 +134,41 @@ header {
     color: white;
 }
 
-.icon:hover{
+.icon:hover {
     cursor: pointer;
 }
 
-.title {
-    position: absolute;
-    /* white-space: wrap; */
+.title1 {
+    position: relative;
     top: 50%;
     left: 50%;
+    width: 100%;
+    font-size: 1.2em;
     display: inline-block;
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 60%;
     text-align: center;
+    margin: 0;
+    line-height: 1;
+}
+
+.title2 {
+    display: inline-block;
+    font-size: 0.6em;
+    text-align: right;
+    transform: translateX(40px);
 }
 
 .controls, .ctr {
     text-align: center;
     vertical-align: middle;
     display: inline-block;
-    padding: 10px 0;
-    border-radius: 3px;
+    padding: 2px 0;
+    border-radius: 5px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     margin: 0;
+    background-color: #fff;
+    overflow: hidden;
+    height: 55px;
 }
 
 .ctr {
@@ -124,7 +188,7 @@ header {
 button {
     font-size: 1em;
     height: 44px;
-    margin: 5px;
+    margin: 5px 0;
     min-width: 44px;
     vertical-align: middle;
     display: inline-block;
@@ -145,29 +209,29 @@ button:hover {
     color: white;
     min-width: 44px;
     vertical-align: middle;
-    display: inline-block;
-    border: 1px rgb(85, 156, 250) solid;
+    /* display: inline-block; */
     border-radius: 3px;
-    background-color: rgb(85, 156, 250);
+    float: left;
 }
 
 #play:hover {
-    background-color: rgb(56, 182, 255);
-    border: 1px rgb(56, 182, 255) solid;
+    opacity: 0.6;
     cursor: pointer;
 }
 
 #send {
-    border-radius: 3px;
-    background-color: rgb(85, 156, 250);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgb(200, 160, 106);
     padding: 5px 20px;
     display: inline-block;
-    margin: 0;
+    margin-top: 5px;
     color: #fff;
 }
 
 #send:hover {
-    background-color: rgb(56, 182, 255);
     cursor: pointer;
 }
 
@@ -175,16 +239,21 @@ button:hover {
     border-width: 1px;
     border: 1px rgb(214, 213, 213) solid;
     background-color: rgb(241, 237, 237);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     width: 30%;
     height: 40px;
     text-align: center;
+    display: inline-block;
+    margin-top: 5px;
 }
 
 .senddanmu {
     text-align: center;
-    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     display: inline;
-    margin: 0 5px;
+    margin: 10px 5px 0;
 }
 
 .onright {
@@ -200,84 +269,143 @@ button:hover {
 
 #play, #fullscreen, #send, #danmuctrl, #danmuset {
     background-repeat: no-repeat;
-    background-size: 50% 50%;
+    background-size: 75% 75%;
     background-position: center;
 }
 
-/* .title-section-text {
-    margin: 0 auto;
-    text-align: center;
-    width: auto;
-    margin-top: 15px;
-    font-size: 25px;
-    color: white;
-    margin-top: auto;
-    line-height: 1.3;
+#fullscreen {
+    margin: 5px 5px 5px 0;
+    background-size: 50% 50%;
 }
 
-.title-section {
-    width: 100%;
-    margin: 10px 0;
-    position: relative;
-} */
+.HLSmode, .clearlog {
+    border: 1px #000 dashed;
+    border-radius: 50px;
+}
 
 .livelabel {
-    border: 2px solid RGB(104, 199, 255);
+    border: 2px solid rgb(200, 160, 106);
     border-radius: 2px;
     text-align: center;
-    width: 100px;
-    color: RGB(104, 199, 255);
-    display: inline-block;
-    margin: 5px;
-    padding: 5px;
+    color: rgb(200, 160, 106);
+    margin: 10px 5px 0;
+    padding: 5px 10px;
+    float: left;
 }
 
 .log {
     float: left;
     opacity: 0.5;
     color: white;
+    z-index: 10;
 }
 
 input[type=range] {
     -webkit-appearance: none;
     vertical-align: middle;
     width: 80px;
-    border-radius: 8em;
-    height: 5px;
+    border-radius: 8px;
+    height: 3px;
 }
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 1.2em;
     width: 1.2em;
-    background: rgb(104, 199, 255);
+    background: rgb(200, 160, 106);
     border-radius: 50%;
     /*外观设置为圆形*/
-    border: solid 2px rgb(104, 199, 255);
+    border: solid 2px rgb(200, 160, 106);
     /*设置边框*/
     box-sizing: border-box;
-}
-
-input[type=range]:hover::-webkit-slider-thumb {
-    height: 2em;
-    width: 2em;
-    margin-top: -0.4em;
     cursor: pointer;
+    margin-top: -5px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    background-color: rgb(104, 199, 255);
+    background-color: rgb(200, 160, 106);
+    height: 3px;
+    border-radius: 1.5px;
 }
 
 input[type=range]:focus {
     outline: none;
 }
 
-select {
+.ctr select {
     border: 1px rgb(105, 105, 105) solid;
     border-radius: 2px;
     width: 80px;
     text-align: center;
     background-color: transparent;
     color: #fff;
+}
+
+.ctr select:focus {
+    background-color: #000;
+}
+
+.noticemask {
+    background-color: #000;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: none;
+}
+
+.noticemask-content {
+    font-size: 32px;
+    color: rgb(253, 253, 253);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    vertical-align: middle;
+}
+
+.noticetext {
+    display: inline-block;
+}
+
+.noticemask img {
+    width: 42px;
+    display: inline-block;
+    margin-right: 10px;
+    transform: translateY(-10px);
+}
+
+.PicLive {
+    width: 80%;
+    height: 60%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    padding: 5px;
+}
+
+.liveimg {
+    max-width: 80%;
+    max-height: 50%;
+    float: left;
+    border-radius: 20px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.liveimg:hover {
+    cursor: pointer;
+    filter: brightness(120%);
+}
+
+.livetext {
+    font-size: large;
+    overflow-y: scroll;
 }

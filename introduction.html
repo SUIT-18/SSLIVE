@@ -6,66 +6,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>SSLIVE</title>
-    <link rel="shortcut icon" href="src/img/sslive-rectangle-white.png" type="image/png">
+    <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
     <meta name="description" content="SSLIVE">
+    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="src/css/introduction.css">
     <script src="src/lib/jquery-3.3.1.min.js"></script>
-    <script src="src/lib/jquery.countdown-2.2.0/jquery.countdown.min.js"></script>
+    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
     <script src="src/lib/Browser.js"></script>
+    <script src="src/lib/jwplayer/jwplayer.js"></script>
+    <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
+    <script src="src/utils/countdown.js"></script>
     <script src="src/js/introduction.js"></script>
-
+    <script src="src/lib/baidustat2.js"></script>
 </head>
 
 <body>
     <header>
         <img class="icon" src="src/img/sslive-rectangle-white.png" />
-        <div class="title">省实第十五届体育节直播</div>
+        <div class="title">省实2019新年音乐会直播</div>
     </header>
+    <h1 style="color: red" id="error">错误，您的浏览器阻止了JavaScript</h1>
     <div class="main">
         <div class="timer">
-            <h1>距离体育节入场式开始还有</h1>
+            <h1>距离新年音乐会开始还有</h1>
             <div id="timer"></div>
         </div>
+        <div class="openvideo">全屏查看宣传视频 ></div>
         <div class="QRcode">
-            <img id="QRcode" src="src/img/QRcode_white.png">
-			<div class="linktxt">点击二维码进入直播间</div>
+            <!-- <img id="QRcode" src="src/img/QRcode_white.png"> -->
+            <div class="linktxt">点击此处进入直播 ></div>
         </div>
         <div class="promote">
-            <p>向下滑动查看更多介绍</p>
+            <p>向下滑动查看节目单</p>
             <img src="src/img/down.svg" id="down" height="50px">
         </div>
         <div class="bg-img">
-            <img id="1" src="src/img/bg1.jpg">
-            <img id="2" src="src/img/bg2.png" style="display: none">
-            <img id="3" src="src/img/bg3.jpg" style="display: none">
-        </div>
-        <div class="bg-dots">
-            <div id="dot1"></div>
-            <div id="dot2"></div>
-            <div id="dot3"></div>
+            <div class="swiper-container Pic">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide s0"></div>
+                    <div class="swiper-slide s1"></div>
+                    <div class="swiper-slide s2"></div>
+                    <div class="swiper-slide s3"></div>
+                    <div class="swiper-slide s4"></div>
+                    <div class="swiper-slide s5"></div>
+                    <div class="swiper-slide s6"></div>
+                    <div class="swiper-slide s7"></div>
+                    <div class="swiper-slide s8"></div>
+                </div>
+                <div class="swiper-pagination Pic-pagination"></div>
+                <div class="swiper-button-prev Pic-button-l swiper-button-white"></div>
+                <div class="swiper-button-next Pic-button-r swiper-button-white"></div>
+            </div>
+            <div class="description">加载中...</div>
         </div>
     </div>
-    <div class="contents">
-        <section>
-            <h2>体育节入场式</h2><br>
-            2018年10月25日8：00～11：00<br>
-            跑旗<br>
-            队列式<br>
-            <u>班级节目展示</u><br>
-            ……<br>
-            入场式当天进入直播链接<br>
-            解锁更多精彩<br>
-            给予 不能来到现场的<br>
-            每一个你<br>
-            上帝视角的观看体验<br><br>
-        </section>
-        <section>
-            <h2>! 布服来战 !</h2><br>
-            2018年10月25日19：00～21：00<br>
-            班服走秀<br>
-            小姐姐小哥哥等你发现٩( 'ω' )و<br>
-            show the best sser<br>
-            前排围观啦！<br><br>
-        </section>
+    <iframe class="contents" src="ProgramList.html" scrolling="no"></iframe>
+    <div class="followbox">
+        <span id="close">+</span>
+        <div class="QRs">
+            <div class="QR"><img id="QR1" src="src/img/tencentvQR.png" style="filter:invert(1);"><br>腾讯视频 帐号</div><span class="spliter"></span>
+            <div class="QR"><img id="QR2" src="src/img/bilibiliQR.png" style="filter:invert(1);"><br>bilibili 帐号</div>
+        </div>
+        不定期会有高质量的校园活动宣传视频和回放视频放出~
     </div>
+    <footer>
+        <span class="pb">Powered By</span><br>
+        <div class="logos">
+            <img class="logo itlogo" src="src/img/SUIT+.png"><img class="logo passlogo" src="src/img/PASS-white.png"><br>
+        </div>
+        <span class="suit">广东实验中学学生会信息部 & PASS+ 极光工作室</span>
+        <div class="links">
+            <a href="about.html">关于我们</a>
+            <!-- <span id="support">支持我们</span> -->
+            <span id="follow">关注我们</span>
+            <a href="feedback.html">反馈问题</a>
+            <a href="readme.html">Credit</a>
+        </div>
+        ©2018 SUIT+
+    </footer>
 </body>

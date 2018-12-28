@@ -1,0 +1,17 @@
+.senddanmu {
+    text-align: center;
+    display: inline;
+    margin: 10px 5px 0;
+}
+
+#text{
+    position: relative;
+}
+
+#send{
+    position: relative;
+}
+
+#color,#position,#history,#danmu{
+    position: relative !important; 
+}

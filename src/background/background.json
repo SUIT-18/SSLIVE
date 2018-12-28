@@ -1,0 +1,85 @@
+{
+    "items": [
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/合唱团.jpg",
+                "mobile": "src/background/合唱团_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学合唱团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/民乐团2.jpg",
+                "mobile": "src/background/民乐团2_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学民乐团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/bg2.jpg",
+                "mobile": "src/background/bg2_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学民乐团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/民乐团.jpg",
+                "mobile": "src/background/民乐团_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学民乐团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/1545821535890.mp4_20181227_173056.981.jpg",
+                "mobile": "src/background/1545821535890.mp4_20181227_173056.981.jpg"
+            },
+            "time": 7500,
+            "des": ""
+        },
+        {
+            "type": "video",
+            "url": {
+                "pc": "src/media/6.0.mp4",
+                "mobile": "src/media/6.0_6.mp4"
+            },
+            "time": 89000,
+            "des": "介绍视频"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/舞蹈团.jpg",
+                "mobile": "src/background/舞蹈团_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学舞蹈团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/交响乐团.jpg",
+                "mobile": "src/background/交响乐团_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学交响乐团"
+        },
+        {
+            "type": "img",
+            "url": {
+                "pc": "src/background/bg1.jpg",
+                "mobile": "src/background/bg1_s.jpg"
+            },
+            "time": 7500,
+            "des": "广东实验中学交响乐团"
+        }
+    ]
+}

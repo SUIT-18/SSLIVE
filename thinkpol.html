@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="src/lib/jquery-3.3.1.min.js"></script>
+        <script src="src/lib/danmu/jquery.danmu.js"></script>
+        <script type="application/javascript" src="src/utils/thinkpol.js"></script>
+        <link rel="stylesheet" href="src/css/thinkpol.css" />
+        <title>弹幕思想警察</title>
+    </head>
+    <body bgcolor="black">
+        <div id="danmu"></div>
+        <div class="senddanmu">
+            <input type="textarea" id="text" max=300 placeholder="发个弹幕" />
+            <button type="button" onclick="send()" id="send">发送</button>
+        </div>
+        <select name="color" id="color">
+            <option value="white">白色</option>
+            <option value="red">红色</option>
+            <option value="green">绿色</option>
+            <option value="blue">蓝色</option>
+            <option value="yellow">黄色</option>
+            <option value="#660099">紫色</option>
+            <option value="#FF6633">橙色</option>
+            <option value="#FF6699">粉红色</option>
+            <option value="#33FFCC">蓝绿色</option>
+            <option value="#99FF00">草绿色</option>
+            <option value="#000099">蓝黑色</option>
+            <option value="#000000">黑色</option>
+        </select>
+        <select name="position" id="position">
+            <option value="0">滚动</option>
+            <option value="1">顶端</option>
+            <option value="2">底端</option>
+        </select>
+        <div id="history"></div>
+    </body>
+</html>

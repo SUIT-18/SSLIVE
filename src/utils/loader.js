@@ -4,7 +4,12 @@ function loadPlayer(player) {
         var videoElement = document.getElementById('liveplayer');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: "src/media/test.flv"//改为直播FLV的url
+            isLive: true,
+            hasAudio: true,
+            hasVideo: true,
+            enableStashBuffer: true,
+            cors: true,
+            url: "https://suit.ssersay.cn/SUIT/stream.flv",//改为直播FLV的url
         }
         );
         flvPlayer.attachMediaElement(videoElement);

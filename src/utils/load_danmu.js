@@ -1,11 +1,11 @@
 //WebSocket
-var wsServer = 'ws://47.92.218.251:9505';
+var wsServer = 'wss://backend.ssersay.cn:9505';
 var websocket = new WebSocket(wsServer);
 function load_danmu() {
   websocket.onopen = function (evt) {
     cons("Connected to WebSocket server.");
     $("#send").removeAttr("disabled");
-    $("#send").css("background-color", "rgb(85, 156, 250)");
+    $("#send").css("background-color", "rgb(200, 160, 106)");
     //连上之后就打开弹幕
     $('#danmu').danmu('danmuResume');
   };

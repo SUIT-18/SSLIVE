@@ -1,8 +1,8 @@
 function loadHLSPlayer() {
     $("#liveplayer").remove();
     jwplayer('player').setup({
-        // file: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8',
-        file: "src/media/test.mp4",
+        file: 'https://suit.ssersay.cn/SUIT/stream.m3u8',
+        // file: "src/media/test.mp4",
         autostart: true,
         controlbar: "none",
         overstretch: "true",
@@ -28,10 +28,10 @@ function loadHLSPlayer() {
             onFullscreen: function (obj) {
                 if (obj.fullscreen) {
                     cons("jwplayer:全屏");
-                    $("#player").css("border", "none");
+                    $("#player").css("background-color", "#000");
                 } else {
                     cons("jwplayer:非全屏");
-                    $("#player").css("border", "3px white solid");
+                    $("#player").css("background-color", "#fff");
                 }
             },
             onMute: function (obj) { cons("jwplayer:静音/取消静音") }
