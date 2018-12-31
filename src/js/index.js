@@ -108,6 +108,11 @@ function setsize() {  //当浏览器大小变化时
         });
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".proglist").height()) * x + "px");
+        if (x == 0.8) {
+            $("#player").css("min-height", "300px;");
+        } else {
+            $("#player").css("min-height", "100px;");
+        }
         $("#player").css("width", $("#player").height() * 16 / 9 + 10 + "px");
         if ($("#player").width() > $(window).width()) {
             $("#player").css("width", $(window).width());
