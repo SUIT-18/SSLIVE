@@ -7,7 +7,7 @@ var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 11, 28, 14, 30).getTime();
+var liveplay = new Date(2019, 2, 3, 19, 00).getTime();
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
@@ -150,7 +150,7 @@ $(document).ready(function () {
         }
     }
     if (info.device == "PC") { //电脑端
-        $(".title1").text("广东实验中学新年音乐会");
+        $(".title1").text("广东实验中学“青春诗会”");
         $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
         $("body").css("background-size", "cover");
         $(".livetext").css("font-size", "30px");

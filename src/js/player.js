@@ -177,7 +177,7 @@ $(document).ready(function () {
         }
     }
     if (info.device == "PC") { //电脑端
-        $(".title1").text("广东实验中学新年音乐会");
+        $(".title1").text("广东实验中学“青春诗会”");
         $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
         $("body").css("background-size", "cover");
         $(".livetext").css("font-size", "30px");

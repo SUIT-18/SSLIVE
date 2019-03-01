@@ -5,7 +5,7 @@ var timeout;
 var firstslide = true;
 if (window.location.search.search("debug=1") > 0) { $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">'); }
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2018, 11, 28, 14, 30, 00).getTime();//开始时间 ！！注意：12月应写为11
+var liveplay = new Date(2019, 2, 3, 19, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
     console.log("Risizing...");
     $(".main").css("margin-top", $("header").height() + 30 + "px");
@@ -50,7 +50,7 @@ $(document).ready(function () {
     if (info.device != '') {
         console.log(info.device);
         if (info.device == "PC") {
-            $(".title").text("广东实验中学2019新年音乐会直播");
+            $(".title").text("广东实验中学2019“青春诗会”直播");
             $("#QRcode").css("width", "150px");
             $("#QRcode").css("height", "150px");
             $(".main").css("font-size", "3.5em");
