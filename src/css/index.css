@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: PingFang;
     font-weight: normal;
     src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
@@ -10,7 +10,7 @@
 }
 
 body {
-    background: url(../background/background.png) no-repeat;
+    background: url(../background/qcsh.jpg) no-repeat;
     background-size:100% 100%;
     background-attachment: fixed;
     text-align: center;
@@ -165,7 +165,7 @@ header {
     border-radius: 5px;
     box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
     margin: 0;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.8);
     overflow: hidden;
     height: 55px;
 }

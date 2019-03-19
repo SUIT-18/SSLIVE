@@ -33,25 +33,25 @@ function clearlog() {
 }
 function getProgram() {
     $.ajax({
-        url: "currentprogram.json",
+        url: "newprogramlist.json",
         dataType: "json",
         cache: false,
         success: function (data) {
             console.log(data);
-            if (data.previous == "") {
+            if (data.current == 0) {
                 $(".pre").hide();
                 $("#prebr").hide();
             } else {
                 $("#prebr").show();
                 $(".pre").show();
-                $("#pre").text(data.previous);
+                $("#pre").text(data.programs[data.current - 1].program);
             }
-            $("#now").text(data.current);
+            $("#now").text(data.programs[data.current].program);
             if (data.next == "") {
                 $(".next").hide();
             } else {
                 $(".next").show();
-                $("#next").text(data.next);
+                $("#next").text(data.programs[data.current + 1].program);
             }
         }
     });
