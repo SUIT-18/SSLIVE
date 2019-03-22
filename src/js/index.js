@@ -100,11 +100,17 @@ function setsize() {  //当浏览器大小变化时
         cons("横屏模式");
         x = 0.8;
     }
+    var info = new Browser();
     if (playmode == "FLV") { //FLV模式下
         $("video").css("max-height", ($(window).height() - $("header").height() - $(".proglist").height()) * 0.8 + "px");
         $(".controls").animate({ width: $("video").width() }, function () {
-            $(".proglist").animate({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
-            $("#danmu").css({ "top": $("video").offset().top + "px", "left": $("video").offset().left + "px", "width": $("video").width(), "height": $("video").height() });
+            if (info.device == "PC") {
+                $(".proglist").animate({ "top": $(".videoframe").offset().top + 15 + "px", "width": $(window).width() / 2 - $(".controls").width() / 2 - 10 + "px" });
+            } else {
+                // $(".proglist").animate({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 50 + "px", "width": $(".controls").width() - 20 + "px" });
+                $(".proglist").animate({ "bottom": "5%", "width": $(".controls").width() - 20 + "px" });
+            }
+            $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
         });
     } else { //jwplayer模式下
         $("#player").css("height", ($(window).height() - $("header").height() - $(".proglist").height()) * x + "px");
@@ -120,7 +126,12 @@ function setsize() {  //当浏览器大小变化时
         }
         cons("height:" + $("#player").height() + " width:" + $("#player").width());
         $(".controls").animate({ width: $("#player").width() }, function () {
-            $(".proglist").animate({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
+            if (info.device == "PC") {
+                $(".proglist").animate({ "top": $(".videoframe").offset().top + 15 + "px", "width": $(window).width() / 2 - $(".controls").width() / 2 - 10 + "px" });
+            } else {
+                // $(".proglist").animate({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 50 + "px", "width": $(".controls").width() - 20 + "px" });
+                $(".proglist").animate({ "bottom": "5%", "width": $(".controls").width() - 20 + "px" });
+            }
             $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
         });
     }
@@ -150,10 +161,11 @@ $(document).ready(function () {
         }
     }
     if (info.device == "PC") { //电脑端
-        $(".title1").text("广东实验中学“青春诗会”");
-        $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
+        $(".title1").text("广东实验中学“青春诗会”活动直播");
+        // $(".title1").append("<br><span class='title2'>New Year's Concert | 2019</span>");
         $("body").css("background-size", "cover");
         $(".livetext").css("font-size", "30px");
+        $(".proglist").css({ "left": "5%", "transform": "none" });
     } else {
         $("video").css("min-width", "93%");
         $("#player").css("min-width", "93%");
@@ -204,7 +216,13 @@ $(document).ready(function () {
             $(".controls").width($("#player").width());
             $("#danmu").css({ "top": $("#player").offset().top + "px", "left": $("#player").offset().left + "px", "width": $("#player").width(), "height": $("#player").height() });
         }
-        $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 15 + "px", "width": $(".controls").width() - 20 + "px" });
+        var info = new Browser();
+        if (info.device == "PC") {
+            $(".proglist").css({ "top": $(".videoframe").offset().top + 15 + "px", "width": $(window).width() / 2 - $(".controls").width() / 2 - 10 + "px" });
+        } else {
+            // $(".proglist").css({ "top": $(".videoframe").offset().top + $(".videoframe").height() + 50 + "px", "width": $(".controls").width() - 20 + "px" });
+            $(".proglist").css({ "bottom": "5%", "width": $(".controls").width() - 20 + "px" });
+        }
         setsize();
     }, 3000);
     //---------swiper设置------------------

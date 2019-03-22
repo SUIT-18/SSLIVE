@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
     font-family: PingFang;
     font-weight: normal;
     src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
@@ -11,7 +11,7 @@
 
 body {
     background: url(../background/qcsh.jpg) no-repeat;
-    background-size:100% 100%;
+    background-size:cover;
     background-attachment: fixed;
     text-align: center;
     height: 100%;
@@ -62,6 +62,7 @@ body {
     line-height: 1.9;
     width: 4em;
     display: inline-block;
+    font-weight: bold;
 }
 
 .pre, .next {

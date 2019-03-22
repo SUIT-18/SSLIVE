@@ -15,4 +15,4 @@ Contributors:
 1. Lin Sixing (@LSX-s-Software)  
 2. Zeng Wenyi (@vincenttsang)  
 3. Zeng Chengzhi
-4. Wu Kai
+4. Wu Kai (@wk2003)
