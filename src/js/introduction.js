@@ -5,7 +5,7 @@ var timeout;
 var firstslide = true;
 if (window.location.search.search("debug=1") > 0) { $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">'); }
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2019, 2, 3, 19, 00).getTime();//开始时间 ！！注意：12月应写为11
+var liveplay = new Date(2019, 3, 3, 19, 00).getTime();//开始时间 ！！注意：12月应写为11
 function setsize() {
     console.log("Risizing...");
     $(".main").css("margin-top", $("header").height() + 30 + "px");

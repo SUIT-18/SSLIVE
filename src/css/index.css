@@ -1,12 +1,17 @@
-﻿@font-face {
+﻿/* @font-face {
     font-family: PingFang;
     font-weight: normal;
     src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
-}
+} */
 
 @font-face {
     font-family: SF;
     src: url(../font/sf-pro-text_regular.ttf);
+}
+
+@font-face {
+    font-family: fzqkb;
+    src: url(../font/fzqkb.ttf);
 }
 
 body {
@@ -18,7 +23,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: PingFang, SF;
+    font-family: fzqkb, SF;
 }
 
 .swiper-container {
