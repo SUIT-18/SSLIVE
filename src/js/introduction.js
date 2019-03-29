@@ -18,6 +18,7 @@ function loadPlayer(url) {
         file: url,
         autostart: false,
         overstretch: "true",
+        volume: 60,
         // mute: true,
         repeat: true,
         smoothing: true,
@@ -50,7 +51,7 @@ $(document).ready(function () {
     if (info.device != '') {
         console.log(info.device);
         if (info.device == "PC") {
-            $(".title").text("广东实验中学2019“青春诗会”直播");
+            $(".title").text("广东实验中学第四届“青春诗会”");
             $("#QRcode").css("width", "150px");
             $("#QRcode").css("height", "150px");
             $(".main").css("font-size", "3.5em");

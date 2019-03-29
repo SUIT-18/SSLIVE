@@ -45,4 +45,5 @@
     font-size: 20px;
     max-width: 110px;
     text-align: center;
+    white-space: nowrap;
 }

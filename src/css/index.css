@@ -66,6 +66,7 @@ body {
 .proglist-title {
     line-height: 1.9;
     width: 4em;
+    margin-bottom: 10px;
     display: inline-block;
     font-weight: bold;
 }

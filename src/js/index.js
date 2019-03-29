@@ -33,7 +33,7 @@ function clearlog() {
 }
 function getProgram() {
     $.ajax({
-        url: "newprogramlist.json",
+        url: "programlist.json",
         dataType: "json",
         cache: false,
         success: function (data) {
@@ -168,6 +168,7 @@ $(document).ready(function () {
         $(".proglist").css({ "left": "5%", "transform": "none" });
     } else {
         $("video").css("min-width", "93%");
+        $(".title1").css("font-size", "0.9em");
         $("#player").css("min-width", "93%");
         $("#play").css("margin-left", "1px");
         $("#play").css("margin-right", "1px");

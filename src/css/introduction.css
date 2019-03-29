@@ -187,7 +187,7 @@ h1 {
 }
 
 .bg-img img {
-    opacity: 0.8;
+    /* opacity: 0.8; */
     height: 100%;
     object-fit: cover;
     width: 100%;
