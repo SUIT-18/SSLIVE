@@ -231,23 +231,23 @@ $(document).ready(function () {
         direction: 'horizontal', // 水平切换选项
         loop: false, // 循环模式选项
     })
-    mySwiper.on("slideChange", function () {
-        //更新图文直播内容
-        if (mySwiper.activeIndex == 1) {
-            $.ajax({
-                url: "src/piclive/piclive.json",
-                dataType: "json",
-                success: function (data) {
-                    PicLive = data;
-                    PicLive.Img1 = "src/piclive/" + PicLive.Img1;
-                    PicLive.Img2 = "src/piclive/" + PicLive.Img2;
-                    $(".livetext").html(data.text);
-                    $("#liveimg1").attr("src", PicLive.Img1);
-                    $("#liveimg2").attr("src", PicLive.Img2);
-                }
-            });
-        }
-    });
+    // mySwiper.on("slideChange", function () {
+    //     //更新图文直播内容
+    //     if (mySwiper.activeIndex == 1) {
+    //         $.ajax({
+    //             url: "src/piclive/piclive.json",
+    //             dataType: "json",
+    //             success: function (data) {
+    //                 PicLive = data;
+    //                 PicLive.Img1 = "src/piclive/" + PicLive.Img1;
+    //                 PicLive.Img2 = "src/piclive/" + PicLive.Img2;
+    //                 $(".livetext").html(data.text);
+    //                 $("#liveimg1").attr("src", PicLive.Img1);
+    //                 $("#liveimg2").attr("src", PicLive.Img2);
+    //             }
+    //         });
+    //     }
+    // });
     //---------响应按钮点击事件-------------
     $("#danmuset").click(function () {
         if (!settinghided) {
@@ -308,10 +308,10 @@ $(document).ready(function () {
                 break;
         }
     });
-    $(".liveimg").click(function () {
-        cons("打开了第" + $(this).attr("id").substring(7, 8) + "张图");
-        ShowGallery($(this).attr("id").substring(7, 8) - 1);
-    });
+    // $(".liveimg").click(function () {
+    //     cons("打开了第" + $(this).attr("id").substring(7, 8) + "张图");
+    //     ShowGallery($(this).attr("id").substring(7, 8) - 1);
+    // });
 });
 $(window).resize(function () {
     setTimeout("setsize()", 300);
