@@ -1,45 +1,57 @@
-﻿{
+{
 	"current": 0,
 	"programs": [{
-			"program": "逐梦省实",
-			"actor": "高一高二全体",
+			"program": "逐梦",
+			"actor": "高一高二全体、民乐团",
 			"style": "快闪",
 			"prop": "大鼓"
 		},
 		{
 			"program": "木兰诗",
-			"actor": "E19应朗、E18王芸韵、E10谢宜君  友情出演：刘杏儿",
+			"actor": "E19应朗E18王芸韵、武术队",
 			"style": "歌＋武术",
 			"prop": "null"
 		},
 		{
 			"program": "十一月四日风雨大作＋破阵子",
-			"actor": "D13张乐D11邓扬帆",
+			"actor": "D10张乐、D11邓扬帆",
 			"style": "朗诵",
 			"prop": "null"
 		},
 		{
 			"program": "将进酒",
-			"actor": "E4祖尔丁E3林泽燊E3欧健弘E14杨梓昊",
+			"actor": "待定",
 			"style": "吉他弹唱",
 			"prop": "吉他4"
 		},
 		{
 			"program": "无韵梦中华",
-			"actor": "原创：E1卢旖旎   D2张家华D8黄文慧D20李唯楚",
+			"actor": "E11李雨辰、D15余荣杰",
 			"style": "朗诵",
 			"prop": "null"
 		},
-                                  {
-			"program": "梦想纪念碑",
-			"actor": "原创：E1倪隽E2王骏越E2丁希之   D15余荣杰E11李雨辰E17林泽燊E19郭淏雯E20陈俊达等",
-			"style": "诗剧",
+		{
+			"program": "与妻书",
+			"actor": "D19李怡 D20李唯楚 D9陈柏园",
+			"style": "朗诵",
 			"prop": "null"
 		},
 		{
 			"program": "省实赋",
-			"actor": "原创：胡蓉   校领导、家委代表、D19D20全体同学",
+			"actor": "校领导、家委代表、D19全体",
 			"style": "朗诵",
+			"prop": "null"
+		},
+		{
+			"program": "诗歌方言串烧朗诵",
+			"actor": "D10麦新浵",
+			"style": "方言朗诵",
+			"prop": "null"
+		},
+		{
+			"program": "新大陆",
+			"actor": "D6谭晨菲D15李玉轩D4刘杰铭",
+			"style": "诗剧",
 			"prop": "null"
 		},
 		{
@@ -49,45 +61,39 @@
 			"prop": "null"
 		},
 		{
+			"program": "星原",
+			"actor": "D11余铠钧 D8黄文慧 D20贺雨馨",
+			"style": "null",
+			"prop": "null"
+		},
+		{
 			"program": "山鬼",
-			"actor": "近思汉文化社",
+			"actor": "汉服社",
 			"style": "吟唱",
 			"prop": "null"
 		},
 		{
-			"program": "诗歌方言串烧朗诵",
-			"actor": "龚海华老师 李全老师 D6王喆D7朱影彤D10麦新浵D10朱浩宇D11余铠均",
-			"style": "方言朗诵",
-			"prop": "null"
-		},
-		{
-			"program": "新大陆",
-			"actor": "原创：邱疏桐   D6谭晨菲D15李聿轩D4刘杰铭",
+			"program": "诗剧（名待定）",
+			"actor": "戏剧社",
 			"style": "诗剧",
 			"prop": "null"
 		},
 		{
-			"program": "星原",
-			"actor": "原创：D3彭靖嘉D3雷如昕   D9陈柏园D20贺雨馨",
-			"style": "null",
-			"prop": "null"
-		},
-		{
-			"program": "穿花深入百云处",
-			"actor": "原创：E18陈骐骋   D13郑晴爽D17张易杨E18何雨暄E8张鼎言ENS3王昱宸",
-			"style": "null",
-			"prop": "null"
-		},
-		{
-			"program": "纵情逐光",
+			"program": "仲夏夜之梦",
 			"actor": "D2刘恬怡  D7丁明远",
 			"style": "歌舞朗诵",
 			"prop": "null"
 		},
 		{
 			"program": "未做完的梦",
-			"actor": "原创：余炜诗   E15张欣E15林晓炀D17李超禧E11梁毓杰",
+			"actor": "E15张欣 林晓炀  D17李超玺 E11梁毓杰",
 			"style": "朗诵",
+			"prop": "null"
+		},
+		{
+			"program": "梦想纪念碑",
+			"actor": "E17张子越 E19郭淏雯E20陈俊达等",
+			"style": "诗剧",
 			"prop": "null"
 		},
 		{
@@ -97,20 +103,14 @@
 			"prop": "null"
 		},
 		{
-			"program": "与妻书",
-			"actor": "原创：D17刘姝妍D17王沅荃   D19李怡D15余荣杰",
-			"style": "朗诵",
-			"prop": "null"
-		},
-		{
 			"program": "琵琶行",
-			"actor": "D11刘国铸D11余铠均",
+			"actor": "D刘国铸  街舞社",
 			"style": "歌舞",
 			"prop": "null"
 		},
 		{
 			"program": "登鹳雀楼",
-			"actor": "老师代表和教职工子女及高一同学 E10罗智瀚",
+			"actor": "秘老师等老师和教职工子女及合唱团",
 			"style": "朗诵唱歌",
 			"prop": "null"
 		}
