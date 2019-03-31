@@ -37,7 +37,7 @@ header {
 .swiper-container {
     width: 100%;
     height: calc(100% - 70px);
-    top: 140px;
+    top: 70px;
     position: absolute;
 }
 
@@ -49,20 +49,25 @@ header {
 
 .swiper-tab {
     width: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 60%;
+    min-width: 570px;
+    right: 5%;
     position: absolute;
-    top: 80px;
+    top: 50%;
+    transform: translateY(-50%);
     border-radius: 5px;
     border: 1px rgb(0, 160, 233) solid;
     flex-wrap: nowrap;
     display: flex;
+    font-size: large;
+    text-align: center;
+    overflow: hidden;
 }
 
 .swiper-tab div {
     border-right: 1px rgb(0, 160, 233) solid;
     margin: 0;
-    padding: 5px;
+    line-height: 60%;
     flex: 1;
 }
 
@@ -70,11 +75,27 @@ header {
     border-right: none;
 }
 
-.swiper-tab div:hover{
+.swiper-tab div:hover {
     cursor: pointer;
     background-color: rgba(0, 160, 233, 0.4);
 }
 
 .selectedtab {
-    background-color: rgb(0, 160, 233);
+    background-color: rgb(0, 160, 233) !important;
+}
+
+iframe {
+    width: 90%;
+    height: 90%;
+    margin-top: 20px;
+    border: 2px rgb(0, 160, 233) solid;
+}
+
+.swiper-slide .title {
+    float: left;
+    margin: 10px;
+    font-size: 50px;
+    width: 50px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }

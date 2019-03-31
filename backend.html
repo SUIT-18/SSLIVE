@@ -20,20 +20,31 @@
 <body>
     <header>
         <div class="title">SSLIVE 后端控制台</div>
+        <div class="swiper-tab">
+            <div class="selectedtab">总览</div>
+            <div>弹幕管理</div>
+            <div>图文直播上传</div>
+            <div>访问量详情</div>
+            <div id="lasttab">服务器状态</div>
+        </div>
     </header>
-    <div class="swiper-tab">
-        <div class="selectedtab">总览</div>
-        <div>弹幕管理</div>
-        <div id="lasttab">其他</div>
-    </div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">总览</div>
-            <div class="swiper-slide">弹幕管理</div>
-            <div class="swiper-slide">其他</div>
+            <div class="swiper-slide">
+                <div class="title">弹幕管理</div>
+                <iframe id="danmuctrl" allowtransparency seamless src="thinkpol.html"></iframe>
+            </div>
+            <div class="swiper-slide">
+                <div class="title">图文直播上传</div>
+            </div>
+            <div class="swiper-slide">访问量详情</div>
+            <div class="swiper-slide serverstat">
+                <div class="title">服务器状态</div>
+                <iframe id="serverstat" allowfullscreen seamless
+                    src="https://cloudmonitor.console.aliyun.com/index.htm?spm=5176.2020520101.223.d101.6bc54df5ejSdGh&custom_trace=ecs_console#/dashboardnew/boardId=&boardName=&timeSpan="></iframe>
+            </div>
         </div>
-        <!-- 如果需要滚动条 -->
-        <div class="swiper-scrollbar"></div>
     </div>
 </body>
 
