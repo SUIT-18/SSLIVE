@@ -7,7 +7,7 @@ var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
 var now = new Date().getTime();//当前时间
-var liveplay = new Date(2019, 2, 3, 19, 00).getTime();
+var liveplay = new Date(2019, 3, 3, 19, 00).getTime();
 var leftTime = liveplay - now;//计算时差
 var delta = 60000;//一分钟
 if (leftTime <= delta) {
@@ -167,9 +167,9 @@ $(document).ready(function () {
         $(".livetext").css("font-size", "30px");
         $(".proglist").css({ "left": "5%", "transform": "none" });
     } else {
-        $("video").css("min-width", "93%");
+        $("video").css("min-width", "98%");
         $(".title1").css("font-size", "0.9em");
-        $("#player").css("min-width", "93%");
+        $("#player").css("min-width", "98%");
         $("#play").css("margin-left", "1px");
         $("#play").css("margin-right", "1px");
         $(".livelabel").css("margin-left", "1px");
@@ -180,7 +180,7 @@ $(document).ready(function () {
         $(".fullscreen").css("margin-right", "0");
         $("button").css({ "height": "35px", "min-width": "35px" });
         $("#send").css({ "height": "39px", "padding": "5px 0" });
-        setTimeout("loadpopup()", 5000);
+        // setTimeout("loadpopup()", 5000);
         $(".proglist-title").text("节目单");
         $(".proglist-title").css("border-bottom", "5px rgb(133, 83, 23) solid");
         $(".proglist").css("text-align", "center");

@@ -106,7 +106,7 @@ video, #player {
 }
 
 video {
-    max-width: 98%;
+    max-width: 100%;
     background-image: url(../img/notready.png);
     background-repeat: no-repeat;
     background-position: center;
