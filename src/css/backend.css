@@ -177,11 +177,25 @@ iframe {
     height: 41px;
 }
 
-.piclive-preview-controls button {
+button {
     float: left;
     padding: 10px 20px;
     border: 2px rgb(0, 160, 233) solid;
     cursor: pointer;
     background-color: transparent;
     color: inherit;
+}
+
+.programlist-preview {
+    width: calc(100% - 100px);
+    margin: 10px 0 0;
+    background-color: transparent;
+    border: 2px rgb(0, 160, 233) solid;
+    height: 370px;
+}
+
+#last-prog, #next-prog {
+	margin: 15px;
+	float: none;
+	font-size: large;
 }

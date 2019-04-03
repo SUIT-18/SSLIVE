@@ -21,6 +21,7 @@
         <div class="title">SSLIVE 后端控制台</div>
         <div class="swiper-tab">
             <div class="selectedtab">总览</div>
+			<div>节目单控制</div>
             <div>弹幕管理</div>
             <div>图文直播上传</div>
             <div>访问量详情</div>
@@ -30,6 +31,12 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">总览</div>
+			<div class="swiper-slide programlist-control">
+				<div class="title">节目单控制</div>
+				<iframe class="programlist-preview" allowtransparency seamless src="ProgramList.html"></iframe>
+				<button id="last-prog" onclick="lastProg()">切换到上一个节目</button>
+				<button id="next-prog" onclick="nextprog()">切换到下一个节目</button>
+			</div>
             <div class="swiper-slide">
                 <div class="title">弹幕管理</div>
                 <iframe id="danmuctrl" allowtransparency seamless src="thinkpol.html"></iframe>
