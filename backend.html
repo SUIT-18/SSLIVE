@@ -33,8 +33,8 @@
             <div class="swiper-slide">总览</div>
 			<div class="swiper-slide programlist-control">
 				<div class="title">节目单控制</div>
-				<iframe class="programlist-preview" allowtransparency seamless src="ProgramList.html"></iframe>
-				<button id="last-prog" onclick="lastProg()">切换到上一个节目</button>
+				<iframe class="programlist-preview" id="programlist-preview" allowtransparency seamless src="ProgramList.html"></iframe>
+				<button id="last-prog" onclick="lastprog()">切换到上一个节目</button>
 				<button id="next-prog" onclick="nextprog()">切换到下一个节目</button>
 			</div>
             <div class="swiper-slide">
@@ -67,7 +67,10 @@
                     <span class="livetext">加载中...</span>
                 </div>
             </div>
-            <div class="swiper-slide">访问量详情</div>
+            <div class="swiper-slide">
+                    <div class="title">访问量详情</div>
+                    <iframe id="stat" allowtransparency seamless src="https://tongji.baidu.com/web/27070206/trend/latest?siteId=12938662"></iframe>
+            </div>
             <div class="swiper-slide serverstat">
                 <div class="title">服务器状态</div>
                 <iframe id="serverstat" allowfullscreen seamless src="https://cloudmonitor.console.aliyun.com/index.htm?spm=5176.2020520101.223.d101.6bc54df5ejSdGh&custom_trace=ecs_console#/dashboardnew/boardId=&boardName=&timeSpan="></iframe>

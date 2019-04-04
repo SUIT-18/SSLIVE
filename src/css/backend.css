@@ -100,6 +100,15 @@ iframe {
     white-space: pre-wrap;
 }
 
+button {
+    float: left;
+    padding: 10px 20px;
+    border: 2px rgb(0, 160, 233) solid;
+    cursor: pointer;
+    background-color: transparent;
+    color: inherit;
+}
+
 /*图文直播上传模块CSS*/
 
 .piclive textarea {
@@ -166,6 +175,8 @@ iframe {
     width: calc(70% - 130px);
     text-align: left;
     margin-left: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .piclive hr {
@@ -177,17 +188,24 @@ iframe {
     height: 41px;
 }
 
-button {
+.liveimg {
+    max-width: 80%;
+    max-height: 50%;
     float: left;
-    padding: 10px 20px;
-    border: 2px rgb(0, 160, 233) solid;
-    cursor: pointer;
-    background-color: transparent;
-    color: inherit;
+    border-radius: 20px;
+    margin-right: 2%;
+    margin-bottom: 2%;
 }
 
+.livetext {
+    font-size: large;
+    overflow-y: scroll;
+}
+
+/*节目单控制模块CSS*/
+
 .programlist-preview {
-    width: calc(100% - 100px);
+    width: calc(100% - 110px);
     margin: 10px 0 0;
     background-color: transparent;
     border: 2px rgb(0, 160, 233) solid;

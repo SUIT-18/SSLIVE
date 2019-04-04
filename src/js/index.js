@@ -9,7 +9,7 @@ if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 var now = new Date().getTime();//当前时间
 var liveplay = new Date(2019, 3, 3, 19, 00).getTime();
 var leftTime = liveplay - now;//计算时差
-var delta = 60000;//一分钟
+var delta = 300000;//5分钟
 if (leftTime <= delta) {
     //alert("已到开播时间前1分钟");无需跳转
 } else {
@@ -319,10 +319,12 @@ $(window).resize(function () {
 function play() {
     if (playing) {
         $('video').trigger('pause');
+        _hmt.push(['_trackEvent', 'video', 'pause']);
         playing = false;
         $("#play").css("background-image", "url(src/img/play.svg)");
     } else {
         $('video').trigger('play');
+        _hmt.push(['_trackEvent', 'video', 'play']);
         playing = true;
         $("#play").css("background-image", "url(src/img/pause.svg)");
     }

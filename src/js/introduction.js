@@ -41,7 +41,7 @@ $(document).ready(function () {
     $("#error").remove();
     var interval = setInterval(function () {
         now = new Date().getTime();//当前时间
-        if (liveplay - now <= 60000) {//提前1分钟显示直播入口
+        if (liveplay - now <= 300000) {//提前5分钟显示直播入口
             $(".timer").animate({ top: "35%" });
             $(".QRcode").fadeIn();
             clearInterval(interval);

@@ -1,17 +1,17 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	$(".swiper-tab div").css("line-height", $(".swiper-tab div").height() + "px");
 	var mySwiper = new Swiper('.swiper-container', {
 		direction: 'horizontal'
 	})
-	mySwiper.on("slideChange", function() {
+	mySwiper.on("slideChange", function () {
 		$(".swiper-tab").find("div").removeClass("selectedtab");
 		$(".swiper-tab").find("div").eq(mySwiper.activeIndex).addClass("selectedtab");
 	});
-	$(".swiper-tab div").click(function() {
+	$(".swiper-tab div").click(function () {
 		mySwiper.slideTo($(".swiper-tab div").index(this));
 	});
 	RefreshPicLive();
-	setTimeout(function() {
+	setTimeout(function () {
 		$(".contents").animate({
 			height: $(".contents").contents().find("#swiper").height()
 		});
@@ -20,11 +20,11 @@ $(document).ready(function() {
 
 //图文直播模块JS代码
 
-createReader = function(file, whenReady) {
+createReader = function (file, whenReady) {
 	var reader = new FileReader;
-	reader.onload = function(evt) {
+	reader.onload = function (evt) {
 		var image = new Image();
-		image.onload = function() {
+		image.onload = function () {
 			var width = this.width;
 			var height = this.height;
 			if (whenReady) whenReady(width, height);
@@ -36,7 +36,7 @@ createReader = function(file, whenReady) {
 
 function GetInfo(index, img) {
 	var file = document.getElementById('p' + index);
-	createReader(file.files[0], function(w, h) {
+	createReader(file.files[0], function (w, h) {
 		if (index == 0) {
 			$("#p1w").val(w);
 			$("#p1h").val(h);
@@ -58,7 +58,7 @@ function upload() {
 		data: {
 			pw: $("#pw").val()
 		},
-		success: function(data) {
+		success: function (data) {
 			if (data == "success") {
 				var p1 = document.getElementById("p0").files[0]
 				var p2 = document.getElementById("p1").files[0]
@@ -78,7 +78,7 @@ function upload() {
 						processData: false,
 						contentType: false,
 						data: formFile,
-						success: function(data) {
+						success: function (data) {
 							alert(data);
 						}
 					})
@@ -97,7 +97,7 @@ function RefreshPicLive() {
 	$.ajax({
 		url: "src/piclive/piclive.json",
 		dataType: "json",
-		success: function(data) {
+		success: function (data) {
 			PicLive = data;
 			PicLive.Img1 = "src/piclive/" + PicLive.Img1;
 			PicLive.Img2 = "src/piclive/" + PicLive.Img2;
@@ -117,8 +117,13 @@ function lastprog() {
 		data: {
 			cmd: "last"
 		},
-		success: function(data) {
-			alert(data);
+		success: function (data) {
+			if (data == "success") {
+				growl.show({ text: "切换成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1500 });
+			} else {
+				alert(data);
+			}
+			document.getElementById("programlist-preview").contentWindow.location.reload(true);
 		}
 	})
 }
@@ -129,8 +134,13 @@ function nextprog() {
 		data: {
 			cmd: "next"
 		},
-		success: function(data) {
-			alert(data);
+		success: function (data) {
+			if (data == "success") {
+				growl.show({ text: "切换成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1500 });
+			} else {
+				alert(data);
+			}
+			document.getElementById("programlist-preview").contentWindow.location.reload(true);
 		}
 	})
 }
