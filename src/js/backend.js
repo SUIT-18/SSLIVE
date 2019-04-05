@@ -6,6 +6,12 @@ $(document).ready(function () {
 	mySwiper.on("slideChange", function () {
 		$(".swiper-tab").find("div").removeClass("selectedtab");
 		$(".swiper-tab").find("div").eq(mySwiper.activeIndex).addClass("selectedtab");
+		if (mySwiper.activeIndex == 4) {
+			if ($("#stat").attr("src") == "") { $("#stat").attr("src", "https://tongji.baidu.com/web/27070206/trend/latest?siteId=12938662") }
+		}
+		if (mySwiper.activeIndex == 5) {
+			if ($("#serverstat").attr("src") == "") { $("#serverstat").attr("src", "https://cloudmonitor.console.aliyun.com/index.htm?spm=5176.2020520101.223.d101.6bc54df5ejSdGh&custom_trace=ecs_console#/dashboardnew/boardId=&boardName=&timeSpan=") }
+		}
 	});
 	$(".swiper-tab div").click(function () {
 		mySwiper.slideTo($(".swiper-tab div").index(this));

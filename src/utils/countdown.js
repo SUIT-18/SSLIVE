@@ -1,8 +1,8 @@
-﻿var end = new Date("2019/04/03,19:00:00");
+﻿var CountdownEnd = new Date("2019/04/03,19:00:00");
 var countdown;
 function newtime() {
     var now = new Date();
-    var rest = parseInt((end.getTime() - now.getTime()) / 1000);
+    var rest = parseInt((CountdownEnd.getTime() - now.getTime()) / 1000);
     var day = parseInt(rest / 3600 / 24);
     var hour = parseInt((rest / 3600) % 24);
     var min = parseInt((rest / 60) % 60);

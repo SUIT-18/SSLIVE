@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Consola;
+    src: url(../font/consola.ttf);
+}
+
 body {
     background-color: #1b1b1b;
     text-align: center;
@@ -5,7 +10,6 @@ body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: PingFang, SF;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     color: #fff;
@@ -101,12 +105,16 @@ iframe {
 }
 
 button {
-    float: left;
+    /* float: left; */
     padding: 10px 20px;
     border: 2px rgb(0, 160, 233) solid;
     cursor: pointer;
     background-color: transparent;
     color: inherit;
+}
+
+button:hover {
+    background-color: rgba(0, 160, 233, 0.4);
 }
 
 /*图文直播上传模块CSS*/
@@ -213,7 +221,30 @@ button {
 }
 
 #last-prog, #next-prog {
-	margin: 15px;
-	float: none;
-	font-size: large;
+    margin: 15px;
+    float: none;
+    font-size: large;
+}
+
+/*总览部分CSS*/
+
+.timer {
+    font-size: 3.5em;
+    top: 43%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    left: 50%;
+    white-space: nowrap;
+    padding: 0 10px 10px;
+}
+
+#timer {
+    font-family: Consola;
+    color: rgb(200, 160, 106);
+}
+
+.small {
+    font-size: 26px;
+    color: white;
 }

@@ -13,6 +13,7 @@
     <script src="src/lib/jquery-3.3.1.min.js"></script>
     <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
     <script src="src/utils/growl.js"></script>
+    <script src="src/utils/countdown.js"></script>
     <script src="src/js/backend.js"></script>
 </head>
 
@@ -30,7 +31,13 @@
     </header>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">总览</div>
+            <div class="swiper-slide">
+                <div class="title">总览</div>
+                <div class="timer">
+                    <h1 style="font-size:0.8em">距离直播开始还有</h1>
+                    <div id="timer"></div>
+                </div>
+            </div>
 			<div class="swiper-slide programlist-control">
 				<div class="title">节目单控制</div>
 				<iframe class="programlist-preview" id="programlist-preview" allowtransparency seamless src="ProgramList.html"></iframe>
@@ -59,7 +66,7 @@
                 </div>
                 <div class="piclive-preview">
                     <div class="piclive-preview-controls">
-                        <button onclick="RefreshPicLive()">刷新预览内容</button>预览图文直播
+                        <button onclick="RefreshPicLive()" style="float:left">刷新预览内容</button>预览图文直播
                     </div>
                     <hr>
                     <img class="liveimg" id="liveimg1">
@@ -68,12 +75,12 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                    <div class="title">访问量详情</div>
-                    <iframe id="stat" allowtransparency seamless src="https://tongji.baidu.com/web/27070206/trend/latest?siteId=12938662"></iframe>
+                <div class="title">访问量详情</div>
+                <iframe id="stat" allowtransparency seamless src=""></iframe>
             </div>
             <div class="swiper-slide serverstat">
                 <div class="title">服务器状态</div>
-                <iframe id="serverstat" allowfullscreen seamless src="https://cloudmonitor.console.aliyun.com/index.htm?spm=5176.2020520101.223.d101.6bc54df5ejSdGh&custom_trace=ecs_console#/dashboardnew/boardId=&boardName=&timeSpan="></iframe>
+                <iframe id="serverstat" allowfullscreen seamless src=""></iframe>
             </div>
         </div>
     </div>
