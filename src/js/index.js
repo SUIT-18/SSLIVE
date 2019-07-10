@@ -6,20 +6,28 @@ console.log(window.location.search);
 var debugmode = false;
 if (window.location.search.search("debug=1") > 0) { debugmode = true; }
 //跳转
-var now = new Date().getTime();//当前时间
-var liveplay = new Date(2019, 3, 3, 19, 00).getTime();
-var leftTime = liveplay - now;//计算时差
-var delta = 300000;//5分钟
-if (leftTime <= delta) {
-    //alert("已到开播时间前1分钟");无需跳转
-} else {
-    growl.show({ text: "跳转中...", type: "notice" });
-    if (debugmode) {
-        growl.show({ text: "debug模式", type: "none", autoclose: 1500 });
-    } else {
-        window.location.href = 'introduction.html';
+var live = false;
+$.ajax({
+    url: "livestatus.json",
+    method: "GET",
+    success: function (data) {
+        if (data.hasLive) {
+            live = true;
+        }
+        var now = new Date().getTime();//当前时间
+        var liveplay = new Date(2019, 3, 3, 19, 00).getTime();
+        var leftTime = liveplay - now;//计算时差
+        var delta = 300000;//5分钟
+        if (leftTime > delta || !live) {
+            growl.show({ text: "跳转中...", type: "notice" });
+            if (debugmode) {
+                growl.show({ text: "Debug模式", type: "none", autoclose: 1500 });
+            } else {
+                window.location.href = 'introduction.html';
+            }
+        }
     }
-}
+})
 //---------------
 function cons(content) {
     console.log(content);

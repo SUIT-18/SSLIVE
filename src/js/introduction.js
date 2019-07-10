@@ -2,6 +2,7 @@ var str = "";
 var bgsetting = {};
 var mySwiper;
 var timeout;
+var live = false;
 var firstslide = true;
 if (window.location.search.search("debug=1") > 0) { $("head").append('<meta http-equiv="Expires" content="0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-control" content="no-cache"><meta http-equiv="Cache" content="no-cache">'); }
 var now = new Date().getTime();//当前时间
@@ -40,13 +41,22 @@ function nextbg() {
 $(document).ready(function () {
     $("#error").remove();
     var interval = setInterval(function () {
+        $.ajax({
+            url: "livestatus.json",
+            method: "GET",
+            success: function (data) {
+                if (data.hasLive) {
+                    live = true;
+                }
+            }
+        })
         now = new Date().getTime();//当前时间
-        if (liveplay - now <= 300000) {//提前5分钟显示直播入口
+        if (liveplay - now <= 300000 || live) {//提前5分钟显示直播入口
             $(".timer").animate({ top: "35%" });
             $(".QRcode").fadeIn();
             clearInterval(interval);
         }
-    }, 1000);
+    }, 60000);
     var info = new Browser();
     if (info.device != '') {
         console.log(info.device);

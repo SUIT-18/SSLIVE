@@ -1,3 +1,4 @@
+var live = false;
 $(document).ready(function () {
 	$(".swiper-tab div").css("line-height", $(".swiper-tab div").height() + "px");
 	var mySwiper = new Swiper('.swiper-container', {
@@ -16,6 +17,7 @@ $(document).ready(function () {
 	$(".swiper-tab div").click(function () {
 		mySwiper.slideTo($(".swiper-tab div").index(this));
 	});
+	GetLiveStatus();
 	RefreshPicLive();
 	setTimeout(function () {
 		$(".contents").animate({
@@ -142,11 +144,67 @@ function nextprog() {
 		},
 		success: function (data) {
 			if (data == "success") {
-				growl.show({ text: "切换成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1500 });
+				growl.show({ text: "切换成功！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1000 });
 			} else {
 				alert(data);
 			}
 			document.getElementById("programlist-preview").contentWindow.location.reload(true);
+		}
+	})
+}
+
+//总览部分代码
+function toggleStatus() {
+	if (live) {
+		$("#LiveControlButton").text("开 始 直 播");
+		$.ajax({
+			url: "src/console/livestatus.php",
+			method: "POST",
+			data: {
+				cmd: "stop"
+			},
+			success: function (data) {
+				if (data == "success") {
+					growl.show({ text: "直播已停止！", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1000 });
+					live = false;
+					$(".LiveStatusReminder").css("visibility", "hidden");
+				} else {
+					alert(data);
+				}
+			}
+		})
+	} else {
+		$("#LiveControlButton").text("停 止 直 播");
+		$.ajax({
+			url: "src/console/livestatus.php",
+			method: "POST",
+			data: {
+				cmd: "start"
+			},
+			success: function (data) {
+				if (data == "success") {
+					growl.show({ text: "直播入口已开放", type: "custom", imgsrc: "src/img/danmu_ok.gif", autoclose: 1000 });
+					live = true;
+					$(".LiveStatusReminder").css("visibility", "visible");
+				} else {
+					alert(data);
+				}
+			}
+		})
+	}
+}
+
+function GetLiveStatus() {
+	$.ajax({
+		url: "livestatus.json",
+		method: "GET",
+		success: function (data) {
+			if (data.hasLive) {
+				$("#LiveControlButton").text("停 止 直 播");
+				live = true;
+			} else {
+				$("#LiveControlButton").text("开 始 直 播");
+			}
 		}
 	})
 }

@@ -24,7 +24,7 @@
             <div class="selectedtab">总览</div>
 			<div>节目单控制</div>
             <div>弹幕管理</div>
-            <div>图文直播上传</div>
+            <div>图文直播</div>
             <div>访问量详情</div>
             <div id="lasttab">服务器状态</div>
         </div>
@@ -36,6 +36,12 @@
                 <div class="timer">
                     <h1 style="font-size:0.8em">距离直播开始还有</h1>
                     <div id="timer"></div>
+                </div>
+                <div class="LiveControl">
+                    <div class="LiveStatusReminder">
+                        <span style="border-radius: 50%;width: 40px; height: 40px;background-color: red;display: inline-block;"></span><span style="margin-left:10px;display: inline-block;transform:translateY(-9px);">ON AIR</span>
+                    </div>
+                    <button id="LiveControlButton" onclick="toggleStatus()">正在获取直播状态...</button>
                 </div>
             </div>
 			<div class="swiper-slide programlist-control">
@@ -49,7 +55,7 @@
                 <iframe id="danmuctrl" allowtransparency seamless src="thinkpol.html"></iframe>
             </div>
             <div class="swiper-slide piclive">
-                <div class="title">图文直播上传</div>
+                <div class="title">图文直播</div>
                 <div class="piclive-upload">
                     图1 <input id="p0" type="file" onchange="GetInfo(0,this)"><br>
                     尺寸 <input disabled id="p1w" class="size"> x <input disabled id="p1h" class="size"><br>

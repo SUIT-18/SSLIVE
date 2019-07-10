@@ -8,21 +8,21 @@
     z-index: 500;
     padding: 20px;
     text-align: center;
-    max-height: 120px;
-    width: 120px;
+    max-height: 150px;
+    width: 150px;
     overflow: hidden;
 }
 
 .growl::after {
-    background-color: rgb(231, 231, 231);
-    filter: blur(2px);
-    opacity: 0.7;
+    background-color: rgb(179, 178, 178);
+    filter: blur(4px);
+    opacity: 0.85;
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
     z-index: -1;
     border-radius: 15px;
 }
@@ -34,16 +34,16 @@
 }
 
 #growl-img {
-    min-width: 80px;
-    max-width: 110px;
-    height: 80px;
+    min-width: 130px;
+    max-width: 150px;
+    height: 100px;
     object-fit: contain;
 }
 
 .growl-text {
     overflow: hidden;
     font-size: 20px;
-    max-width: 110px;
+    max-width: 145px;
     text-align: center;
     white-space: nowrap;
 }

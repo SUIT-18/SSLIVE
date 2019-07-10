@@ -7,7 +7,7 @@ growl.show = function (settings) {
     }
     $(".growl").html("<div class='growl-img'><img id='growl-img'><br></div><p class='growl-text'>" + settings.text + "</p>");
     var box = $('.growl-text');
-    if (box.text().length > 6) {
+    if (box.text().length > 8) {
         box.css("font-size", "14px");
     }
     else {
