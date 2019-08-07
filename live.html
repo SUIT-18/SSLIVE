@@ -1,0 +1,44 @@
+<!-- live.html -->
+<!-- 功能： -->
+<!-- 直播 -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" lang="zh-cn">
+    <!-- 使IE在最高版本下渲染，国产浏览器用Chrome内核渲染 -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- 适配DRP > 1的屏幕 -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>SSLIVE</title>
+    <!-- 图标 -->
+    <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
+    <!-- jQuery和Video.js使用CDN加载 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/video.js/7.6.0/video-js.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/7.6.0/video.min.js"></script>
+    <script src="https://cdn.bootcss.com/video.js/7.6.0/lang/zh-CN.js"></script>
+    <link rel="stylesheet" href="/src/css/live.css">
+    <script src="/src/js/live.js"></script>
+    <!-- TODO 加入百度分析 -->
+</head>
+
+<body>
+    <p id="title">省实高中部军训会操直播</p>
+
+    <div id="video-container">
+        <video id="video" class="video-js vjs-big-play-centered"></video>
+        <div id="controls">
+            <div id="play" style="background-image: url('/src/img/play.svg');"></div>
+            <div id="fullscreen" style="background-image: url('/src/img/fullscreen.svg');"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

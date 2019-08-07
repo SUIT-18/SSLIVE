@@ -1,0 +1,82 @@
+/* live.css */
+
+/* 引用方正清刻本悦宋简体字体 */
+
+@font-face {
+    font-family: FZQKBYSJT;
+    src: url(/src/font/fzqkb.ttf)
+}
+
+html {
+    /* jQuery */
+    font-size: 16px;
+    font-family: FZQKBYSJT;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* TODO 更换图片 */
+    background: url("/src/img/live-background.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#title {
+    margin: 0;
+    margin-top: 1.5rem;
+    color: #b2c67a;
+    font-size: 2.25rem;
+}
+
+#video-container {
+    margin: 0;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#controls {
+    margin: 0;
+    margin-top: 0.5rem;
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+    background: white;
+    box-shadow: 0px 0px 12px 0px rgba(53, 53, 53, 0.3);
+}
+
+#play, #fullscreen {
+    border: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent no-repeat;
+    background-size: 75% 75%;
+    background-position: center;
+}
+
+#play:hover, #fullscreen:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#play {
+    margin-left: 0.5rem;
+}
+
+#fullscreen {
+    margin-right: 0.5rem;
+}

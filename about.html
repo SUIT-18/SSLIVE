@@ -1,59 +1,111 @@
-<!DOCTYPE html>
+<!-- about.html（高聚合页面） -->
+<!-- 功能： -->
+<!-- 介绍信息部 -->
+
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" lang="zh-cn">
+    <!-- 使国产浏览器用Chrome内核渲染 -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- 适配DRP > 1的屏幕 -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>SSLIVE</title>
     <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
-    <meta name="description" content="SSLIVE">
     <style>
+        @font-face {
+            font-family: FZQKBYSJT;
+            src: url(/src/font/fzqkb.ttf)
+        }
+
         body {
+            margin: 0;
+            padding: 0;
+            border: 0;
             background-color: #1b1b1b;
-            text-align: center;
             color: #fff;
             line-height: 2;
-            overflow-x: hidden;
-            padding: 0;
+            font-family: FZQKBYSJT;
         }
 
-        section {
-            display: inline-block;
+        .container {
             margin: 5px 15px;
-            max-width: 700px;
         }
 
-        .bg-img {
-            right: 0;
-            bottom: 0;
-            position: fixed;
-            transform: translate(20%, 30%);
-            width: 30%;
-            z-index: -1;
+        h1,
+        .center {
+            text-align: center;
         }
 
-        #pass {
-            right: auto;
-            left: 0;
-            transform: translate(0%, 30%);
-            opacity: 0.6;
+        #footer {
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+            color: #c2c2c2;
+            line-height: 1;
+        }
+
+        #footerpb,
+        #footerlogos {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .footerlogo {
+            display: inline-block;
+        }
+
+        #suitlogo {
+            padding-right: 10px;
+            border-right: 2px white solid;
+            height: 50px;
+        }
+
+        #passlogo {
+            margin-bottom: 5px;
+            padding-left: 10px;
+            height: 40px;
+        }
+
+        .footertext {
+            margin: 5px 0;
+            display: block;
+            font-size: 15px;
         }
     </style>
 </head>
 
 <body>
-    <section>
-        <h2>省实直播&传媒信息部简介</h2>
-        2016年12月30日，一年一度的省实新年音乐会在中山纪念堂拉开帷幕。除去精彩纷呈的节目，最吸引人眼球的当然要数省实直播SSLIVE。据不完全统计，当天全网累计观看量二十余万。<br>
-        在网络直播时代，直播正在变得越来越简单，一台手机，连上网络，就是一场直播。然而，省实直播绝非这样的“大路货”！我们看到的省实直播，是和电视上相同的广播级直播。攻克直播绝非易事，从拍摄、编码、传输、分发，中间充满着各种各样的技术难点。但这场省实直播完全由学生自主完成，历时一年零三个月。<br>
-        在这场成功的直播背后，是一个优秀的部门，省实学生会传媒信息部（MIT）。传媒信息部成立于15年6月。至今不足两年的时间，但却取得了巨大的成功。传媒信息部的工作范围包括视频制作、网络直播、航拍、视频图片拍摄、网站搭建及管理、大型活动现场包装等。16年4月，传媒信息部完成了青春诗会活动的全部视频包装，宣传视频观看量达七千余次；16年6月，传媒信息部对历时五天的学农进行了跟踪拍摄，共拍摄三百余G素材，制作的纪念视频观看量达八千次；
-        16年12月，传媒信息部制作省实直播宣传视频，观看量达两万次。尽管省实直播取得了巨大的成功，但它的发展绝非一帆风顺。15年10月，刚刚建立4个月的传媒信息部对体育节进行网络直播，由于网络原因，原定两天的直播在持续三小时后不得不终止；16年4月，传媒信息部计划对青春诗会进行直播，但由于稳定性无法达到要求，不得不取消计划；16年10月，传媒信息部再次对体育节入场式进行直播，小米和苹果系手机均无法观看……在反复的调试、试错之后，最终，我们成功在新年音乐会完成了省实人自己的直播！
-        17年10月，传媒信息部总结以往直播的经验，成功对体育节入场式和“布服来战”班服秀进行了直播，大大减少了直播断线频率，配合直播宣传视频，观看流量创了新高；18年3月，传媒信息部采用了新的技术对2018WCA省实公开赛进行了直播，把断线次数降到了0！在同月的校园开放日直播中，传媒信息部使用直播的方式，带领对省实感兴趣的学生在线游览校园。<br>
-        省实是一个大舞台，每一个学生，都有可能在这里绽放自己的光彩！省实，期待你的加入！省实传媒信息部，期待你的加入！
-    </section>
-    <img class="bg-img" id="pass" src="src/img/PASS-white.png">
-    <img class="bg-img" src="src/img/SUIT+.png">
+    <div class="container">
+        <h1>省实信息部简介</h1>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2016年12月30日，一年一度的省实新年音乐会在中山纪念堂拉开帷幕。除去精彩纷呈的节目，最吸引人眼球的当然要数SSLIVE。据不完全统计，当天全网累计观看量二十余万。
+        </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在网络直播时代，直播正在变得越来越简单，一台手机，连上网络，就是一场直播。然而，SSLIVE绝非这样的“大路货”！我们看到的SSLIVE，是和电视上相同级别的实时直播。攻克直播绝非易事，从拍摄、编码、传输、分发，中间充满着各种各样的技术难点。第一版SSLIVE完全由学生自主完成，历时一年零三个月。
+        </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在这场成功的直播背后，是一个优秀的学生会部门，省实学生会信息部（SUIT+）。信息部成立于2015年6月。至今四年的时间，取得了巨大的成功。信息部的工作范围包括视频制作、网络直播、航拍、视频图片拍摄、网站搭建及管理、大型活动现场包装等。2016年4月，信息部完成了青春诗会活动的全部视频包装，宣传视频观看量达七千余次；2016年6月，信息部对历时五天的学农进行了跟踪拍摄，共拍摄三百余GB素材，制作的纪念视频观看量达八千次；2016年12月，信息部制作的省实直播宣传视频，观看量达两万次。
+        </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp尽管SSLIVE取得了巨大的成功，但它的发展绝非一帆风顺。2015年10月，刚刚建立4个月的信息部对体育节进行网络直播，由于网络原因，原定两天的直播在持续三小时后不得不终止；2016年4月，信息部计划对青春诗会进行直播，但由于稳定性无法达到要求，不得不取消计划；2016年10月，信息部再次对体育节入场式进行直播，小米和苹果系手机均无法观看……
+        </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在反复的调试、试错之后，最终，我们成功在2016年新年音乐会完成了省实人自己的直播！</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2017年10月，信息部总结以往直播的经验，成功对体育节入场式和“布服来战”班服秀进行了直播，大大减少了直播断线频率，配合直播宣传视频，观看流量创了新高；2018年3月，信息部采用了新的技术对2018WCA省实公开赛进行了直播，把断线次数降到了0！在同月的校园开放日直播中，信息部使用直播的方式，带领对省实感兴趣的学生在线游览校园
+        </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp省实是一个大舞台，每一个学生，都有可能在这里绽放自己的光彩！</p>
+        <p class="center">省实，期待你的加入！</p>
+        <p class="center">省实信息部，期待你的加入！</p>
+    </div>
+    <div id="footer">
+        <p id="footerpb">Powered By</p>
+        <div id="footerlogos">
+            <img class="footerlogo" id="suitlogo" src="src/img/SUIT-white.png">
+            <img class="footerlogo" id="passlogo" src="src/img/PASS-white.png">
+        </div>
+        <p class="footertext">广东实验中学学生会信息部</p>
+        <p class="footertext">PASS+ 极光工作室</p>
+        <p class="footertext">Copyright © 2015-2019 SUIT+ All Rights Reserved.</p>
+    </div>
 </body>
 
 </html>

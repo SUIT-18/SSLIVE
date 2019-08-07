@@ -1,384 +1,161 @@
-@font-face {
-    font-family: PingFang;
-    src: local("PingFangSC-Regular"), url(../font/PingFangSC-Regular.woff2);
-}
+/* introduction.css */
+
+/* 引用方正清刻本悦宋简体字体 */
 
 @font-face {
-    font-family: SF;
-    src: url(../font/sf-pro-text_regular.ttf);
+    font-family: FZQKBYSJT;
+    src: url(/src/font/fzqkb.ttf)
 }
 
-@font-face {
-    font-family: PingFang;
-    font-weight: lighter;
-    src: local("PingFangSC-Light"), url(../font/PingFang_Light.woff2);
-}
-
-@font-face {
-    font-family: Consola;
-    src: url(../font/consola.ttf);
+html {
+    /* jQuery */
+    font-size: 16px;
+    font-family: FZQKBYSJT;
 }
 
 body {
-    background-color: #1b1b1b;
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-family: PingFang, SF;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: black;
 }
 
-header {
+#header {
+    padding: 10px;
+    z-index: 10;
+    /* 使用盒模型快速实现icon和title一左一中 */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
-    padding: 20px 10px;
+    height: 40px;
     position: fixed;
     top: 0;
-    min-height: 22px;
-    left: 0;
-    font-size: 1.5em;
-    text-align: left;
-    background-color: #2e2e2e;
-    vertical-align: middle;
-    z-index: 100;
+    background: #2e2e2e;
 }
 
-.icon {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    display: inline-block;
-    color: white;
+#header-icon {
+    height: 100%;
 }
 
-.icon:hover {
-    cursor: pointer;
-}
-
-.title {
+#header-title {
+    color: #b2c67a;
+    font-size: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    top: 50%;
-    left: 50%;
-    color: rgb(200, 160, 106);
-    width: auto;
-    text-align: center;
 }
 
-h1 {
-    font-size: 0.8em;
-    margin: 10px;
-    font-weight: lighter;
-}
-
-.main {
-    font-size: 2em;
-    position: relative;
-    top: 30%;
+#main {
+    margin-top: 60px;
     width: 100%;
-    vertical-align: middle;
-    height: 1080px;
-    color: white;
-    z-index: 1;
 }
 
-.QRcode {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0;
-    cursor: pointer;
-    display: none;
-    width: auto;
-}
-
-#QRcode {
-    width: 40%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.linktxt {
-    font-size: 18px;
-    text-shadow: 2px 2px 4px #121212;
-    color: rgb(102, 187, 255);
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.linktext:hover {
-    text-decoration: underline;
-}
-
-.small {
-    font-size: 26px;
-    font-family: PingFang;
-    color: white;
-    -webkit-text-fill-color: white;
-}
-
-.timer {
-    top: 43%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    left: 50%;
-    display: none;
-    /* text-shadow: 4px 4px 10px #000000; */
-    white-space: nowrap;
-    padding: 0 10px 10px;
-}
-
-.timer::after {
-    position: absolute;
-    background-color: #000000;
-    filter: blur(5px);
-    opacity: 0.4;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    border-radius: 10px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+#bgimg {
+    width: 100%;
+    /* jQuery */
+    height: 100%;
+    object-fit: cover;
 }
 
 #timer {
-    font-family: Consola;
-    color: rgb(200, 160, 106);
-    background: url(../img/texture.jpg) no-repeat;
-    background-position: 50%;
-    background-origin: border-box;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.promote {
-    position: absolute;
-    margin: 15px 0;
-    bottom: 0;
-    font-size: 15px;
+    padding: 1rem;
     text-align: center;
-    display: none;
-    text-shadow: 2px 2px 4px #181818;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.promote p {
-    margin: 0;
-    font-size: 13px;
-}
-
-.bg-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    /* visibility: hidden; */
-    display: none;
-    overflow: hidden;
-}
-
-.bg-img img {
-    /* opacity: 0.8; */
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-}
-
-.contents {
-    width: 100%;
-    margin: 10px 0 30%;
-    background-color: transparent;
-    border: none;
-    height: 370px;
-}
-
-#player {
-    width: 100% !important;
-    display: inline-block !important;
-}
-
-.swiper-container {
-    width: 100%;
-    height: 100%;
-}
-
-.Pic-pagination {
-    text-align: right;
-}
-
-.swiper-pagination-bullets {
-    width: auto !important;
-    right: 0;
-    left: auto !important;
-}
-
-.Pic-pagination .swiper-pagination-bullet {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(200, 160, 106);
-}
-
-.jw-controlbar {
-    display: none !important;
-}
-
-footer {
-    width: 100%;
-    font-family: PingFang, SF;
-    text-align: center;
-    background-color: #2e2e2e;
-    color: rgb(194, 194, 194);
-    padding: 20px 0;
-}
-
-.logos {
-    transform: translateX(47.5px);
-    margin-top: 10px;
-}
-
-.logo {
-    display: inline-block;
-    padding: 5px 15px;
-    height: 100px;
-}
-
-.itlogo {
-    border-right: 2px #fff solid;
-}
-
-.passlogo {
-    height: 60px;
-    margin: 20px 0;
-}
-
-.suit {
-    padding: 5px 0 10px 0;
-    border-bottom: 1px #444 solid;
-    width: 80%;
-    display: inline-block;
-    min-width: 350px;
-}
-
-footer a, .links span {
-    color: inherit;
-    padding: 3px;
-    margin-right: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-footer .links {
-    margin-top: 10px;
-}
-
-footer .links:last-child {
-    margin-right: 0;
-}
-
-.followbox {
-    background-color: #2e2e2e;
-    border-radius: 5px;
-    padding: 10px;
-    position: absolute;
-    display: block;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -100%);
-    z-index: 20;
-    height: auto;
-    box-shadow: #121212 5px 5px 3px 3px;
-    color: rgb(194, 194, 194);
-    width: 40%;
-    min-width: 250px;
-    display: none;
-}
-
-#QR1, #QR2 {
-    width: 100%;
-    height: auto;
-    margin-bottom: 5px;
-    cursor: pointer;
-}
-
-.QR {
-    display: inline-block;
-    width: 40%;
-    margin-top: 25px;
-}
-
-.QRs {
-    margin-bottom: 5px;
+    transform: translate(-50%, -50%);
+    color: black;
     white-space: nowrap;
 }
 
-#close {
-    float: right;
-    display: block;
-    cursor: pointer;
-    transform: rotate(45deg);
-    font-size: x-large;
-}
-
-.spliter {
-    width: 1px;
-    background-color: #fff;
-    display: inline-block;
-    margin: 0 20px;
-    height: 150px;
-}
-
-.description {
-    z-index: 10;
-    position: absolute;
-    left: 10px;
-    bottom: 20px;
-    padding: 2px;
-    border-radius: 5px;
-    font-size: 0.3em;
-}
-
-.description::after {
-    background-color: rgba(46, 46, 46, 0.5);
-    filter: blur(2px);
-    content: '';
+#timer::after {
+    border-radius: 0.75rem;
+    border-top-right-radius: 1.25rem;
+    border-top-left-radius: 1.25rem;
+    z-index: -5;
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
-    border-radius: 5px;
+    left: 0;
+    opacity: 0.5;
+    filter: blur(5px);
+    background: white;
+    content: '';
 }
 
-.openvideo {
-    color: rgb(102, 187, 255);
+#timer-title {
+    margin: 0;
+    font-size: 3rem;
+    text-shadow: 0.25rem 0.25rem 10px #333;
+}
+
+#timer-countdown {
+    margin-top: 1rem;
+    /* 这里是让字透明，以透出背景图片 */
+    color: transparent;
+    background: url(../img/texture.jpg) no-repeat;
+    background-position: 50%;
+    background-origin: border-box;
+    /* 两行要同时书写，让背景图片仅渲染在文字处 */
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 3rem;
+}
+
+.timer-small {
+    padding: 0.5rem;
+    color: black;
+    font-size: 1.5rem;
+}
+
+#footer {
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+    color: #c2c2c2;
+    background: #2e2e2e;
+}
+
+#footerlinks {
+    /* 解决inline导致的幽灵空白节点 */
+    font-size: 0;
+}
+
+.footerlink {
+    margin: 0 25px;
+    display: inline;
+    color: inherit;
+    font-size: 15px;
+    text-decoration: none;
     cursor: pointer;
-    font-size: 0.3em;
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
-    display: none;
 }
 
-.openvideo:hover {
-    text-decoration: underline;
+#footerpb, #footerlogos {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.footerlogo {
+    display: inline-block;
+}
+
+#suitlogo {
+    padding-right: 10px;
+    border-right: 2px white solid;
+    height: 50px;
+}
+
+#passlogo {
+    margin-bottom: 5px;
+    padding-left: 10px;
+    height: 40px;
+}
+
+.footertext {
+    margin: 5px 0;
+    display: block;
+    font-size: 15px;
 }

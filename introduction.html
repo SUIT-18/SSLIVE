@@ -1,81 +1,61 @@
-<!DOCTYPE html>
+<!-- introduction.html -->
+<!-- 功能： -->
+<!-- 介绍即将直播的内容 -->
+
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" lang="zh-cn">
+    <!-- 使国产浏览器用Chrome内核渲染 -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- 适配DRP > 1的屏幕 -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>SSLIVE</title>
+    <!-- 图标 -->
     <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
-    <meta name="description" content="SSLIVE">
-    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
-    <link rel="stylesheet" href="src/css/introduction.css">
-    <script src="src/lib/jquery-3.3.1.min.js"></script>
-    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
-    <script src="src/lib/Browser.js"></script>
-    <script src="src/lib/jwplayer/jwplayer.js"></script>
-    <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
-    <script src="src/utils/countdown.js"></script>
-    <script src="src/js/introduction.js"></script>
-    <script src="src/lib/baidustat2.js"></script>
+    <!-- jQuery使用CDN加载 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 需要自行引入的js -->
+    <script src="/src/util/countdown.js"></script>
+    <script src="/src/js/introduction.js"></script>
+    <link rel="stylesheet" href="/src/css/introduction.css">
+    <!-- TODO 加入百度分析 -->
 </head>
 
 <body>
-    <header>
-        <img class="icon" src="src/img/sslive-rectangle-white.png" />
-        <div class="title">省实第四届“青春诗会”</div>
-    </header>
-    <h1 style="color: red" id="error">错误，您的浏览器阻止了JavaScript</h1>
-    <div class="main">
-        <div class="timer">
-            <h1>距离“青春诗会”开始还有</h1>
-            <div id="timer"></div>
-        </div>
-        <div class="openvideo">全屏查看宣传视频 ></div>
-        <div class="QRcode">
-            <!-- <img id="QRcode" src="src/img/QRcode_white.png"> -->
-            <div class="linktxt">点击此处进入直播 ></div>
-        </div>
-        <div class="promote">
-            <p>向下滑动查看节目单</p>
-            <img src="src/img/down.svg" id="down" height="50px">
-        </div>
-        <div class="bg-img">
-            <div class="swiper-container Pic">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide s0"></div>
-                    <div class="swiper-slide s1"></div>
-                    <div class="swiper-slide s2"></div>
-                </div>
-                <div class="swiper-pagination Pic-pagination"></div>
-                <div class="swiper-button-prev Pic-button-l swiper-button-white"></div>
-                <div class="swiper-button-next Pic-button-r swiper-button-white"></div>
-            </div>
-            <div class="description">加载中...</div>
-        </div>
+    <div id="header">
+        <img id="header-icon" src="src/img/sslive-rectangle-white.png" />
+        <span id="header-title">省实高中部军训会操直播</span>
+        <!-- 占位符，以方便利用flex实现一左一中 -->
+        <span></span>
     </div>
-    <iframe class="contents" src="ProgramList.html" scrolling="no"></iframe>
-    <div class="followbox">
-        <span id="close">+</span>
-        <div class="QRs">
-            <div class="QR"><img id="QR1" src="src/img/tencentvQR.png" style="filter:invert(1);"><br>腾讯视频 帐号</div><span class="spliter"></span>
-            <div class="QR"><img id="QR2" src="src/img/bilibiliQR.png" style="filter:invert(1);"><br>bilibili 帐号</div>
+
+    <div id="main">
+        <div id="timer">
+            <p id="timer-title">距离直播开始还有</p>
+            <div id="timer-countdown"></div>
         </div>
-        不定期会有高质量的校园活动宣传视频和回放视频放出~
+        <!-- TODO 更换图片 -->
+        <img src="/src/img/introduction-background.jpg" alt="" id="bgimg">
     </div>
-    <footer>
-        <span class="pb">Powered By</span><br>
-        <div class="logos">
-            <img class="logo itlogo" src="src/img/SUIT+.png"><img class="logo passlogo" src="src/img/PASS-white.png"><br>
+
+    <div id="footer">
+        <div id="footerlinks">
+            <a class="footerlink" href="about.html">关于信息部</a>
+            <a class="footerlink" href="//github.com/SUIT-18/SSLIVE">关于本项目</a>
         </div>
-        <span class="suit">广东实验中学学生会信息部 & PASS+ 极光工作室</span>
-        <div class="links">
-            <a href="about.html">关于我们</a>
-            <!-- <span id="support">支持我们</span> -->
-            <span id="follow">关注我们</span>
-            <a href="feedback.html">反馈问题</a>
-            <a href="readme.html">Credit</a>
+        <p id="footerpb">Powered By</p>
+        <div id="footerlogos">
+            <img class="footerlogo" id="suitlogo" src="src/img/SUIT-white.png">
+            <img class="footerlogo" id="passlogo" src="src/img/PASS-white.png">
         </div>
-        Copyright © 2019 SUIT+ All Rights Reserved.
-    </footer>
+        <p class="footertext">广东实验中学学生会信息部</p>
+        <p class="footertext">PASS+ 极光工作室</p>
+        <p class="footertext">Copyright © 2015-2019 SUIT+ All Rights Reserved.</p>
+    </div>
 </body>
+
+</html>

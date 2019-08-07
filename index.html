@@ -1,174 +1,46 @@
-﻿<!DOCTYPE html>
+<!-- index.html -->
+<!-- 功能： -->
+<!-- 1.判断Javascript是否启用 -->
+<!-- 2.判断浏览器版本是否足够 -->
+<!-- 3.提醒用户珍惜生命远离IE -->
+<!-- 4.根据直播情况分发页面 -->
+
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>省实“青春诗会”直播 | SSLIVE</title>
-    <link rel="shortcut icon" href="src/img/sslive-rectangle-std.png" type="image/png">
-    <link rel="stylesheet" href="src/lib/swiper/dist/css/swiper.min.css">
-    <meta name="description" content="SSLIVE">
-    <link rel="stylesheet" href="src/lib/PhotoSwipe-4.1.2/dist/photoswipe.css">
-    <link rel="stylesheet" href="src/lib/PhotoSwipe-4.1.2/dist/default-skin/default-skin.css">
-    <link rel="stylesheet" href="src/css/index.css">
-    <link rel="stylesheet" href="src/css/growl.css">
-    <script src="src/lib/jquery-3.3.1.min.js"></script>
-    <script src="src/lib/swiper/dist/js/swiper.min.js"></script>
-    <!-- <script src="src/lib/PhotoSwipe-4.1.2/dist/photoswipe.min.js"></script>
-    <script src="src/lib/PhotoSwipe-4.1.2/dist/photoswipe-ui-default.min.js"></script> -->
-    <script src="src/utils/growl.js"></script>
-    <script src="src/lib/Browser.js"></script>
-    <script src="src/js/index.js"></script>
-    <script src="src/utils/HLSLoader.js"></script>
-    <script src="src/utils/checkwords_slow.js"></script>
-    <script src="src/lib/danmu/jquery.danmu.js"></script>
-    <script src="src/lib/baidustat.js"></script>
+    <meta charset="utf-8" lang="zh-cn">
+    <!-- 使IE在最高版本下渲染，国产浏览器用Chrome内核渲染 -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- 适配DRP > 1的屏幕 -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>SSLIVE</title>
+    <!-- 重置CSS，去除浏览器默认的所有样式 -->
+    <link rel="stylesheet" href="/src/css/index.css">
+    <!-- jQuery使用CDN加载 -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/src/util/Browser.js"></script>
+    <script src="/src/js/index.js"></script>
 </head>
 
 <body>
-    <header>
-        <img class="icon" src="src/img/青春诗会logo_s.png" />
-        <div class="title1">
-            省实“青春诗会”直播<br>
-            <!-- <span class="title2">New Year's Concert | 2019</span> -->
-        </div>
-    </header>
-    <h1 style="color: red;position: absolute;top: 10%;left: 50%;transform: translateX(-50%);" id="error">错误，您的浏览器阻止了JavaScript</h1>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div id="danmu"></div>
-                <div class="videoframe">
-                    <!--FLV播放器-->
-                    <script src="src/lib/flv.min.js" type="application/javascript"></script>
-                    <video id="liveplayer" isLive></video>
-                    <!-- ========== -->
-                    <!-- jwplayer -->
-                    <div id="player" style="display: none"> </div>
-                    <script src="src/lib/jwplayer/jwplayer.js"></script>
-                    <script>jwplayer.key = "sk1ys44vediU8m1LjyQxCetFLr1F4qhFEozgTw==";</script>
-                    <!--注意先有video标签才可以用loader.js加载视频，请区分先后顺序！-->
-                    <script src="src/utils/loader.js" type="application/javascript"></script><br>
-                    <!-- ========== -->
-                    <div class="controls">
-                        <button id="play" style="background-image: url(src/img/play.svg);" onclick="play()"></button>
-                        <div class="livelabel"><span class="mode"></span>直播</div>
-                        <script>$(".mode").html(playmode);</script>
-                        <button class="HLSmode" onclick="loadPlayer('jwplayer')" style="display: none">HLS模式</button>
-                        <div class="senddanmu swiper-no-swiping">
-                            <input type="textarea" id="text" max=300 placeholder="发个弹幕" /><button type="button" onclick="send()"
-                                id="send">发送</button>
-                        </div>
-                        <div class="onright">
-                            <button id="danmuset" style="background-image: url(src/img/danmu_set.svg);"></button>
-                            <button id="danmuctrl" style="background-image: url(src/img/danmu_off.svg);" onclick="changehide()"></button>
-                            <!-- <select id="res">
-                                    <option>480P</option>
-                                    <option selected="selected">720P</option>
-                                    <option>1080P</option>
-                                </select> -->
-                            <button id="fullscreen" style="background-image: url(src/img/fullscreen.svg);"></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proglist">
-                    <div class="proglist-title">
-                        | 节目单
-                    </div>
-                    <br>
-                    <span class="pre"><b>上一个节目： </b><span id="pre"></span></span><br id="prebr">
-                    <b>当前节目： </b><span id="now"></span><br>
-                    <span class="next"><b>下一个节目： </b><span id="next"></span></span><br>
-                    <span onclick="window.open('introduction.html')" style="color: rgb(50, 163, 255);cursor: pointer;text-decoration: underline;font-size: large">查看完整节目单
-                        ></span>
-                </div>
-                <!-- ========== -->
-                <div class="ctr swiper-no-swiping" style="display: none">
-                    弹幕不透明度:
-                    <input type="range" name="op" id="op" onchange="op()" value="75">
-                    <br>
-                    颜色：
-                    <select name="color" id="color">
-                        <option value="white">白色</option>
-                        <option value="red">红色</option>
-                        <option value="green">绿色</option>
-                        <option value="blue">蓝色</option>
-                        <option value="yellow">黄色</option>
-                        <option value="#660099">紫色</option>
-                        <option value="#FF6633">橙色</option>
-                        <option value="#FF6699">粉红色</option>
-                        <option value="#33FFCC">蓝绿色</option>
-                        <option value="#99FF00">草绿色</option>
-                        <option value="#000099">蓝黑色</option>
-                        <option value="#000000">黑色</option>
-                    </select>
-                    <br> 类型：
-                    <select name="position" id="position">
-                        <option value="0">滚动</option>
-                        <option value="1">顶端</option>
-                        <option value="2">底端</option>
-                    </select>
-                </div>
-                <script src="src/utils/load_danmu.js"></script>
-            </div>
-            <!-- <div class="swiper-slide">
-                <section class="PicLive">
-                    <img class="liveimg" id="liveimg1">
-                    <img class="liveimg" id="liveimg2">
-                    <span class="livetext">加载中...</span>
-                </section>
-            </div> -->
-        </div>
-    </div>
-    <!-- =========== -->
-    <div class="log" style="display: none">
-        <textarea class="logcontents" readonly cols="15" rows="20"></textarea>
-        <button onclick="clearlog()" class="clearlog">清空</button>
-    </div>
-    <div class="noticemask">
-        <div class="noticemask-content"><img src="src/img/slideleft.svg">
-            <div class="noticetext">向左滑可以看<br>到图文直播喔</div>
-        </div>
-    </div>
-    <!-- ========== PhotoSwipe ========== -->
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <!--  Controls are self-explanatory. Order can be changed. -->
-                    <div class="pswp__counter"></div>
-                    <button class="pswp__button pswp__button--close" title="退出 (Esc)"></button>
-                    <button class="pswp__button pswp__button--fs" title="切换全屏"></button>
-                    <button class="pswp__button pswp__button--zoom" title="缩放"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="container">
+        <img src="/src/img/sslive-rectangle-white.png" alt="SSLIVE" id="index-logo">
+        <!-- 判断Javascript是否启用 -->
+        <noscript>
+            <p class="errmsg">您的浏览器未启用Javascript，请启用</p>
+        </noscript>
+        <!-- 提醒用户珍惜生命远离IE -->
+        <!--[if lte IE 9]>
+            <script>
+                window.location.href="IE.html";
+            </script>
+        <![endif]-->
+        <!-- 用于报错 -->
+        <p class="errmsg" id="errmsg"></p>
+        <p class="loading" id="loading">请稍候</p>
     </div>
 </body>
 
